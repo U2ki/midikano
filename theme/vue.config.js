@@ -11,7 +11,7 @@ module.exports = {
     app: {
       entry: 'src/main.js',
       template: 'templates/base.html',
-      filename: '../../resources/views/spa/app.blade.php',
+      filename: '../../resources/views/vue/app.blade.php',
     },
   }
 

@@ -6,6 +6,6 @@ use Illuminate\Http\Request;
 
 class SpaController extends Controller {
     public function app() {
-        return view( 'spa/app' );
+        return view( 'vue/app' );
     }
 }
