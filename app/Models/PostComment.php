@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PostComment extends Model
-{
+class PostComment extends Model {
     use HasFactory;
     use SoftDeletes;
 
@@ -19,11 +18,11 @@ class PostComment extends Model
         'content',
     ];
 
-    public function users(){
-        return $this->hasMany('App\User');
+    public function users() {
+        return $this->hasMany( 'App\User' );
     }
 
-    public function posts(){
-        return $this->hasMany('App\Post');
+    public function posts() {
+        return $this->hasMany( 'App\Post' );
     }
 }

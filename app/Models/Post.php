@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
-{
+class Post extends Model {
     use HasFactory;
     use SoftDeletes;
 
@@ -20,7 +19,7 @@ class Post extends Model
         'photo',
     ];
 
-    public function users(){
-        return $this->hasMany('App\User');
+    public function users() {
+        return $this->hasMany( 'App\User' );
     }
 }

@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
-{
+class News extends Model {
     use HasFactory;
     use SoftDeletes;
 
@@ -21,8 +20,8 @@ class News extends Model
         'type',
     ];
 
-    public function users(){
-        return $this->hasMany('App\User');
+    public function users() {
+        return $this->hasMany( 'App\User' );
     }
 
 }
