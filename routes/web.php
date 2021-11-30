@@ -19,5 +19,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/theme{any}', 'SpaController@app')->where('any', '(/?$|/.*)');
+Route::get('/theme', 'HomeController@index')->name('home');
+//Route::get('/theme{any}', 'SpaController@app')->where('any', '(/?$|/.*)');
