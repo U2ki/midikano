@@ -25,7 +25,7 @@
         <v-app-bar color="white" height="65" app clipped-left>
             <v-toolbar-title>
                 <a href="/">a</a>
-{{--                <img src="{{ asset('assets/logo.png') }}" alt="logo" class="logo-img">--}}
+                <img src="{{ asset('assets/logo.png') }}" alt="logo" class="logo-img">
             </v-toolbar-title>
             <v-spacer></v-spacer>
             @guest
@@ -62,6 +62,7 @@
         <v-main>
             @yield('content')
         </v-main>
+        <vc-footer></vc-footer>
     </v-app>
 </div>
 </body>

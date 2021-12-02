@@ -79,5 +79,6 @@
             @yield('content')
         </main>
     </div>
+    <v-footer></v-footer>
 </body>
 </html>
