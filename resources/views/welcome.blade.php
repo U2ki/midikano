@@ -20,9 +20,3 @@
         </div>
     </div>
 @endsection
-<script>
-	// import Login from "../js/components/login";
-	// export default {
-	// 	components: {Login}
-	// }
-</script>

@@ -19,19 +19,18 @@ window.Vue = require('vue').default;
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
 
-import Vue from 'vue'
-// ルーティングの定義をインポートする
-import router from './router'
-// ルートコンポーネントをインポートする
-import App from './App.vue'
-
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-new Vue({
+const app = new Vue({
     el: '#app',
-    router, // ルーティングの定義を読み込む
-    components: { App }, // ルートコンポーネントの使用を宣言する
-    template: '<App />' // ルートコンポーネントを描画する
-})
+    vuetify: new Vuetify()
+});
