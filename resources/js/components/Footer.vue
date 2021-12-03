@@ -7,7 +7,7 @@
     >
         <div class="text-center">
 
-            <div>Copyright &copy; {{ date }}&nbsp;<strong>Urulabo</strong></div>
+            <div>Copyright &copy; 2021&nbsp;<strong>Urulabo</strong></div>
 
         </div>
     </v-footer>

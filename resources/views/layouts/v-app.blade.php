@@ -22,43 +22,23 @@
 <body>
 <div id="app">
     <v-app style="background-color: #F1F6FB;">
-        <v-app-bar color="white" height="65" app clipped-left>
-            <v-toolbar-title>
-                <a href="/">a</a>
-                <img src="{{ asset('assets/logo.png') }}" alt="logo" class="logo-img">
-            </v-toolbar-title>
-            <v-spacer></v-spacer>
-            @guest
-                <v-btn text href="{{ route('login') }}">{{ __('Login') }}</v-btn>
-                @if (Route::has('register'))
-                    <v-btn text href="{{ route('register') }}">{{ __('Register') }}</v-btn>
-                @endif
-            @else
-                <v-menu offset-y>
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn
-                            text
-                            v-bind="attrs"
-                            v-on="on"
-                        >
-                            {{ Auth::user()->name }}
-                        </v-btn>
-                    </template>
-                    <v-list>
-                        <v-list-item href="{{ route('logout') }}"
-                                     onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            <v-list-item-title>
-                                {{ __('Logout') }}
-                            </v-list-item-title>
-                        </v-list-item>
-                    </v-list>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </v-menu>
-            @endguest
-        </v-app-bar>
+        <vc-navbar :is-guest="{{ json_encode(auth()->guest()) }}"
+                   :csrf="{{ json_encode(csrf_token()) }}"
+                   :href="{{ json_encode([
+                        'login' => route('login'),
+                        'register' => route('register'),
+                        'logout' => route('logout'),
+                    ]) }}"
+                   :name="{{ json_encode([
+                        'login' => __('Login'),
+                        'register' => __('Register'),
+                        'logout' => __('Logout'),
+                    ]) }}"
+                    :route="{{ Route::has('register') }}"
+                   @if (Auth::user())
+                    :user="{{ Auth::user() }}"
+                   @endif
+        ></vc-navbar>
         <v-main>
             @yield('content')
         </v-main>
