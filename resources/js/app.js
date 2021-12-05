@@ -19,6 +19,16 @@ window.Vue = require('vue').default;
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
 
+import VueMq from 'vue-mq'
+Vue.use(VueMq, {
+    breakpoints: {
+        sm: 960, // pc-min
+        md: 1250,
+        lg: Infinity,
+    },
+    defaultBreakpoint: 'sm'
+});
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
