@@ -2216,6 +2216,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     isGuest: {},
@@ -2275,7 +2331,7 @@ Vue.use(vue_mq__WEBPACK_IMPORTED_MODULE_1__["default"], {
     md: 1250,
     lg: Infinity
   },
-  defaultBreakpoint: 'sm'
+  defaultBreakpoint: 'md'
 }); // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
@@ -6800,7 +6856,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html[data-v-6dde423b] {\n  overflow: auto !important;\n}\n.v-toolbar__title[data-v-6dde423b] {\n  overflow: visible !important;\n  margin-right: 50px !important;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n.login-icon[data-v-6dde423b] {\n  padding-right: 1rem;\n}\n.v-toolbar__title[data-v-6dde423b] {\n  overflow: visible !important;\n  margin-right: 50px !important;\n}\n.list-item > button[data-v-6dde423b]::after {\n  content: \"▼\";\n  position: absolute;\n  top: 10px;\n  right: 14px;\n  font-size: 10px;\n}\n.item[data-v-6dde423b] {\n  padding: 0px 42px 0px 18px !important;\n}\n.drawer-btn[data-v-6dde423b] {\n  background-color: rgba(0, 0, 0, 0.24) !important;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38569,16 +38625,6 @@ var render = function() {
                   "div",
                   { staticClass: "d-flex align-center" },
                   [
-                    _vm.$mq === "sm"
-                      ? _c("v-app-bar-nav-icon", {
-                          on: {
-                            click: function($event) {
-                              _vm.drawer = true
-                            }
-                          }
-                        })
-                      : _vm._e(),
-                    _vm._v(" "),
                     _c(
                       "v-toolbar-title",
                       { staticClass: "primary--text headline font-italic" },
@@ -38592,145 +38638,225 @@ var render = function() {
                           [_vm._v("urulab")]
                         )
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c("v-spacer"),
-                    _vm._v(" "),
-                    _vm.$mq === "md"
-                      ? _c(
-                          "v-tabs",
-                          [
-                            _c("v-tab", [_vm._v("アイテム1")]),
-                            _vm._v(" "),
-                            _c("v-tab", [_vm._v("アイテム2")]),
-                            _vm._v(" "),
-                            _c("v-tab", [_vm._v("アイテム3")])
-                          ],
-                          1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm.$mq === "md" || _vm.$mq === "lg"
+                  ? _c(
+                      "nav",
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "mx-1",
+                            attrs: { href: "./a", text: "", tile: "" }
+                          },
+                          [_vm._v("ギャラリー")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "mx-1",
+                            attrs: { href: "./b", text: "", tile: "" }
+                          },
+                          [_vm._v("漆について")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "mx-1",
+                            attrs: { href: "./c", text: "", tile: "" }
+                          },
+                          [_vm._v("ニュース")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          {
+                            staticClass: "mx-1",
+                            attrs: { href: "./d", text: "", tile: "" }
+                          },
+                          [_vm._v("お問い合わせ")]
                         )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "ml-auto" },
+                  [
+                    _vm.$mq === "sm"
+                      ? _c("v-app-bar-nav-icon", {
+                          on: {
+                            click: function($event) {
+                              _vm.drawer = true
+                            }
+                          }
+                        })
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm.isGuest
-                      ? _c(
-                          "div",
-                          [
-                            _c(
-                              "v-btn",
-                              { attrs: { text: "", href: _vm.href.login } },
-                              [_vm._v(_vm._s(_vm.name.login))]
-                            ),
-                            _vm._v(" "),
-                            _vm.route
-                              ? _c(
-                                  "div",
-                                  [
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: {
-                                          text: "",
-                                          href: _vm.href.register
-                                        }
-                                      },
-                                      [_vm._v(_vm._s(_vm.name.register))]
-                                    )
-                                  ],
-                                  1
-                                )
-                              : _vm._e()
-                          ],
-                          1
-                        )
-                      : _c(
-                          "div",
-                          [
-                            _c(
-                              "v-menu",
-                              {
-                                attrs: { "offset-y": "" },
-                                scopedSlots: _vm._u([
-                                  {
-                                    key: "activator",
-                                    fn: function(ref) {
-                                      var on = ref.on
-                                      var attrs = ref.attrs
-                                      return [
-                                        _c(
-                                          "v-btn",
-                                          _vm._g(
-                                            _vm._b(
-                                              { attrs: { text: "" } },
-                                              "v-btn",
-                                              attrs,
-                                              false
-                                            ),
-                                            on
+                    _vm.$mq === "md" || _vm.$mq === "lg"
+                      ? _c("div", [
+                          _vm.isGuest
+                            ? _c(
+                                "div",
+                                [
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      staticClass: "px-5",
+                                      attrs: { text: "", href: _vm.href.login }
+                                    },
+                                    [_vm._v(_vm._s(_vm.name.login))]
+                                  )
+                                ],
+                                1
+                              )
+                            : _c(
+                                "div",
+                                { staticClass: "list-item" },
+                                [
+                                  _c(
+                                    "v-menu",
+                                    {
+                                      attrs: { "offset-y": "" },
+                                      scopedSlots: _vm._u(
+                                        [
+                                          {
+                                            key: "activator",
+                                            fn: function(ref) {
+                                              var on = ref.on
+                                              var attrs = ref.attrs
+                                              return [
+                                                _c(
+                                                  "v-btn",
+                                                  _vm._g(
+                                                    _vm._b(
+                                                      {
+                                                        staticClass: "item",
+                                                        attrs: { text: "" }
+                                                      },
+                                                      "v-btn",
+                                                      attrs,
+                                                      false
+                                                    ),
+                                                    on
+                                                  ),
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                        " +
+                                                        _vm._s(_vm.user.name) +
+                                                        "\n                                    "
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        null,
+                                        false,
+                                        251119684
+                                      )
+                                    },
+                                    [
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-list",
+                                        [
+                                          _c(
+                                            "v-list-item",
+                                            { attrs: { href: "#" } },
+                                            [
+                                              _c(
+                                                "v-list-item-icon",
+                                                [
+                                                  _c(
+                                                    "v-icon",
+                                                    {
+                                                      staticClass: "login-icon"
+                                                    },
+                                                    [_vm._v("mdi-account")]
+                                                  )
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c("v-list-item-title", [
+                                                _vm._v("マイページ")
+                                              ])
+                                            ],
+                                            1
                                           ),
-                                          [
-                                            _vm._v(
-                                              "\n                                    " +
-                                                _vm._s(_vm.user.name) +
-                                                "\n                                "
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    }
-                                  }
-                                ])
-                              },
-                              [
-                                _vm._v(" "),
-                                _c(
-                                  "v-list",
-                                  [
-                                    _c(
-                                      "v-list-item",
-                                      {
-                                        attrs: {
-                                          href: _vm.href.logout,
-                                          onclick:
-                                            "event.preventDefault();\n                                                                             document.getElementById('logout-form').submit();"
-                                        }
-                                      },
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v(
-                                            "\n                                        " +
-                                              _vm._s(_vm.name.logout) +
-                                              "\n                                    "
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-list-item",
+                                            {
+                                              attrs: {
+                                                href: _vm.href.logout,
+                                                onclick:
+                                                  "event.preventDefault();\n                                                                                 document.getElementById('logout-form').submit();"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "v-list-item-icon",
+                                                [
+                                                  _c(
+                                                    "v-icon",
+                                                    {
+                                                      staticClass: "login-icon"
+                                                    },
+                                                    [_vm._v("mdi-logout")]
+                                                  )
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c("v-list-item-title", [
+                                                _vm._v(_vm._s(_vm.name.logout))
+                                              ])
+                                            ],
+                                            1
                                           )
-                                        ])
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "form",
-                                  {
-                                    staticClass: "d-none",
-                                    attrs: {
-                                      id: "logout-form",
-                                      action: _vm.href.logout,
-                                      method: "POST"
-                                    }
-                                  },
-                                  [
-                                    _c("input", {
-                                      attrs: { type: "hidden", name: "_token" },
-                                      domProps: { value: _vm.csrf }
-                                    })
-                                  ]
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "form",
+                                        {
+                                          staticClass: "d-none",
+                                          attrs: {
+                                            id: "logout-form",
+                                            action: _vm.href.logout,
+                                            method: "POST"
+                                          }
+                                        },
+                                        [
+                                          _c("input", {
+                                            attrs: {
+                                              type: "hidden",
+                                              name: "_token"
+                                            },
+                                            domProps: { value: _vm.csrf }
+                                          })
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                        ])
+                      : _vm._e()
                   ],
                   1
                 )
@@ -38756,6 +38882,35 @@ var render = function() {
         },
         [
           _c(
+            "v-list-item",
+            { staticClass: "py-5" },
+            [
+              _c(
+                "v-list-item-content",
+                [
+                  _c("v-list-item-title", { staticClass: "text-h6" }, [
+                    _vm._v("\n                    Urulab\n                ")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-subtitle",
+                    { staticClass: "p-1 text-caption" },
+                    [
+                      _vm._v(
+                        "\n                    大津山研究室\n                "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider"),
+          _vm._v(" "),
+          _c(
             "v-list",
             { attrs: { nav: "", dense: "" } },
             [
@@ -38765,29 +38920,165 @@ var render = function() {
                 [
                   _c(
                     "v-list-item",
-                    [_c("v-list-item-title", [_vm._v("アイテム1")])],
+                    { staticClass: "py-2 px-5" },
+                    [
+                      _c(
+                        "v-list-item-icon",
+                        [
+                          _c("v-icon", { staticClass: "login-icon" }, [
+                            _vm._v("mdi-image-multiple")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-list-item-title", [_vm._v("ギャラリー")])
+                    ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
                     "v-list-item",
-                    [_c("v-list-item-title", [_vm._v("アイテム2")])],
+                    { staticClass: "py-2 px-5" },
+                    [
+                      _c(
+                        "v-list-item-icon",
+                        [
+                          _c("v-icon", { staticClass: "login-icon" }, [
+                            _vm._v("mdi-bowl-mix")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-list-item-title", [_vm._v("漆について")])
+                    ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
                     "v-list-item",
-                    [_c("v-list-item-title", [_vm._v("アイテム3")])],
+                    { staticClass: "py-2 px-5" },
+                    [
+                      _c(
+                        "v-list-item-icon",
+                        [
+                          _c("v-icon", { staticClass: "login-icon" }, [
+                            _vm._v("mdi-newspaper")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-list-item-title", [_vm._v("ニュース")])
+                    ],
                     1
-                  )
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item",
+                    { staticClass: "py-2 px-5" },
+                    [
+                      _c(
+                        "v-list-item-icon",
+                        [
+                          _c("v-icon", { staticClass: "login-icon" }, [
+                            _vm._v("mdi-forum")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-list-item-title", [_vm._v("お問い合わせ")])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  !_vm.isGuest
+                    ? _c(
+                        "v-list-item",
+                        { staticClass: "py-2 px-5" },
+                        [
+                          _c(
+                            "v-list-item-icon",
+                            [
+                              _c("v-icon", { staticClass: "login-icon" }, [
+                                _vm._v("mdi-account")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("v-list-item-title", [_vm._v("マイページ")])
+                        ],
+                        1
+                      )
+                    : _vm._e()
                 ],
                 1
               )
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          [
+            _c(
+              "div",
+              { staticClass: "px-5 py-10" },
+              [
+                _vm.isGuest
+                  ? _c(
+                      "v-btn",
+                      {
+                        staticClass: "drawer-btn",
+                        attrs: { block: "", href: _vm.href.login }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    ログイン\n                "
+                        )
+                      ]
+                    )
+                  : _c(
+                      "v-btn",
+                      {
+                        staticClass: "drawer-btn",
+                        attrs: {
+                          block: "",
+                          href: _vm.href.logout,
+                          onclick:
+                            "event.preventDefault();\n                        document.getElementById('logout-form').submit();"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        ログアウト\n                    "
+                        ),
+                        _c(
+                          "form",
+                          {
+                            staticClass: "d-none",
+                            attrs: {
+                              id: "logout-form",
+                              action: _vm.href.logout,
+                              method: "POST"
+                            }
+                          },
+                          [
+                            _c("input", {
+                              attrs: { type: "hidden", name: "_token" },
+                              domProps: { value: _vm.csrf }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+              ],
+              1
+            )
+          ]
         ],
-        1
+        2
       )
     ],
     1

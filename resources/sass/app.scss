@@ -12,3 +12,11 @@
 
 // mdiアイコン
 @import '~@mdi/font/css/materialdesignicons.min.css';
+
+html {
+    overflow: auto !important;
+}
+
+a {
+    text-decoration: none!important;
+}

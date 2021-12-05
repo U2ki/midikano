@@ -10014,3 +10014,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+html {
+  overflow: auto !important;
+}
+
+a {
+  text-decoration: none !important;
+}

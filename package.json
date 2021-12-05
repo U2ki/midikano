@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "vue-mq": "^1.0.1",
+        "vue-simple-drawer": "^1.0.6",
         "vuetify": "^2.6.1"
     }
 }

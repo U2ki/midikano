@@ -20,4 +20,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/a', 'HomeController@index')->name('home');
+Route::get('/b', 'HomeController@index')->name('home');
+Route::get('/c', 'HomeController@index')->name('home');
+Route::get('/d', 'HomeController@index')->name('home');
 Route::get('/theme{any}', 'SpaController@app')->where('any', '(/?$|/.*)');

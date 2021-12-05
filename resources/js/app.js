@@ -26,7 +26,7 @@ Vue.use(VueMq, {
         md: 1250,
         lg: Infinity,
     },
-    defaultBreakpoint: 'sm'
+    defaultBreakpoint: 'md'
 });
 
 // const files = require.context('./', true, /\.vue$/i)

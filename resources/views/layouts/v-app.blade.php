@@ -26,15 +26,12 @@
                    :csrf="{{ json_encode(csrf_token()) }}"
                    :href="{{ json_encode([
                         'login' => route('login'),
-                        'register' => route('register'),
                         'logout' => route('logout'),
                     ]) }}"
                    :name="{{ json_encode([
                         'login' => __('Login'),
-                        'register' => __('Register'),
                         'logout' => __('Logout'),
                     ]) }}"
-                    :route="{{ Route::has('register') }}"
                    @if (Auth::user())
                     :user="{{ Auth::user() }}"
                    @endif
