@@ -21,7 +21,6 @@
                                     label={{ __('E-Mail Address') }}
                                     placeholder="test@hoge.com"
                                     autofocus
-                                    clearable
                                 ></v-text-field>
                                 <v-text-field
                                     type="password"
@@ -31,7 +30,6 @@
                                     required
                                     autocomplete="current-password"
                                     label={{ __('Password') }}
-                                    clearable
                                 ></v-text-field>
 
                                 <v-checkbox
