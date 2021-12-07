@@ -38651,7 +38651,7 @@ var render = function() {
                           "v-btn",
                           {
                             staticClass: "mx-1",
-                            attrs: { href: "./a", text: "", tile: "" }
+                            attrs: { href: "./gallery", text: "", tile: "" }
                           },
                           [_vm._v("ギャラリー")]
                         ),
@@ -38660,16 +38660,20 @@ var render = function() {
                           "v-btn",
                           {
                             staticClass: "mx-1",
-                            attrs: { href: "./b", text: "", tile: "" }
+                            attrs: {
+                              href: "./about-lacquerware",
+                              text: "",
+                              tile: ""
+                            }
                           },
-                          [_vm._v("漆について")]
+                          [_vm._v("漆器について")]
                         ),
                         _vm._v(" "),
                         _c(
                           "v-btn",
                           {
                             staticClass: "mx-1",
-                            attrs: { href: "./c", text: "", tile: "" }
+                            attrs: { href: "./news", text: "", tile: "" }
                           },
                           [_vm._v("ニュース")]
                         ),
@@ -38678,7 +38682,7 @@ var render = function() {
                           "v-btn",
                           {
                             staticClass: "mx-1",
-                            attrs: { href: "./d", text: "", tile: "" }
+                            attrs: { href: "./contact", text: "", tile: "" }
                           },
                           [_vm._v("お問い合わせ")]
                         )
@@ -38772,7 +38776,7 @@ var render = function() {
                                         [
                                           _c(
                                             "v-list-item",
-                                            { attrs: { href: "#" } },
+                                            { attrs: { href: "mypage" } },
                                             [
                                               _c(
                                                 "v-list-item-icon",
@@ -38920,7 +38924,7 @@ var render = function() {
                 [
                   _c(
                     "v-list-item",
-                    { staticClass: "py-2 px-5" },
+                    { staticClass: "py-2 px-5", attrs: { href: "gallery" } },
                     [
                       _c(
                         "v-list-item-icon",
@@ -38939,7 +38943,10 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-list-item",
-                    { staticClass: "py-2 px-5" },
+                    {
+                      staticClass: "py-2 px-5",
+                      attrs: { href: "about-lacquerware" }
+                    },
                     [
                       _c(
                         "v-list-item-icon",
@@ -38951,14 +38958,14 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c("v-list-item-title", [_vm._v("漆について")])
+                      _c("v-list-item-title", [_vm._v("漆器について")])
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
                     "v-list-item",
-                    { staticClass: "py-2 px-5" },
+                    { staticClass: "py-2 px-5", attrs: { href: "news" } },
                     [
                       _c(
                         "v-list-item-icon",
@@ -38977,7 +38984,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-list-item",
-                    { staticClass: "py-2 px-5" },
+                    { staticClass: "py-2 px-5", attrs: { href: "contact" } },
                     [
                       _c(
                         "v-list-item-icon",
@@ -38997,7 +39004,7 @@ var render = function() {
                   !_vm.isGuest
                     ? _c(
                         "v-list-item",
-                        { staticClass: "py-2 px-5" },
+                        { staticClass: "py-2 px-5", attrs: { href: "mypage" } },
                         [
                           _c(
                             "v-list-item-icon",

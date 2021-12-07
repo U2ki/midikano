@@ -15,10 +15,10 @@
                         </v-toolbar-title>
                     </div>
                     <nav v-if="$mq === 'md' ||$mq === 'lg' ">
-                        <v-btn href="./a" class="mx-1" text tile>ギャラリー</v-btn>
-                        <v-btn href="./b" class="mx-1" text tile>漆について</v-btn>
-                        <v-btn href="./c" class="mx-1" text tile>ニュース</v-btn>
-                        <v-btn href="./d" class="mx-1" text tile>お問い合わせ</v-btn>
+                        <v-btn href="./gallery" class="mx-1" text tile>ギャラリー</v-btn>
+                        <v-btn href="./about-lacquerware" class="mx-1" text tile>漆器について</v-btn>
+                        <v-btn href="./news" class="mx-1" text tile>ニュース</v-btn>
+                        <v-btn href="./contact" class="mx-1" text tile>お問い合わせ</v-btn>
                     </nav>
                     <div class="ml-auto">
                         <v-app-bar-nav-icon @click="drawer = true" v-if="$mq === 'sm'"/>
@@ -39,7 +39,7 @@
                                         </v-btn>
                                     </template>
                                     <v-list>
-                                        <v-list-item href="#">
+                                        <v-list-item href="mypage">
                                             <v-list-item-icon>
                                                 <v-icon class="login-icon">mdi-account</v-icon>
                                             </v-list-item-icon>
@@ -87,31 +87,31 @@
                 <v-list-item-group
                     active-class="cyan--text text--accent-4"
                 >
-                    <v-list-item class="py-2 px-5">
+                    <v-list-item class="py-2 px-5" href="gallery">
                         <v-list-item-icon>
                             <v-icon class="login-icon">mdi-image-multiple</v-icon>
                         </v-list-item-icon>
                         <v-list-item-title>ギャラリー</v-list-item-title>
                     </v-list-item>
-                    <v-list-item class="py-2 px-5">
+                    <v-list-item class="py-2 px-5" href="about-lacquerware">
                         <v-list-item-icon>
                             <v-icon class="login-icon">mdi-bowl-mix</v-icon>
                         </v-list-item-icon>
-                        <v-list-item-title>漆について</v-list-item-title>
+                        <v-list-item-title>漆器について</v-list-item-title>
                     </v-list-item>
-                    <v-list-item class="py-2 px-5">
+                    <v-list-item class="py-2 px-5" href="news">
                         <v-list-item-icon>
                             <v-icon class="login-icon">mdi-newspaper</v-icon>
                         </v-list-item-icon>
                         <v-list-item-title>ニュース</v-list-item-title>
                     </v-list-item>
-                    <v-list-item class="py-2 px-5">
+                    <v-list-item class="py-2 px-5" href="contact">
                         <v-list-item-icon>
                             <v-icon class="login-icon">mdi-forum</v-icon>
                         </v-list-item-icon>
                         <v-list-item-title>お問い合わせ</v-list-item-title>
                     </v-list-item>
-                    <v-list-item v-if="!isGuest" class="py-2 px-5">
+                    <v-list-item v-if="!isGuest" class="py-2 px-5" href="mypage">
                         <v-list-item-icon>
                             <v-icon class="login-icon">mdi-account</v-icon>
                         </v-list-item-icon>

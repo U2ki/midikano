@@ -13,15 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('home');
+});
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/a', 'HomeController@index')->name('home');
-Route::get('/b', 'HomeController@index')->name('home');
-Route::get('/c', 'HomeController@index')->name('home');
-Route::get('/d', 'HomeController@index')->name('home');
+Route::get('/mypage', 'HomeController@index')->name('mypage');
+Route::get('/gallery', 'PostController@index')->name('home');
+Route::get('/about-lacquerware', function () {
+    return view('lacquerware');
+});
+Route::get('/news', 'NewsController@index')->name('news');
+Route::get('/contact', 'ContactController@index')->name('contact');
+
 Route::get('/theme{any}', 'SpaController@app')->where('any', '(/?$|/.*)');
