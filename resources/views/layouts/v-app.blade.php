@@ -12,6 +12,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <!-- Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -33,8 +36,8 @@
                         'logout' => __('Logout'),
                     ]) }}"
                    @if (Auth::user())
-                    :user="{{ Auth::user() }}"
-                   @endif
+                   :user="{{ Auth::user() }}"
+            @endif
         ></vc-navbar>
         <v-main>
             @yield('content')

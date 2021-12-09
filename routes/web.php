@@ -26,5 +26,5 @@ Route::get('/about-lacquerware', function () {
 });
 Route::get('/news', 'NewsController@index')->name('news');
 Route::get('/contact', 'ContactController@index')->name('contact');
-
+Route::post('/contact', 'ContactController@send')->name('send-contact');
 Route::get('/theme{any}', 'SpaController@app')->where('any', '(/?$|/.*)');

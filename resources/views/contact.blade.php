@@ -1,5 +1,5 @@
 @extends('layouts.v-app')
 
 @section('content')
-    お問い合わせ
+    <vc-contact></vc-contact>
 @endsection
