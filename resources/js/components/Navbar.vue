@@ -6,6 +6,7 @@
             app
             clipped-left
             elevate-on-scroll
+            id="header"
         >
             <v-container>
                 <v-row>
@@ -161,6 +162,13 @@
 </script>
 
 <style lang="scss" scoped>
+    #header {
+        z-index: 9999;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+    }
+
     .login-icon {
         padding-right: 1rem;
     }

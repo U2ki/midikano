@@ -5,8 +5,14 @@
  */
 
 require('./bootstrap');
+require('./jmap');
 
 window.Vue = require('vue').default;
+
+import jQuery from 'jquery'
+global.jquery = jQuery
+global.$ = jQuery
+window.$ = window.jQuery = require('jquery')
 
 /**
  * The following block of code may be used to automatically register your
@@ -35,6 +41,7 @@ Vue.use(VueMq, {
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('vc-navbar', require('./components/Navbar.vue').default);
 Vue.component('vc-footer', require('./components/Footer.vue').default);
+Vue.component('vc-lacquerware', require('./components/Lacquerware').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -1,5 +1,5 @@
 @extends('layouts.v-app')
 
 @section('content')
-    漆について
+    <vc-lacquerware></vc-lacquerware>
 @endsection
