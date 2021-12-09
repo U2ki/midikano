@@ -5,6 +5,19 @@
             <div class="jmap-infobox"></div>
         </div>
         <p class="text-right">※色がついている都道府県を押すと詳細が表示されます。</p>
+        <p class="mt-12">【参考にさせていただいたサイト】</p>
+        <ul>
+            <li>
+                <a href="https://kougeihin.jp/craft_industry/shikki/">
+                    伝統工芸 青山スクエア 「伝統的工芸品を知る(伝統的工芸品を探す：漆器)」
+                </a>
+            </li>
+            <li>
+                <a href="https://kogeijapan.com/locale/ja_JP/list/?category=5">
+                    工芸ジャパン 「漆器の種類・一覧」
+                </a>
+            </li>
+        </ul>
         <!-- モーダル用HTML -->
         <div class="modal fade" id="prefectureModal" tabindex="-1" role="dialog"
              aria-labelledby="prefectureModalCenterTitle" aria-hidden="true">
@@ -12,14 +25,14 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="prefectureModalTitle"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close m-close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body overflow-auto" style="height:350px;">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                        <button type="button" class="btn btn-secondary m-close" data-dismiss="modal">閉じる</button>
                     </div>
                 </div>
             </div>
@@ -318,11 +331,12 @@
 						$(this).html('<strong>' + data.name + '</strong>');
 					},
 					onSelect: function (e, data) {
+						document.body.style.position = 'fixed';
 						if (data.option.yesOrNo === "yes") {
 							$('#prefectureModal').find('#prefectureModalTitle')
 								.html(data.name + data.full)
 								.end().find('.modal-body')
-								.html('<p style="font-weight: bold!important;"> - ' + data.option.kindName + '(' + data.option.kindKana + ')</p>' )
+								.html('<p style="font-weight: bold!important;"> - ' + data.option.kindName + '(' + data.option.kindKana + ')</p>')
 								.append('<div class="mx-2">')
 								.append('<p class="my-2">' + data.option.intro + '</p>')
 								.append('<p class="have-tech">' + data.option.explanation + '。</p>')
@@ -330,46 +344,49 @@
 								.end().modal('show');
 						}
 						if (data.option.tech.length !== 0) {
-                            $('.have-tech')
-                                .append('<p class="mb-1 mt-3">[技法]</p>')
-                                .append('<ul');
-							for (var i=0; i<data.option.tech.length;i++){
-								$('.have-tech').append('<li class="mx-3">'+ data.option.tech[i] + '</li>');
+							$('.have-tech')
+								.append('<p class="mb-1 mt-3">[技法]</p>')
+								.append('<ul');
+							for (var i = 0; i < data.option.tech.length; i++) {
+								$('.have-tech').append('<li class="mx-3">' + data.option.tech[i] + '</li>');
 							}
 							$('.have-tech').append('</ul>');
-                        }
-                        if (data.option.kindName2) {
+						}
+						if (data.option.kindName2) {
 							$('.have-tech')
-                                .append('<hr class="my-6">')
-                                .append('<p style="font-weight: bold!important;"> - ' + data.option.kindName2 + '(' + data.option.kindKana2 + ')</p>' )
+								.append('<hr class="my-6">')
+								.append('<p style="font-weight: bold!important;"> - ' + data.option.kindName2 + '(' + data.option.kindKana2 + ')</p>')
 								.append('<p class="my-2">' + data.option.intro2 + '</p>')
 								.append('<p>' + data.option.explanation2 + '。</p>');
 							if (data.option.tech2.length !== 0) {
 								$('.have-tech')
 									.append('<p class="mb-1 mt-3">[技法]</p>')
 									.append('<ul');
-								for (var i=0; i<data.option.tech2.length;i++){
-									$('.have-tech').append('<li class="mx-3">'+ data.option.tech2[i] + '</li>');
+								for (var i = 0; i < data.option.tech2.length; i++) {
+									$('.have-tech').append('<li class="mx-3">' + data.option.tech2[i] + '</li>');
 								}
 								$('.have-tech').append('</ul>');
 							}
 							if (data.option.kindName3) {
 								$('.have-tech')
 									.append('<hr class="my-6">')
-									.append('<p style="font-weight: bold!important;"> - ' + data.option.kindName3 + '(' + data.option.kindKana3 + ')</p>' )
+									.append('<p style="font-weight: bold!important;"> - ' + data.option.kindName3 + '(' + data.option.kindKana3 + ')</p>')
 									.append('<p class="my-2">' + data.option.intro3 + '</p>')
 									.append('<p>' + data.option.explanation3 + '。</p>');
 								if (data.option.tech3.length !== 0) {
 									$('.have-tech')
 										.append('<p class="mb-1 mt-3">[技法]</p>')
 										.append('<ul');
-									for (var i=0; i<data.option.tech3.length;i++){
-										$('.have-tech').append('<li class="mx-3">'+ data.option.tech3[i] + '</li>');
+									for (var i = 0; i < data.option.tech3.length; i++) {
+										$('.have-tech').append('<li class="mx-3">' + data.option.tech3[i] + '</li>');
 									}
 									$('.have-tech').append('</ul>');
 								}
 							}
 						}
+						$('.m-close').on('click',function(){
+							document.body.style.position = '';
+						});
 					},
 				});
 			});

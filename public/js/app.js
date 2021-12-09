@@ -2627,6 +2627,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Kinds",
   mounted: function mounted() {
@@ -3048,6 +3061,8 @@ __webpack_require__.r(__webpack_exports__);
           $(this).html('<strong>' + data.name + '</strong>');
         },
         onSelect: function onSelect(e, data) {
+          document.body.style.position = 'fixed';
+
           if (data.option.yesOrNo === "yes") {
             $('#prefectureModal').find('#prefectureModalTitle').html(data.name + data.full).end().find('.modal-body').html('<p style="font-weight: bold!important;"> - ' + data.option.kindName + '(' + data.option.kindKana + ')</p>').append('<div class="mx-2">').append('<p class="my-2">' + data.option.intro + '</p>').append('<p class="have-tech">' + data.option.explanation + '。</p>').append('</div>').end().modal('show');
           }
@@ -3089,6 +3104,10 @@ __webpack_require__.r(__webpack_exports__);
               }
             }
           }
+
+          $('.m-close').on('click', function () {
+            document.body.style.position = '';
+          });
         }
       });
     });
@@ -42795,6 +42814,40 @@ var staticRenderFns = [
         _vm._v("※色がついている都道府県を押すと詳細が表示されます。")
       ]),
       _vm._v(" "),
+      _c("p", { staticClass: "mt-12" }, [
+        _vm._v("【参考にさせていただいたサイト】")
+      ]),
+      _vm._v(" "),
+      _c("ul", [
+        _c("li", [
+          _c(
+            "a",
+            { attrs: { href: "https://kougeihin.jp/craft_industry/shikki/" } },
+            [
+              _vm._v(
+                "\n                伝統工芸 青山スクエア 「伝統的工芸品を知る(伝統的工芸品を探す：漆器)」\n            "
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://kogeijapan.com/locale/ja_JP/list/?category=5"
+              }
+            },
+            [
+              _vm._v(
+                "\n                工芸ジャパン 「漆器の種類・一覧」\n            "
+              )
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -42825,7 +42878,7 @@ var staticRenderFns = [
                   _c(
                     "button",
                     {
-                      staticClass: "close",
+                      staticClass: "close m-close",
                       attrs: {
                         type: "button",
                         "data-dismiss": "modal",
@@ -42849,7 +42902,7 @@ var staticRenderFns = [
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-secondary",
+                      staticClass: "btn btn-secondary m-close",
                       attrs: { type: "button", "data-dismiss": "modal" }
                     },
                     [_vm._v("閉じる")]
