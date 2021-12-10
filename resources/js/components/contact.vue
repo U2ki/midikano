@@ -2,6 +2,18 @@
     <v-main class="py-5">
         <v-container>
             <v-row justify="center">
+                <v-alert
+                    v-model="alert"
+                    border="left"
+                    close-text="Close Alert"
+                    color="#1976d2"
+                    height="52"
+                    dark
+                    dismissible
+                    class="alert"
+                >
+                    内容が送信されました。
+                </v-alert>
                 <h1 class="font-weight-bold text-h4 basil--text my-10 page-title">
                     お問い合わせ
                 </h1>
@@ -12,6 +24,11 @@
                         lazy-validation
                         class="px-sm-7 py-16 px-md-16 w-75 mx-auto"
                     >
+                        <p class="mb-16 pb-4 text-center">
+                            ご意見・ご要望などはこちらよりお願いいたします。<br>
+                            お問合せいただいてもご返信ができない場合がございます。<br>
+                            ご了承のほど、よろしくお願い致します。
+                        </p>
                         <v-text-field
                             v-model="name"
                             :counter="20"
@@ -54,10 +71,12 @@
                         <v-btn
                             color="primary"
                             class="mr-4"
+                            :disabled='!isComplete'
                             @click="onSubmit()"
                         >
                             送信
                         </v-btn>
+                        <vue-loading type="spiningDubbles" v-if="show" color="#333" :size="{ width: '50px', height: '50px' }"></vue-loading>
                     </v-form>
                 </v-card>
             </v-row>
@@ -66,9 +85,19 @@
 </template>
 
 <script>
+	import { VueLoading } from 'vue-loading-template'
 	export default {
 		name: "contact",
+		components: {
+			VueLoading
+		},
+		computed: {
+			isComplete () {
+				return this.name && this.email && this.select && this.body && this.checkbox;
+			}
+		},
 		data: () => ({
+			show: false,
 			valid: true,
 			name: '',
 			nameRules: [
@@ -81,43 +110,51 @@
 			],
 			select: null,
 			items: [
-				'',
+				'　',
 				'意見',
 				'要望',
 				'質問',
 				'その他',
 			],
+			body: '',
 			checkbox: false,
+            alert: false,
 		}),
 
 		methods: {
 			onSubmit: function() {
-				this.$refs.form.validate()
+				var self = this;
+				this.show = true;
 
 				var params = {
-					first_name: this.firstName,
-					last_name: this.lastName,
+					name: this.name,
 					email: this.email,
-					subject_id: this.subjectId,
+					select: this.select,
 					body: this.body
 				};
 				axios.post('/contact', params)
-					.then(function(response){
-
-						// 成功した時
-
+					.then(response => {
+						this.$refs.form.reset()
+                        this.alert = true;
+						$('.alert').fadeIn("slow", function () {
+							$(this).delay(3000).fadeOut("slow");
+						});
 					})
-					.catch(function(error){
-
-						// 失敗したとき
-
+					.catch(error => {
+						console.log(error)
+					})
+					.then(function(){
+						self.show = false;
 					});
-
 			}
 		},
 	}
 </script>
 
 <style scoped>
-
+    .alert {
+        position: fixed;
+        z-index: 1;
+        right: 13px;
+    }
 </style>
