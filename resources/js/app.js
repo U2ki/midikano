@@ -42,7 +42,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('vc-navbar', require('./components/Navbar.vue').default);
 Vue.component('vc-footer', require('./components/Footer.vue').default);
 Vue.component('vc-lacquerware', require('./components/Lacquerware').default);
-Vue.component('vc-contact', require('./components/contact').default);
+Vue.component('vc-news', require('./components/news/News').default);
+Vue.component('vc-news-create', require('./components/news/Create').default);
+Vue.component('vc-contact', require('./components/Contact').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

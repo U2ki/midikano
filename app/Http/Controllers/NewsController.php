@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -13,7 +14,18 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('news');
+        $newsalls = \DB::table('news')->get();
+        return view('news.news',compact('newsalls'));
+    }
+
+    /**
+     * ニュース作成ページ
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('news.create');
     }
 
     /**
@@ -24,7 +36,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return News::create($request->all());
     }
 
     /**
