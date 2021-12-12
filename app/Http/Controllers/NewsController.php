@@ -3,19 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
-{
+class NewsController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $newsalls = \DB::table('news')->get();
-        return view('news.news',compact('newsalls'));
+    public function index() {
+        $newsalls = \DB::table( 'news' )->get();
+        $user_id  = auth()->id();
+        if ( $user_id ) {
+            $user        = \DB::table( 'users' )->where( 'id', $user_id )->first();
+            $user_status = $user->status;
+        } else {
+            $user_status = 0;
+        }
+
+        return view( 'news.news', compact( 'newsalls', 'user_status' ) );
     }
 
     /**
@@ -23,53 +30,71 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('news.create');
+    public function create() {
+        return view( 'news.create' );
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        return News::create($request->all());
+    public function store( Request $request ) {
+        if ( $request->select == 'ニュース' ) {
+            $select = 0;
+        } else {
+            $select = 1;
+        }
+        $news          = new News;
+        $news->title   = $request->title;
+        $news->type    = $select;
+        $news->content = $request->body;
+        $news->user_id = auth()->id();
+        $news->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show( $id ) {
+        $news = News::find( $id );
+        $user_id  = auth()->id();
+        if ( $user_id ) {
+            $user        = \DB::table( 'users' )->where( 'id', $user_id )->first();
+            $user_status = $user->status;
+        } else {
+            $user_status = 0;
+        }
+
+        return view( 'news.show', compact( 'news', 'user_status' ) );
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update( Request $request, $id ) {
         //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy( $id ) {
         //
     }
 }

@@ -44,6 +44,7 @@ Vue.component('vc-footer', require('./components/Footer.vue').default);
 Vue.component('vc-lacquerware', require('./components/Lacquerware').default);
 Vue.component('vc-news', require('./components/news/News').default);
 Vue.component('vc-news-create', require('./components/news/Create').default);
+Vue.component('vc-news-show', require('./components/news/Show').default);
 Vue.component('vc-contact', require('./components/Contact').default);
 
 /**

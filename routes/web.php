@@ -26,8 +26,8 @@ Route::get('/about-lacquerware', function () {
 });
 Route::get('/news', 'NewsController@index')->name('news');
 Route::get('/news/create','NewsController@create');
+Route::post('/news/create','NewsController@store');
 Route::get('/news/{id}', 'NewsController@show')->name('news');
-Route::post('/news','NewsController@store');
 Route::delete('/news/{id}','NewsController@delete');
 Route::put('/news/{id}','NewsController@update');
 

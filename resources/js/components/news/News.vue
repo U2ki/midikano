@@ -6,27 +6,37 @@
                     ニュース
                 </h1>
                 <v-card class="w-100 my-5">
-                    <v-btn
-                        href="/news/create"
-                        color="accent"
-                        elevation="2"
-                    ></v-btn>
-                    <v-card-title class="w-50 ms-auto">
-                        <v-text-field
-                            v-model="search"
-                            append-icon="mdi-magnify"
-                            label="Search"
-                            single-line
-                            hide-details
-                        ></v-text-field>
-                    </v-card-title>
-                    <v-data-table
-                        :headers="headers"
-                        :items="newsalls"
-                        :search="search"
-                        class="ma-10"
-                    >
-                    </v-data-table>
+                    <div class="my-10 mx-16 d-flex justify-content-end">
+                        <v-btn
+                            href="/news/create"
+                            color="primary"
+                            elevation="2"
+                            class="ms-auto"
+                        >
+                            新規作成
+                        </v-btn>
+                    </div>
+                    <table class="table mx-auto my-10">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="1000">タイトル</th>
+                                <th scope="col" width="300">種類</th>
+                                <th scope="col">投稿日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="news in newsalls">
+                                <td>
+                                    <a :href="'/news/' + news.id" class="title-url d-block w-100 h-100">
+                                      {{ news.title }}
+                                    </a>
+                                </td>
+                                <td v-if="news.type === 0">ニュース</td>
+                                <td v-if="news.type === 1">イベント</td>
+                                <td>{{ formatDate(news.updated_at) }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </v-card>
             </v-row>
         </v-container>
@@ -34,28 +44,25 @@
 </template>
 
 <script>
+	import dayjs from 'dayjs'
+
 	export default {
 		name: "News",
-		props: ["newsalls"],
-		data () {
-			return {
-				search: '',
-				headers: [
-					{
-						text: 'タイトル',
-						align: 'start',
-						sortable: false,
-						value: 'title',
-					},
-					{ text: '種類', value: 'type' },
-					{ text: '投稿日', value: 'updated_at' },
-				],
-				newsalls: [],
-			}
+		props: {
+			newsalls: {},
+			userStatus: {},
+		},
+		methods: {
+			formatDate: dateStr => dayjs(dateStr).format('YYYY/MM/DD')
 		},
 	}
 </script>
 
 <style scoped>
-
+    table {
+        width: 85%;
+    }
+    .title-url {
+        color: black!important;
+    }
 </style>

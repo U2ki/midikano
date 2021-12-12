@@ -67,7 +67,7 @@
 <script>
 	import { VueLoading } from 'vue-loading-template'
 	export default {
-		name: "contact",
+		name: "create",
 		components: {
 			VueLoading
 		},
@@ -102,7 +102,7 @@
 					select: this.select,
 					body: this.body
 				};
-				axios.post('/contact', params)
+				axios.post('/news/create', params)
 					.then(response => {
 						this.$refs.form.reset()
                         this.alert = true;

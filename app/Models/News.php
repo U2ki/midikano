@@ -21,6 +21,9 @@ class News extends Model {
         'type',
     ];
 
+    public static function where( $string, $id ) {
+    }
+
     public function users() {
         return $this->belongsTo( 'App\User' );
     }
