@@ -132,9 +132,5 @@
 </script>
 
 <style scoped>
-    .alert {
-        position: fixed;
-        z-index: 1;
-        right: 13px;
-    }
+
 </style>

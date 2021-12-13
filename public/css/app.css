@@ -10067,3 +10067,9 @@ a {
   font-family: sans-serif !important;
   background: linear-gradient(transparent 45%, #ffda71 125%);
 }
+
+.alert {
+  position: fixed;
+  z-index: 1;
+  right: 13px;
+}

@@ -84,10 +84,17 @@ class NewsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update( Request $request, $id ) {
-        $data = $request->all();
-        var_dump($request->all());
-        $item = News::find($id);
-        $item->fill($data)->save();
+        $news = News::find($id);
+        if ( $request->select == 'ニュース' ) {
+            $news->type = 0;
+        } elseif ( $request->select == 'イベント' )  {
+            $news->type = 1;
+        }
+        $news->title   = $request->title;
+        $news->content = $request->body;
+        $news->user_id = auth()->id();
+
+        $news->save();
 
         $user_status = $this->returnUser();
         return view( 'news.show', compact( 'news', 'user_status' ) );
