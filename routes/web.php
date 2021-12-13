@@ -25,11 +25,11 @@ Route::get('/about-lacquerware', function () {
     return view('lacquerware');
 });
 Route::get('/news', 'NewsController@index')->name('news');
-Route::get('/news/create','NewsController@create');
-Route::post('/news/create','NewsController@store');
-Route::get('/news/{id}', 'NewsController@show')->name('news');
-Route::delete('/news/{id}','NewsController@delete');
-Route::put('/news/{id}','NewsController@update');
+Route::get('/news/create','NewsController@create')->name('news.create');
+Route::post('/news/create','NewsController@store')->name('news.store');
+Route::get('/news/{id}', 'NewsController@show')->name('news.show');
+Route::put('/news/{id}','NewsController@update')->name('news.update');
+Route::delete('/news/{id}','NewsController@destroy')->name('news.destroy');
 
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::post('/contact', 'ContactController@send')->name('send-contact');

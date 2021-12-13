@@ -7,13 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index() {
-        $newsalls = \DB::table( 'news' )->get();
+
+    public function returnUser() {
         $user_id  = auth()->id();
         if ( $user_id ) {
             $user        = \DB::table( 'users' )->where( 'id', $user_id )->first();
@@ -21,6 +16,17 @@ class NewsController extends Controller {
         } else {
             $user_status = 0;
         }
+        return $user_status;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index() {
+        $newsalls = News::get();
+        $user_status = $this->returnUser();
 
         return view( 'news.news', compact( 'newsalls', 'user_status' ) );
     }
@@ -64,13 +70,7 @@ class NewsController extends Controller {
      */
     public function show( $id ) {
         $news = News::find( $id );
-        $user_id  = auth()->id();
-        if ( $user_id ) {
-            $user        = \DB::table( 'users' )->where( 'id', $user_id )->first();
-            $user_status = $user->status;
-        } else {
-            $user_status = 0;
-        }
+        $user_status = $this->returnUser();
 
         return view( 'news.show', compact( 'news', 'user_status' ) );
     }
@@ -84,7 +84,13 @@ class NewsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update( Request $request, $id ) {
-        //
+        $data = $request->all();
+        var_dump($request->all());
+        $item = News::find($id);
+        $item->fill($data)->save();
+
+        $user_status = $this->returnUser();
+        return view( 'news.show', compact( 'news', 'user_status' ) );
     }
 
     /**
@@ -95,6 +101,12 @@ class NewsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy( $id ) {
-        //
+        $news = News::find($id);
+        $news->delete();
+
+        $newsalls = News::get();
+        $user_status = $this->returnUser();
+
+        return view( 'news.news', compact( 'newsalls', 'user_status' ) );
     }
 }

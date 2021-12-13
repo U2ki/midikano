@@ -996,7 +996,7 @@ module.exports = function transformData(data, headers, fns) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
+/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
 
 
 var utils = __webpack_require__(/*! ./utils */ "./node_modules/axios/lib/utils.js");
@@ -2370,8 +2370,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       tab: null,
-      items: ['漆器の種類', '会津漆器の色', '会津漆器の形', '会津漆器の技法'],
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      items: ['漆器の種類', '会津漆器の色', '会津漆器の形', '会津漆器の技法']
     };
   }
 });
@@ -3356,6 +3355,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "create",
@@ -3550,6 +3559,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Show",
@@ -3557,9 +3576,29 @@ __webpack_require__.r(__webpack_exports__);
     news: {},
     userStatus: {}
   },
+  data: function data() {
+    return {
+      deleteDialog: false,
+      deleteID: null
+    };
+  },
   methods: {
     formatDate: function formatDate(dateStr) {
       return dayjs__WEBPACK_IMPORTED_MODULE_0___default()(dateStr).format('YYYY/MM/DD');
+    },
+    // 削除確認ダイアログ表示を追加
+    deleteConfirm: function deleteConfirm(id) {
+      this.deleteDialog = true;
+      this.deleteID = id;
+    },
+    // 削除実行
+    deleteItem: function deleteItem(id) {
+      axios["delete"]('/news/' + id).then(function (res) {
+        window.location.href = '/news';
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.deleteDialog = false; // 最後に削除確認ダイアログは閉じます。
     }
   }
 });
@@ -3588,7 +3627,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./jmap */ "./resources/js/jmap.js");
 
-window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"];
 
 __webpack_require__.g.jquery = (jquery__WEBPACK_IMPORTED_MODULE_0___default());
 __webpack_require__.g.$ = (jquery__WEBPACK_IMPORTED_MODULE_0___default());
@@ -3615,14 +3654,14 @@ Vue.use(vue_mq__WEBPACK_IMPORTED_MODULE_2__["default"], {
 }); // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
-Vue.component('vc-navbar', (__webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue")["default"]));
-Vue.component('vc-footer', (__webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]));
-Vue.component('vc-lacquerware', (__webpack_require__(/*! ./components/Lacquerware */ "./resources/js/components/Lacquerware.vue")["default"]));
-Vue.component('vc-news', (__webpack_require__(/*! ./components/news/News */ "./resources/js/components/news/News.vue")["default"]));
-Vue.component('vc-news-create', (__webpack_require__(/*! ./components/news/Create */ "./resources/js/components/news/Create.vue")["default"]));
-Vue.component('vc-news-show', (__webpack_require__(/*! ./components/news/Show */ "./resources/js/components/news/Show.vue")["default"]));
-Vue.component('vc-contact', (__webpack_require__(/*! ./components/Contact */ "./resources/js/components/Contact.vue")["default"]));
+Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component('vc-navbar', __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue")["default"]);
+Vue.component('vc-footer', __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]);
+Vue.component('vc-lacquerware', __webpack_require__(/*! ./components/Lacquerware */ "./resources/js/components/Lacquerware.vue")["default"]);
+Vue.component('vc-news', __webpack_require__(/*! ./components/news/News */ "./resources/js/components/news/News.vue")["default"]);
+Vue.component('vc-news-create', __webpack_require__(/*! ./components/news/Create */ "./resources/js/components/news/Create.vue")["default"]);
+Vue.component('vc-news-show', __webpack_require__(/*! ./components/news/Show */ "./resources/js/components/news/Show.vue")["default"]);
+Vue.component('vc-contact', __webpack_require__(/*! ./components/Contact */ "./resources/js/components/Contact.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -3653,7 +3692,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  */
 
 try {
-  window.Popper = (__webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"]);
+  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
@@ -42677,7 +42716,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -42702,20 +42741,20 @@ var render = function () {
                     color: "#1976d2",
                     height: "52",
                     dark: "",
-                    dismissible: "",
+                    dismissible: ""
                   },
                   model: {
                     value: _vm.alert,
-                    callback: function ($$v) {
+                    callback: function($$v) {
                       _vm.alert = $$v
                     },
-                    expression: "alert",
-                  },
+                    expression: "alert"
+                  }
                 },
                 [
                   _vm._v(
                     "\n                内容が送信されました。\n            "
-                  ),
+                  )
                 ]
               ),
               _vm._v(" "),
@@ -42723,7 +42762,7 @@ var render = function () {
                 "h1",
                 {
                   staticClass:
-                    "font-weight-bold text-h4 basil--text my-10 page-title",
+                    "font-weight-bold text-h4 basil--text my-10 page-title"
                 },
                 [_vm._v("\n                お問い合わせ\n            ")]
               ),
@@ -42740,11 +42779,11 @@ var render = function () {
                       attrs: { "lazy-validation": "" },
                       model: {
                         value: _vm.valid,
-                        callback: function ($$v) {
+                        callback: function($$v) {
                           _vm.valid = $$v
                         },
-                        expression: "valid",
-                      },
+                        expression: "valid"
+                      }
                     },
                     [
                       _c("p", { staticClass: "mb-16 pb-4 text-center" }, [
@@ -42758,7 +42797,7 @@ var render = function () {
                         _c("br"),
                         _vm._v(
                           "\n                        ご了承のほど、よろしくお願い致します。\n                    "
-                        ),
+                        )
                       ]),
                       _vm._v(" "),
                       _c("v-text-field", {
@@ -42766,50 +42805,50 @@ var render = function () {
                           counter: 20,
                           rules: _vm.nameRules,
                           label: "名前",
-                          required: "",
+                          required: ""
                         },
                         model: {
                           value: _vm.name,
-                          callback: function ($$v) {
+                          callback: function($$v) {
                             _vm.name = $$v
                           },
-                          expression: "name",
-                        },
+                          expression: "name"
+                        }
                       }),
                       _vm._v(" "),
                       _c("v-text-field", {
                         attrs: {
                           rules: _vm.emailRules,
                           label: "メールアドレス",
-                          required: "",
+                          required: ""
                         },
                         model: {
                           value: _vm.email,
-                          callback: function ($$v) {
+                          callback: function($$v) {
                             _vm.email = $$v
                           },
-                          expression: "email",
-                        },
+                          expression: "email"
+                        }
                       }),
                       _vm._v(" "),
                       _c("v-select", {
                         attrs: {
                           items: _vm.items,
                           rules: [
-                            function (v) {
+                            function(v) {
                               return !!v || "問い合わせの種類を選択してください"
-                            },
+                            }
                           ],
                           label: "お問い合わせ種類",
-                          required: "",
+                          required: ""
                         },
                         model: {
                           value: _vm.select,
-                          callback: function ($$v) {
+                          callback: function($$v) {
                             _vm.select = $$v
                           },
-                          expression: "select",
-                        },
+                          expression: "select"
+                        }
                       }),
                       _vm._v(" "),
                       _c("v-textarea", {
@@ -42817,43 +42856,43 @@ var render = function () {
                         attrs: {
                           outlined: "",
                           rules: [
-                            function (v) {
+                            function(v) {
                               return !!v || "お問い合わせ内容を記入してください"
-                            },
+                            }
                           ],
                           label: "お問い合わせ内容",
                           placeholder:
                             "お問い合わせ内容はこちらにお願いいたします。",
-                          required: "",
+                          required: ""
                         },
                         model: {
                           value: _vm.body,
-                          callback: function ($$v) {
+                          callback: function($$v) {
                             _vm.body = $$v
                           },
-                          expression: "body",
-                        },
+                          expression: "body"
+                        }
                       }),
                       _vm._v(" "),
                       _c("v-checkbox", {
                         attrs: {
                           rules: [
-                            function (v) {
+                            function(v) {
                               return (
                                 !!v || "ここをチェックしなければ送信できません"
                               )
-                            },
+                            }
                           ],
                           label: "この内容で送信しますか？",
-                          required: "",
+                          required: ""
                         },
                         model: {
                           value: _vm.checkbox,
-                          callback: function ($$v) {
+                          callback: function($$v) {
                             _vm.checkbox = $$v
                           },
-                          expression: "checkbox",
-                        },
+                          expression: "checkbox"
+                        }
                       }),
                       _vm._v(" "),
                       _c(
@@ -42862,18 +42901,18 @@ var render = function () {
                           staticClass: "mr-4",
                           attrs: {
                             color: "primary",
-                            disabled: !_vm.isComplete,
+                            disabled: !_vm.isComplete
                           },
                           on: {
-                            click: function ($event) {
+                            click: function($event) {
                               return _vm.onSubmit()
-                            },
-                          },
+                            }
+                          }
                         },
                         [
                           _vm._v(
                             "\n                        送信\n                    "
-                          ),
+                          )
                         ]
                       ),
                       _vm._v(" "),
@@ -42882,22 +42921,22 @@ var render = function () {
                             attrs: {
                               type: "spiningDubbles",
                               color: "#333",
-                              size: { width: "50px", height: "50px" },
-                            },
+                              size: { width: "50px", height: "50px" }
+                            }
                           })
-                        : _vm._e(),
+                        : _vm._e()
                     ],
                     1
-                  ),
+                  )
                 ],
                 1
-              ),
+              )
             ],
             1
-          ),
+          )
         ],
         1
-      ),
+      )
     ],
     1
   )
@@ -42921,14 +42960,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm._m(0)
 }
 var staticRenderFns = [
-  function () {
+  function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
@@ -42937,19 +42976,19 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component"),
+              _vm._v("Example Component")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _vm._v(
                 "\n                    I'm an example component.\n                "
-              ),
-            ]),
-          ]),
-        ]),
-      ]),
+              )
+            ])
+          ])
+        ])
+      ])
     ])
-  },
+  }
 ]
 render._withStripped = true
 
@@ -42969,7 +43008,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -42977,15 +43016,15 @@ var render = function () {
     "v-footer",
     {
       staticClass: "justify-center",
-      attrs: { color: "grey lighten-2", height: "40", inset: "" },
+      attrs: { color: "grey lighten-2", height: "40", inset: "" }
     },
     [
       _c("div", { staticClass: "text-center" }, [
         _c("div", [
           _vm._v("Copyright © 2021 "),
-          _c("strong", [_vm._v("Urulabo")]),
-        ]),
-      ]),
+          _c("strong", [_vm._v("Urulabo")])
+        ])
+      ])
     ]
   )
 }
@@ -43008,7 +43047,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -43027,7 +43066,7 @@ var render = function () {
                 "h1",
                 {
                   staticClass:
-                    "font-weight-bold text-h4 basil--text my-10 page-title",
+                    "font-weight-bold text-h4 basil--text my-10 page-title"
                 },
                 [_vm._v("\n                漆器について\n            ")]
               ),
@@ -43043,19 +43082,19 @@ var render = function () {
                       attrs: { "background-color": "transparent", grow: "" },
                       model: {
                         value: _vm.tab,
-                        callback: function ($$v) {
+                        callback: function($$v) {
                           _vm.tab = $$v
                         },
-                        expression: "tab",
-                      },
+                        expression: "tab"
+                      }
                     },
-                    _vm._l(_vm.items, function (item) {
+                    _vm._l(_vm.items, function(item) {
                       return _c("v-tab", { key: item }, [
                         _vm._v(
                           "\n                        " +
                             _vm._s(item) +
                             "\n                    "
-                        ),
+                        )
                       ])
                     }),
                     1
@@ -43066,11 +43105,11 @@ var render = function () {
                     {
                       model: {
                         value: _vm.tab,
-                        callback: function ($$v) {
+                        callback: function($$v) {
                           _vm.tab = $$v
                         },
-                        expression: "tab",
-                      },
+                        expression: "tab"
+                      }
                     },
                     [
                       _c(
@@ -43081,7 +43120,7 @@ var render = function () {
                             { staticClass: "pa-10" },
                             [_c("v-card-text", [_c("AboutKinds")], 1)],
                             1
-                          ),
+                          )
                         ],
                         1
                       ),
@@ -43094,7 +43133,7 @@ var render = function () {
                             { staticClass: "pa-10" },
                             [_c("v-card-text", [_c("AizuColor")], 1)],
                             1
-                          ),
+                          )
                         ],
                         1
                       ),
@@ -43107,7 +43146,7 @@ var render = function () {
                             { staticClass: "pa-10" },
                             [_c("v-card-text", [_c("AizuShape")], 1)],
                             1
-                          ),
+                          )
                         ],
                         1
                       ),
@@ -43120,22 +43159,22 @@ var render = function () {
                             { staticClass: "pa-10" },
                             [_c("v-card-text", [_c("AizuTechnique")], 1)],
                             1
-                          ),
+                          )
                         ],
                         1
-                      ),
+                      )
                     ],
                     1
-                  ),
+                  )
                 ],
                 1
-              ),
+              )
             ],
             1
-          ),
+          )
         ],
         1
-      ),
+      )
     ],
     1
   )
@@ -43159,7 +43198,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -43175,8 +43214,8 @@ var render = function () {
             app: "",
             "clipped-left": "",
             "elevate-on-scroll": "",
-            id: "header",
-          },
+            id: "header"
+          }
         },
         [
           _c(
@@ -43195,12 +43234,12 @@ var render = function () {
                           "a",
                           {
                             staticClass: "font-weight-bold",
-                            attrs: { href: "/" },
+                            attrs: { href: "/" }
                           },
                           [_vm._v("urulab")]
-                        ),
+                        )
                       ]
-                    ),
+                    )
                   ],
                   1
                 ),
@@ -43213,7 +43252,7 @@ var render = function () {
                           "v-btn",
                           {
                             staticClass: "mx-1",
-                            attrs: { href: "/gallery", text: "", tile: "" },
+                            attrs: { href: "/gallery", text: "", tile: "" }
                           },
                           [_vm._v("ギャラリー")]
                         ),
@@ -43225,8 +43264,8 @@ var render = function () {
                             attrs: {
                               href: "/about-lacquerware",
                               text: "",
-                              tile: "",
-                            },
+                              tile: ""
+                            }
                           },
                           [_vm._v("漆器について")]
                         ),
@@ -43235,7 +43274,7 @@ var render = function () {
                           "v-btn",
                           {
                             staticClass: "mx-1",
-                            attrs: { href: "/news", text: "", tile: "" },
+                            attrs: { href: "/news", text: "", tile: "" }
                           },
                           [_vm._v("ニュース")]
                         ),
@@ -43244,10 +43283,10 @@ var render = function () {
                           "v-btn",
                           {
                             staticClass: "mx-1",
-                            attrs: { href: "/contact", text: "", tile: "" },
+                            attrs: { href: "/contact", text: "", tile: "" }
                           },
                           [_vm._v("お問い合わせ")]
-                        ),
+                        )
                       ],
                       1
                     )
@@ -43260,10 +43299,10 @@ var render = function () {
                     _vm.$mq === "sm"
                       ? _c("v-app-bar-nav-icon", {
                           on: {
-                            click: function ($event) {
+                            click: function($event) {
                               _vm.drawer = true
-                            },
-                          },
+                            }
+                          }
                         })
                       : _vm._e(),
                     _vm._v(" "),
@@ -43277,10 +43316,10 @@ var render = function () {
                                     "v-btn",
                                     {
                                       staticClass: "px-5",
-                                      attrs: { text: "", href: _vm.href.login },
+                                      attrs: { text: "", href: _vm.href.login }
                                     },
                                     [_vm._v(_vm._s(_vm.name.login))]
-                                  ),
+                                  )
                                 ],
                                 1
                               )
@@ -43296,7 +43335,7 @@ var render = function () {
                                         [
                                           {
                                             key: "activator",
-                                            fn: function (ref) {
+                                            fn: function(ref) {
                                               var on = ref.on
                                               var attrs = ref.attrs
                                               return [
@@ -43306,7 +43345,7 @@ var render = function () {
                                                     _vm._b(
                                                       {
                                                         staticClass: "item",
-                                                        attrs: { text: "" },
+                                                        attrs: { text: "" }
                                                       },
                                                       "v-btn",
                                                       attrs,
@@ -43319,17 +43358,17 @@ var render = function () {
                                                       "\n                                        " +
                                                         _vm._s(_vm.user.name) +
                                                         "\n                                    "
-                                                    ),
+                                                    )
                                                   ]
-                                                ),
+                                                )
                                               ]
-                                            },
-                                          },
+                                            }
+                                          }
                                         ],
                                         null,
                                         false,
                                         251119684
-                                      ),
+                                      )
                                     },
                                     [
                                       _vm._v(" "),
@@ -43346,17 +43385,17 @@ var render = function () {
                                                   _c(
                                                     "v-icon",
                                                     {
-                                                      staticClass: "login-icon",
+                                                      staticClass: "login-icon"
                                                     },
                                                     [_vm._v("mdi-account")]
-                                                  ),
+                                                  )
                                                 ],
                                                 1
                                               ),
                                               _vm._v(" "),
                                               _c("v-list-item-title", [
-                                                _vm._v("マイページ"),
-                                              ]),
+                                                _vm._v("マイページ")
+                                              ])
                                             ],
                                             1
                                           ),
@@ -43367,8 +43406,8 @@ var render = function () {
                                               attrs: {
                                                 href: _vm.href.logout,
                                                 onclick:
-                                                  "event.preventDefault();\n                                                                                 document.getElementById('logout-form').submit();",
-                                              },
+                                                  "event.preventDefault();\n                                                                                 document.getElementById('logout-form').submit();"
+                                              }
                                             },
                                             [
                                               _c(
@@ -43377,20 +43416,20 @@ var render = function () {
                                                   _c(
                                                     "v-icon",
                                                     {
-                                                      staticClass: "login-icon",
+                                                      staticClass: "login-icon"
                                                     },
                                                     [_vm._v("mdi-logout")]
-                                                  ),
+                                                  )
                                                 ],
                                                 1
                                               ),
                                               _vm._v(" "),
                                               _c("v-list-item-title", [
-                                                _vm._v(_vm._s(_vm.name.logout)),
-                                              ]),
+                                                _vm._v(_vm._s(_vm.name.logout))
+                                              ])
                                             ],
                                             1
-                                          ),
+                                          )
                                         ],
                                         1
                                       ),
@@ -43402,34 +43441,34 @@ var render = function () {
                                           attrs: {
                                             id: "logout-form",
                                             action: _vm.href.logout,
-                                            method: "POST",
-                                          },
+                                            method: "POST"
+                                          }
                                         },
                                         [
                                           _c("input", {
                                             attrs: {
                                               type: "hidden",
-                                              name: "_token",
+                                              name: "_token"
                                             },
-                                            domProps: { value: _vm.csrf },
-                                          }),
+                                            domProps: { value: _vm.csrf }
+                                          })
                                         ]
-                                      ),
+                                      )
                                     ],
                                     1
-                                  ),
+                                  )
                                 ],
                                 1
-                              ),
+                              )
                         ])
-                      : _vm._e(),
+                      : _vm._e()
                   ],
                   1
-                ),
-              ]),
+                )
+              ])
             ],
             1
-          ),
+          )
         ],
         1
       ),
@@ -43440,11 +43479,11 @@ var render = function () {
           attrs: { absolute: "", temporary: "" },
           model: {
             value: _vm.drawer,
-            callback: function ($$v) {
+            callback: function($$v) {
               _vm.drawer = $$v
             },
-            expression: "drawer",
-          },
+            expression: "drawer"
+          }
         },
         [
           _c(
@@ -43455,7 +43494,7 @@ var render = function () {
                 "v-list-item-content",
                 [
                   _c("v-list-item-title", { staticClass: "text-h6" }, [
-                    _vm._v("\n                    Urulab\n                "),
+                    _vm._v("\n                    Urulab\n                ")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -43464,12 +43503,12 @@ var render = function () {
                     [
                       _vm._v(
                         "\n                    大津山研究室\n                "
-                      ),
+                      )
                     ]
-                  ),
+                  )
                 ],
                 1
-              ),
+              )
             ],
             1
           ),
@@ -43492,13 +43531,13 @@ var render = function () {
                         "v-list-item-icon",
                         [
                           _c("v-icon", { staticClass: "login-icon" }, [
-                            _vm._v("mdi-image-multiple"),
-                          ]),
+                            _vm._v("mdi-image-multiple")
+                          ])
                         ],
                         1
                       ),
                       _vm._v(" "),
-                      _c("v-list-item-title", [_vm._v("ギャラリー")]),
+                      _c("v-list-item-title", [_vm._v("ギャラリー")])
                     ],
                     1
                   ),
@@ -43507,20 +43546,20 @@ var render = function () {
                     "v-list-item",
                     {
                       staticClass: "py-2 px-5",
-                      attrs: { href: "/about-lacquerware" },
+                      attrs: { href: "/about-lacquerware" }
                     },
                     [
                       _c(
                         "v-list-item-icon",
                         [
                           _c("v-icon", { staticClass: "login-icon" }, [
-                            _vm._v("mdi-bowl-mix"),
-                          ]),
+                            _vm._v("mdi-bowl-mix")
+                          ])
                         ],
                         1
                       ),
                       _vm._v(" "),
-                      _c("v-list-item-title", [_vm._v("漆器について")]),
+                      _c("v-list-item-title", [_vm._v("漆器について")])
                     ],
                     1
                   ),
@@ -43533,13 +43572,13 @@ var render = function () {
                         "v-list-item-icon",
                         [
                           _c("v-icon", { staticClass: "login-icon" }, [
-                            _vm._v("mdi-newspaper"),
-                          ]),
+                            _vm._v("mdi-newspaper")
+                          ])
                         ],
                         1
                       ),
                       _vm._v(" "),
-                      _c("v-list-item-title", [_vm._v("ニュース")]),
+                      _c("v-list-item-title", [_vm._v("ニュース")])
                     ],
                     1
                   ),
@@ -43552,13 +43591,13 @@ var render = function () {
                         "v-list-item-icon",
                         [
                           _c("v-icon", { staticClass: "login-icon" }, [
-                            _vm._v("mdi-forum"),
-                          ]),
+                            _vm._v("mdi-forum")
+                          ])
                         ],
                         1
                       ),
                       _vm._v(" "),
-                      _c("v-list-item-title", [_vm._v("お問い合わせ")]),
+                      _c("v-list-item-title", [_vm._v("お問い合わせ")])
                     ],
                     1
                   ),
@@ -43568,27 +43607,27 @@ var render = function () {
                         "v-list-item",
                         {
                           staticClass: "py-2 px-5",
-                          attrs: { href: "/mypage" },
+                          attrs: { href: "/mypage" }
                         },
                         [
                           _c(
                             "v-list-item-icon",
                             [
                               _c("v-icon", { staticClass: "login-icon" }, [
-                                _vm._v("mdi-account"),
-                              ]),
+                                _vm._v("mdi-account")
+                              ])
                             ],
                             1
                           ),
                           _vm._v(" "),
-                          _c("v-list-item-title", [_vm._v("マイページ")]),
+                          _c("v-list-item-title", [_vm._v("マイページ")])
                         ],
                         1
                       )
-                    : _vm._e(),
+                    : _vm._e()
                 ],
                 1
-              ),
+              )
             ],
             1
           ),
@@ -43603,12 +43642,12 @@ var render = function () {
                       "v-btn",
                       {
                         staticClass: "drawer-btn",
-                        attrs: { block: "", href: _vm.href.login },
+                        attrs: { block: "", href: _vm.href.login }
                       },
                       [
                         _vm._v(
                           "\n                    ログイン\n                "
-                        ),
+                        )
                       ]
                     )
                   : _c(
@@ -43619,8 +43658,8 @@ var render = function () {
                           block: "",
                           href: _vm.href.logout,
                           onclick:
-                            "event.preventDefault();\n                        document.getElementById('logout-form').submit();",
-                        },
+                            "event.preventDefault();\n                        document.getElementById('logout-form').submit();"
+                        }
                       },
                       [
                         _vm._v(
@@ -43633,25 +43672,25 @@ var render = function () {
                             attrs: {
                               id: "logout-form",
                               action: _vm.href.logout,
-                              method: "POST",
-                            },
+                              method: "POST"
+                            }
                           },
                           [
                             _c("input", {
                               attrs: { type: "hidden", name: "_token" },
-                              domProps: { value: _vm.csrf },
-                            }),
+                              domProps: { value: _vm.csrf }
+                            })
                           ]
-                        ),
+                        )
                       ]
-                    ),
+                    )
               ],
               1
-            ),
-          ],
+            )
+          ]
         ],
         2
-      ),
+      )
     ],
     1
   )
@@ -43675,14 +43714,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm._m(0)
 }
 var staticRenderFns = [
-  function () {
+  function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
@@ -43722,7 +43761,7 @@ var staticRenderFns = [
           "\n        また、会津は江戸時代以降、色漆を使った漆絵の技法を得意とし松竹梅や菊を色漆で描いた「会津絵」と呼ばれる漆器を制作しました。"
         ),
         _c("br"),
-        _vm._v("\n        漆絵には、朱、黄、緑などが多く使われました。\n    "),
+        _vm._v("\n        漆絵には、朱、黄、緑などが多く使われました。\n    ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "my-13" }, [
@@ -43736,8 +43775,8 @@ var staticRenderFns = [
               _c("th", { staticClass: "text-center" }, [_vm._v("黒")]),
               _vm._v(" "),
               _c("th", { staticClass: "px-3" }, [
-                _vm._v("漆＋鉄分、もしくは油煙、灰墨"),
-              ]),
+                _vm._v("漆＋鉄分、もしくは油煙、灰墨")
+              ])
             ]),
             _vm._v(" "),
             _c("tr", [
@@ -43746,8 +43785,8 @@ var staticRenderFns = [
               _c("th", { staticClass: "text-center" }, [_vm._v("朱")]),
               _vm._v(" "),
               _c("th", { staticClass: "px-3" }, [
-                _vm._v("漆＋辰砂（しんしゃ：赤色の鉱物）、あるいは硫化水銀"),
-              ]),
+                _vm._v("漆＋辰砂（しんしゃ：赤色の鉱物）、あるいは硫化水銀")
+              ])
             ]),
             _vm._v(" "),
             _c("tr", [
@@ -43756,8 +43795,8 @@ var staticRenderFns = [
               _c("th", { staticClass: "text-center" }, [_vm._v("洗朱")]),
               _vm._v(" "),
               _c("th", { staticClass: "px-3" }, [
-                _vm._v("漆＋硫化水銀（硫化水銀の作り方の違いで明るい朱色に）"),
-              ]),
+                _vm._v("漆＋硫化水銀（硫化水銀の作り方の違いで明るい朱色に）")
+              ])
             ]),
             _vm._v(" "),
             _c("tr", [
@@ -43766,8 +43805,8 @@ var staticRenderFns = [
               _c("th", { staticClass: "text-center" }, [_vm._v("青光(緑)")]),
               _vm._v(" "),
               _c("th", { staticClass: "px-3" }, [
-                _vm._v("漆＋石黄＋藍蝋、もしくはベレンス"),
-              ]),
+                _vm._v("漆＋石黄＋藍蝋、もしくはベレンス")
+              ])
             ]),
             _vm._v(" "),
             _c("tr", [
@@ -43775,7 +43814,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("th", { staticClass: "text-center" }, [_vm._v("うるみ")]),
               _vm._v(" "),
-              _c("th", { staticClass: "px-3" }, [_vm._v("朱漆＋黒漆")]),
+              _c("th", { staticClass: "px-3" }, [_vm._v("朱漆＋黒漆")])
             ]),
             _vm._v(" "),
             _c("tr", [
@@ -43783,10 +43822,10 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("th", { staticClass: "text-center" }, [_vm._v("黄")]),
               _vm._v(" "),
-              _c("th", { staticClass: "px-3" }, [_vm._v("漆＋石黄")]),
-            ]),
-          ]),
-        ]),
+              _c("th", { staticClass: "px-3" }, [_vm._v("漆＋石黄")])
+            ])
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c("p", [
@@ -43798,14 +43837,14 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        中間色もあり絵具のように描ける化学顔料の色漆は天然顔料の色漆に比べ耐久性に劣るとされていますが表現の可能性を広げたことは間違いありません。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "mt-12" }, [
-        _vm._v("（福島県立博物館学芸員　小林めぐみ）"),
-      ]),
+        _vm._v("（福島県立博物館学芸員　小林めぐみ）")
+      ])
     ])
-  },
+  }
 ]
 render._withStripped = true
 
@@ -43825,14 +43864,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm._m(0)
 }
 var staticRenderFns = [
-  function () {
+  function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
@@ -43848,7 +43887,7 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        会津漆器の形は時代の流行を敏感に取り入れてきたようです。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("p", [
@@ -43866,7 +43905,7 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        会津でも江戸時代初めの遺跡からそのような元気な器が出土しています。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("p", [
@@ -43882,7 +43921,7 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        膳の上に載せる椀を全てお揃いで作った揃い椀も作られるようになりました。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("p", [
@@ -43894,7 +43933,7 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        高さが低く直径が大きくて平たい平椀には煮物など。それぞれに蓋がつきます。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("p", [
@@ -43904,7 +43943,7 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        そして江戸時代の後期（18世紀後半から19世紀）からは揃い椀も大量に作られ各地に販売されました。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("p", [
@@ -43912,14 +43951,14 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        作り手たちは、それぞれの感性や使い手の要望にあわせながら生活を彩る表情豊かな器を作っています。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "mt-12" }, [
-        _vm._v("（福島県立博物館学芸員　小林めぐみ）"),
-      ]),
+        _vm._v("（福島県立博物館学芸員　小林めぐみ）")
+      ])
     ])
-  },
+  }
 ]
 render._withStripped = true
 
@@ -43939,14 +43978,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm._m(0)
 }
 var staticRenderFns = [
-  function () {
+  function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
@@ -43958,13 +43997,13 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        その中から、良く使われている技法をいくつかご紹介します。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "tech-title mt-10 mb-4" }, [
         _c("h5", { staticClass: "font-weight-medium m-0" }, [
-          _vm._v("漆絵（うるしえ）"),
-        ]),
+          _vm._v("漆絵（うるしえ）")
+        ])
       ]),
       _vm._v(" "),
       _c("p", [
@@ -43972,13 +44011,13 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        松竹梅や菊を漆絵で描いた会津漆器は江戸時代中期頃から作られ始め、別名「会津絵」とも呼ばれています。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "tech-title mt-10 mb-4" }, [
         _c("h5", { staticClass: "font-weight-medium m-0" }, [
-          _vm._v("消粉蒔絵（けしふんまきえ）"),
-        ]),
+          _vm._v("消粉蒔絵（けしふんまきえ）")
+        ])
       ]),
       _vm._v(" "),
       _c("p", [
@@ -43992,13 +44031,13 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        江戸時代後期から会津でたくさん使われてきた伝統の技法です。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "tech-title mt-10 mb-4" }, [
         _c("h5", { staticClass: "font-weight-medium m-0" }, [
-          _vm._v("沈金（ちんきん）"),
-        ]),
+          _vm._v("沈金（ちんきん）")
+        ])
       ]),
       _vm._v(" "),
       _c("p", [
@@ -44006,13 +44045,13 @@ var staticRenderFns = [
           "\n        漆面にタガネなどの道具で模様を彫りその溝に漆を塗り込め、上から金粉などをつけると、彫った溝にだけ金粉が残ります。"
         ),
         _c("br"),
-        _vm._v("\n        繊細な表現が得意な技法です。\n    "),
+        _vm._v("\n        繊細な表現が得意な技法です。\n    ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "tech-title mt-10 mb-4" }, [
         _c("h5", { staticClass: "font-weight-medium m-0" }, [
-          _vm._v("螺鈿（らでん）"),
-        ]),
+          _vm._v("螺鈿（らでん）")
+        ])
       ]),
       _vm._v(" "),
       _c("p", [
@@ -44022,13 +44061,13 @@ var staticRenderFns = [
           "\n        それを模様の形にして漆で貼りつけたり細かい粉にして蒔いたりする技法。"
         ),
         _c("br"),
-        _vm._v("\n        貝の種類によって色あいも変わります。\n    "),
+        _vm._v("\n        貝の種類によって色あいも変わります。\n    ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "tech-title mt-10 mb-4" }, [
         _c("h5", { staticClass: "font-weight-medium m-0" }, [
-          _vm._v("卵殻（らんかく）"),
-        ]),
+          _vm._v("卵殻（らんかく）")
+        ])
       ]),
       _vm._v(" "),
       _c("p", [
@@ -44042,14 +44081,14 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(
           "\n        江戸時代後期に作られた全体に卵殻を貼った真っ白な美しい椀が残っています。\n    "
-        ),
+        )
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "mt-12" }, [
-        _vm._v("（福島県立博物館学芸員　小林めぐみ）"),
-      ]),
+        _vm._v("（福島県立博物館学芸員　小林めぐみ）")
+      ])
     ])
-  },
+  }
 ]
 render._withStripped = true
 
@@ -44069,28 +44108,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm._m(0)
 }
 var staticRenderFns = [
-  function () {
+  function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
       _c("div", { attrs: { id: "jmap" } }, [
-        _c("div", { staticClass: "jmap-infobox" }),
+        _c("div", { staticClass: "jmap-infobox" })
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "text-right" }, [
-        _vm._v("※色がついている都道府県を押すと詳細が表示されます。"),
+        _vm._v("※色がついている都道府県を押すと詳細が表示されます。")
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "mt-12" }, [
-        _vm._v("【参考にさせていただいたサイト】"),
+        _vm._v("【参考にさせていただいたサイト】")
       ]),
       _vm._v(" "),
       _c("ul", [
@@ -44101,9 +44140,9 @@ var staticRenderFns = [
             [
               _vm._v(
                 "\n                伝統工芸 青山スクエア 「伝統的工芸品を知る(伝統的工芸品を探す：漆器)」\n            "
-              ),
+              )
             ]
-          ),
+          )
         ]),
         _vm._v(" "),
         _c("li", [
@@ -44111,16 +44150,16 @@ var staticRenderFns = [
             "a",
             {
               attrs: {
-                href: "https://kogeijapan.com/locale/ja_JP/list/?category=5",
-              },
+                href: "https://kogeijapan.com/locale/ja_JP/list/?category=5"
+              }
             },
             [
               _vm._v(
                 "\n                工芸ジャパン 「漆器の種類・一覧」\n            "
-              ),
+              )
             ]
-          ),
-        ]),
+          )
+        ])
       ]),
       _vm._v(" "),
       _c(
@@ -44132,22 +44171,22 @@ var staticRenderFns = [
             tabindex: "-1",
             role: "dialog",
             "aria-labelledby": "prefectureModalCenterTitle",
-            "aria-hidden": "true",
-          },
+            "aria-hidden": "true"
+          }
         },
         [
           _c(
             "div",
             {
               staticClass: "modal-dialog modal-dialog-centered",
-              attrs: { role: "document" },
+              attrs: { role: "document" }
             },
             [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-header" }, [
                   _c("h5", {
                     staticClass: "modal-title",
-                    attrs: { id: "prefectureModalTitle" },
+                    attrs: { id: "prefectureModalTitle" }
                   }),
                   _vm._v(" "),
                   _c(
@@ -44157,20 +44196,20 @@ var staticRenderFns = [
                       attrs: {
                         type: "button",
                         "data-dismiss": "modal",
-                        "aria-label": "Close",
-                      },
+                        "aria-label": "Close"
+                      }
                     },
                     [
                       _c("span", { attrs: { "aria-hidden": "true" } }, [
-                        _vm._v("×"),
-                      ]),
+                        _vm._v("×")
+                      ])
                     ]
-                  ),
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", {
                   staticClass: "modal-body overflow-auto",
-                  staticStyle: { height: "350px" },
+                  staticStyle: { height: "350px" }
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-footer" }, [
@@ -44178,18 +44217,18 @@ var staticRenderFns = [
                     "button",
                     {
                       staticClass: "btn btn-secondary m-close",
-                      attrs: { type: "button", "data-dismiss": "modal" },
+                      attrs: { type: "button", "data-dismiss": "modal" }
                     },
                     [_vm._v("閉じる")]
-                  ),
-                ]),
-              ]),
+                  )
+                ])
+              ])
             ]
-          ),
+          )
         ]
-      ),
+      )
     ])
-  },
+  }
 ]
 render._withStripped = true
 
@@ -44209,7 +44248,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -44234,15 +44273,15 @@ var render = function () {
                     color: "#1976d2",
                     height: "52",
                     dark: "",
-                    dismissible: "",
+                    dismissible: ""
                   },
                   model: {
                     value: _vm.alert,
-                    callback: function ($$v) {
+                    callback: function($$v) {
                       _vm.alert = $$v
                     },
-                    expression: "alert",
-                  },
+                    expression: "alert"
+                  }
                 },
                 [_vm._v("\n                作成できました。\n            ")]
               ),
@@ -44251,7 +44290,7 @@ var render = function () {
                 "h1",
                 {
                   staticClass:
-                    "font-weight-bold text-h4 basil--text my-10 page-title",
+                    "font-weight-bold text-h4 basil--text my-10 page-title"
                 },
                 [_vm._v("\n                ニュース | 新規作成\n            ")]
               ),
@@ -44268,11 +44307,11 @@ var render = function () {
                       attrs: { "lazy-validation": "" },
                       model: {
                         value: _vm.valid,
-                        callback: function ($$v) {
+                        callback: function($$v) {
                           _vm.valid = $$v
                         },
-                        expression: "valid",
-                      },
+                        expression: "valid"
+                      }
                     },
                     [
                       _c("v-text-field", {
@@ -44280,35 +44319,35 @@ var render = function () {
                           rules: _vm.titleRules,
                           label: "タイトル",
                           required: "",
-                          outlined: "",
+                          outlined: ""
                         },
                         model: {
                           value: _vm.title,
-                          callback: function ($$v) {
+                          callback: function($$v) {
                             _vm.title = $$v
                           },
-                          expression: "title",
-                        },
+                          expression: "title"
+                        }
                       }),
                       _vm._v(" "),
                       _c("v-select", {
                         attrs: {
                           items: _vm.items,
                           rules: [
-                            function (v) {
+                            function(v) {
                               return !!v || "種類を選択してください"
-                            },
+                            }
                           ],
                           label: "種類",
-                          required: "",
+                          required: ""
                         },
                         model: {
                           value: _vm.select,
-                          callback: function ($$v) {
+                          callback: function($$v) {
                             _vm.select = $$v
                           },
-                          expression: "select",
-                        },
+                          expression: "select"
+                        }
                       }),
                       _vm._v(" "),
                       _c("v-textarea", {
@@ -44316,21 +44355,21 @@ var render = function () {
                         attrs: {
                           outlined: "",
                           rules: [
-                            function (v) {
+                            function(v) {
                               return !!v || "内容を記入してください"
-                            },
+                            }
                           ],
                           label: "内容",
                           height: "300",
-                          required: "",
+                          required: ""
                         },
                         model: {
                           value: _vm.body,
-                          callback: function ($$v) {
+                          callback: function($$v) {
                             _vm.body = $$v
                           },
-                          expression: "body",
-                        },
+                          expression: "body"
+                        }
                       }),
                       _vm._v(" "),
                       _c(
@@ -44338,18 +44377,18 @@ var render = function () {
                         {
                           attrs: {
                             color: "primary",
-                            disabled: !_vm.isComplete,
+                            disabled: !_vm.isComplete
                           },
                           on: {
-                            click: function ($event) {
+                            click: function($event) {
                               return _vm.onSubmit()
-                            },
-                          },
+                            }
+                          }
                         },
                         [
                           _vm._v(
                             "\n                        作成\n                    "
-                          ),
+                          )
                         ]
                       ),
                       _vm._v(" "),
@@ -44358,22 +44397,50 @@ var render = function () {
                             attrs: {
                               type: "spiningDubbles",
                               color: "#333",
-                              size: { width: "50px", height: "50px" },
-                            },
+                              size: { width: "50px", height: "50px" }
+                            }
                           })
-                        : _vm._e(),
+                        : _vm._e()
                     ],
                     1
                   ),
+                  _vm._v(" "),
+                  _c("v-divider", {
+                    staticClass: "my-0 mx-auto",
+                    attrs: { inset: "" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "my-10 mx-16" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            color: "secondary",
+                            elevation: "2",
+                            onClick: "history.back(); return false;"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        戻る\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
-              ),
+              )
             ],
             1
-          ),
+          )
         ],
         1
-      ),
+      )
     ],
     1
   )
@@ -44397,7 +44464,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -44416,7 +44483,7 @@ var render = function () {
                 "h1",
                 {
                   staticClass:
-                    "font-weight-bold text-h4 basil--text my-10 page-title",
+                    "font-weight-bold text-h4 basil--text my-10 page-title"
                 },
                 [_vm._v("\n                ニュース\n            ")]
               ),
@@ -44433,15 +44500,15 @@ var render = function () {
                         attrs: {
                           href: "/news/create",
                           color: "primary",
-                          elevation: "2",
-                        },
+                          elevation: "2"
+                        }
                       },
                       [
                         _vm._v(
                           "\n                        新規作成\n                    "
-                        ),
+                        )
                       ]
-                    ),
+                    )
                   ],
                   1
                 ),
@@ -44450,36 +44517,36 @@ var render = function () {
                   _c("thead", [
                     _c("tr", [
                       _c("th", { attrs: { scope: "col", width: "1000" } }, [
-                        _vm._v("タイトル"),
+                        _vm._v("タイトル")
                       ]),
                       _vm._v(" "),
                       _c("th", { attrs: { scope: "col", width: "300" } }, [
-                        _vm._v("種類"),
+                        _vm._v("種類")
                       ]),
                       _vm._v(" "),
-                      _c("th", { attrs: { scope: "col" } }, [_vm._v("投稿日")]),
-                    ]),
+                      _c("th", { attrs: { scope: "col" } }, [_vm._v("投稿日")])
+                    ])
                   ]),
                   _vm._v(" "),
                   _c(
                     "tbody",
-                    _vm._l(_vm.newsalls, function (news) {
+                    _vm._l(_vm.newsalls, function(news) {
                       return _c("tr", [
                         _c("td", [
                           _c(
                             "a",
                             {
                               staticClass: "title-url d-block w-100 h-100",
-                              attrs: { href: "/news/" + news.id },
+                              attrs: { href: "/news/" + news.id }
                             },
                             [
                               _vm._v(
                                 "\n                                  " +
                                   _vm._s(news.title) +
                                   "\n                                "
-                              ),
+                              )
                             ]
-                          ),
+                          )
                         ]),
                         _vm._v(" "),
                         news.type === 0
@@ -44491,20 +44558,20 @@ var render = function () {
                           : _vm._e(),
                         _vm._v(" "),
                         _c("td", [
-                          _vm._v(_vm._s(_vm.formatDate(news.updated_at))),
-                        ]),
+                          _vm._v(_vm._s(_vm.formatDate(news.updated_at)))
+                        ])
                       ])
                     }),
                     0
-                  ),
-                ]),
-              ]),
+                  )
+                ])
+              ])
             ],
             1
-          ),
+          )
         ],
         1
-      ),
+      )
     ],
     1
   )
@@ -44528,7 +44595,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
+var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -44547,7 +44614,7 @@ var render = function () {
                 "h1",
                 {
                   staticClass:
-                    "font-weight-bold text-h4 basil--text my-10 page-title",
+                    "font-weight-bold text-h4 basil--text my-10 page-title"
                 },
                 [_vm._v("\n                ニュース | 詳細\n            ")]
               ),
@@ -44558,11 +44625,11 @@ var render = function () {
                 [
                   _c("div", { staticClass: "my-10 mx-8" }, [
                     _c("h2", { staticClass: "text-center" }, [
-                      _vm._v(_vm._s(_vm.news.title)),
+                      _vm._v(_vm._s(_vm.news.title))
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "text-right" }, [
-                      _vm._v(_vm._s(_vm.formatDate(_vm.news.updated_at))),
+                      _vm._v(_vm._s(_vm.formatDate(_vm.news.updated_at)))
                     ]),
                     _vm._v(" "),
                     _c(
@@ -44575,18 +44642,18 @@ var render = function () {
                         _vm._v(" "),
                         _vm.news.type === 1
                           ? _c("p", [_vm._v("イベント")])
-                          : _vm._e(),
+                          : _vm._e()
                       ]
                     ),
                     _vm._v(" "),
                     _c("pre", { staticClass: "ma-16 body-1" }, [
-                      _vm._v(_vm._s(_vm.news.content)),
-                    ]),
+                      _vm._v(_vm._s(_vm.news.content))
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("v-divider", {
                     staticClass: "my-0 mx-auto",
-                    attrs: { inset: "" },
+                    attrs: { inset: "" }
                   }),
                   _vm._v(" "),
                   _c("div", { staticClass: "d-flex" }, [
@@ -44600,15 +44667,15 @@ var render = function () {
                             attrs: {
                               color: "secondary",
                               elevation: "2",
-                              onClick: "history.back(); return false;",
-                            },
+                              onClick: "history.back(); return false;"
+                            }
                           },
                           [
                             _vm._v(
                               "\n                            戻る\n                        "
-                            ),
+                            )
                           ]
-                        ),
+                        )
                       ],
                       1
                     ),
@@ -44617,23 +44684,19 @@ var render = function () {
                       "div",
                       {
                         staticClass:
-                          "my-10 mx-16 w-100 d-flex justify-content-end",
+                          "my-10 mx-16 w-100 d-flex justify-content-end"
                       },
                       [
                         _c(
                           "v-btn",
                           {
                             staticClass: "text-white mx-14",
-                            attrs: {
-                              href: "/news/create",
-                              color: "indigo lighten-1",
-                              elevation: "2",
-                            },
+                            attrs: { color: "indigo lighten-1", elevation: "2" }
                           },
                           [
                             _vm._v(
                               "\n                            編集\n                        "
-                            ),
+                            )
                           ]
                         ),
                         _vm._v(" "),
@@ -44641,31 +44704,96 @@ var render = function () {
                           "v-btn",
                           {
                             staticClass: "text-white",
-                            attrs: {
-                              href: "/news/create",
-                              color: "red accent-4",
-                              elevation: "2",
-                            },
+                            attrs: { color: "red accent-4", elevation: "2" },
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteConfirm(_vm.news.id)
+                              }
+                            }
                           },
                           [
                             _vm._v(
                               "\n                            削除\n                        "
-                            ),
+                            )
                           ]
-                        ),
+                        )
                       ],
                       1
-                    ),
-                  ]),
+                    )
+                  ])
                 ],
                 1
               ),
+              _vm._v(" "),
+              _c(
+                "v-dialog",
+                {
+                  attrs: { persistent: "", "max-width": "290" },
+                  model: {
+                    value: _vm.deleteDialog,
+                    callback: function($$v) {
+                      _vm.deleteDialog = $$v
+                    },
+                    expression: "deleteDialog"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c("v-card-title", { staticClass: "headline" }, [
+                        _vm._v("削除確認")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-card-text", [
+                        _vm._v("本当に削除してもよろしいですか？")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "green darken-1", text: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.deleteDialog = false
+                                }
+                              }
+                            },
+                            [_vm._v("キャンセル")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "green darken-1", text: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteItem(_vm.deleteID)
+                                }
+                              }
+                            },
+                            [_vm._v("削除")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             1
-          ),
+          )
         ],
         1
-      ),
+      )
     ],
     1
   )
@@ -60074,7 +60202,7 @@ __nested_webpack_require_4686__.r(__webpack_exports__);
 /* harmony import */ var _mixins_transitionable__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_4686__(/*! ../../mixins/transitionable */ "./src/mixins/transitionable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_4686__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_4686__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -60343,7 +60471,7 @@ __nested_webpack_require_13960__.r(__webpack_exports__);
 /* harmony import */ var _VApp_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_13960__.n(_VApp_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_13960__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_13960__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -60463,7 +60591,7 @@ __nested_webpack_require_17667__.r(__webpack_exports__);
 /* harmony import */ var _mixins_toggleable__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_17667__(/*! ../../mixins/toggleable */ "./src/mixins/toggleable/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_17667__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_17667__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -60708,7 +60836,7 @@ __nested_webpack_require_28430__.r(__webpack_exports__);
 /* harmony import */ var _VBtn_VBtn__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_28430__(/*! ../VBtn/VBtn */ "./src/components/VBtn/VBtn.ts");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_28430__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_28430__.n(vue__WEBPACK_IMPORTED_MODULE_2__);
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -60883,7 +61011,7 @@ __nested_webpack_require_35182__.r(__webpack_exports__);
 /* harmony import */ var _VTextField_VTextField__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_35182__(/*! ../VTextField/VTextField */ "./src/components/VTextField/VTextField.ts");
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_35182__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_35182__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -61321,7 +61449,7 @@ __nested_webpack_require_51663__.r(__webpack_exports__);
 /* harmony import */ var _mixins_roundable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_51663__(/*! ../../mixins/roundable */ "./src/mixins/roundable/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_51663__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_51663__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -61431,7 +61559,7 @@ __nested_webpack_require_55889__.r(__webpack_exports__);
 /* harmony import */ var _mixins_positionable__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_55889__(/*! ../../mixins/positionable */ "./src/mixins/positionable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_55889__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_55889__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -61447,7 +61575,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __rest =  false || function (s, e) {
+var __rest = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -61681,7 +61809,7 @@ __nested_webpack_require_64986__.r(__webpack_exports__);
 /* harmony import */ var _mixins_toggleable__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_64986__(/*! ../../mixins/toggleable */ "./src/mixins/toggleable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_64986__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_64986__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -61885,7 +62013,7 @@ __nested_webpack_require_72319__.r(__webpack_exports__);
 /* harmony import */ var _mixins_toggleable__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_72319__(/*! ../../mixins/toggleable */ "./src/mixins/toggleable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_72319__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_72319__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -62057,7 +62185,7 @@ __nested_webpack_require_79711__.r(__webpack_exports__);
 /* harmony import */ var _VBottomSheet_sass__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_79711__(/*! ./VBottomSheet.sass */ "./src/components/VBottomSheet/VBottomSheet.sass");
 /* harmony import */ var _VBottomSheet_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_79711__.n(_VBottomSheet_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _VDialog_VDialog__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_79711__(/*! ../VDialog/VDialog */ "./src/components/VDialog/VDialog.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -62144,7 +62272,7 @@ __nested_webpack_require_82831__.r(__webpack_exports__);
 /* harmony import */ var _VBreadcrumbsDivider__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_82831__(/*! ./VBreadcrumbsDivider */ "./src/components/VBreadcrumbs/VBreadcrumbsDivider.ts");
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_82831__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_82831__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -62254,7 +62382,7 @@ __nested_webpack_require_86305__.r(__webpack_exports__);
 __nested_webpack_require_87041__.r(__webpack_exports__);
 /* harmony import */ var _mixins_routable__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_87041__(/*! ../../mixins/routable */ "./src/mixins/routable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_87041__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -62378,7 +62506,7 @@ __nested_webpack_require_91211__.r(__webpack_exports__);
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_91211__(/*! ../../util/console */ "./src/util/console.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -62394,7 +62522,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -62630,7 +62758,7 @@ __nested_webpack_require_101042__.r(__webpack_exports__);
 /* harmony import */ var _mixins_button_group__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_101042__(/*! ../../mixins/button-group */ "./src/mixins/button-group/index.ts");
 /* harmony import */ var _mixins_colorable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_101042__(/*! ../../mixins/colorable */ "./src/mixins/colorable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_101042__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -62729,7 +62857,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 // Styles
 // import '../../stylus/components/_calendar-daily.styl'
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -63165,7 +63293,7 @@ __nested_webpack_require_120352__.r(__webpack_exports__);
 /* harmony import */ var _util_parser__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_120352__(/*! ./util/parser */ "./src/components/VCalendar/util/parser.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -63181,7 +63309,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -63208,7 +63336,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -63385,7 +63513,7 @@ __nested_webpack_require_128819__.r(__webpack_exports__);
 /* harmony import */ var _VBtn__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_128819__(/*! ../VBtn */ "./src/components/VBtn/index.ts");
 /* harmony import */ var _mixins_calendar_with_intervals__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_128819__(/*! ./mixins/calendar-with-intervals */ "./src/components/VCalendar/mixins/calendar-with-intervals.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_128819__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -63401,7 +63529,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -63428,7 +63556,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -63756,7 +63884,7 @@ __nested_webpack_require_141974__.r(__webpack_exports__);
 /* harmony import */ var _util_dateTimeUtils__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_141974__(/*! ../../util/dateTimeUtils */ "./src/util/dateTimeUtils.ts");
 /* harmony import */ var _util_props__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_141974__(/*! ./util/props */ "./src/components/VCalendar/util/props.ts");
 /* harmony import */ var _util_timestamp__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_141974__(/*! ./util/timestamp */ "./src/components/VCalendar/util/timestamp.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -63772,7 +63900,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -63799,7 +63927,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -64198,7 +64326,7 @@ __nested_webpack_require_160357__.r(__webpack_exports__);
 /* harmony import */ var _util_events__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_160357__(/*! ../util/events */ "./src/components/VCalendar/util/events.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -65122,7 +65250,7 @@ __nested_webpack_require_194171__.r(__webpack_exports__);
 /* harmony export (binding) */ __nested_webpack_require_194171__.d(__webpack_exports__, "getOpenGroup", function() { return getOpenGroup; });
 /* harmony export (binding) */ __nested_webpack_require_194171__.d(__webpack_exports__, "getOverlapGroupHandler", function() { return getOverlapGroupHandler; });
 /* harmony import */ var _util_timestamp__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_194171__(/*! ../util/timestamp */ "./src/components/VCalendar/util/timestamp.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -65327,7 +65455,7 @@ __nested_webpack_require_201063__.r(__webpack_exports__);
 /* harmony export (binding) */ __nested_webpack_require_201063__.d(__webpack_exports__, "stack", function() { return stack; });
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_201063__(/*! ./common */ "./src/components/VCalendar/modes/common.ts");
 /* harmony import */ var _util_timestamp__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_201063__(/*! ../util/timestamp */ "./src/components/VCalendar/util/timestamp.ts");
-var __values =  false || function (o) {
+var __values = undefined && undefined.__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
       m = s && o[s],
       i = 0;
@@ -65344,7 +65472,7 @@ var __values =  false || function (o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -65877,7 +66005,7 @@ __nested_webpack_require_218997__.r(__webpack_exports__);
 /* harmony export (binding) */ __nested_webpack_require_218997__.d(__webpack_exports__, "getParsedCategories", function() { return getParsedCategories; });
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -66784,7 +66912,7 @@ __nested_webpack_require_249140__.r(__webpack_exports__);
 /* harmony import */ var _mixins_loadable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_249140__(/*! ../../mixins/loadable */ "./src/mixins/loadable/index.ts");
 /* harmony import */ var _mixins_routable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_249140__(/*! ../../mixins/routable */ "./src/mixins/routable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_249140__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -66940,7 +67068,7 @@ __nested_webpack_require_255353__.r(__webpack_exports__);
 /* harmony import */ var _mixins_button_group__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_255353__(/*! ../../mixins/button-group */ "./src/mixins/button-group/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_255353__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_255353__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -67167,7 +67295,7 @@ __nested_webpack_require_262920__.r(__webpack_exports__);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_262920__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_262920__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _mixins_routable__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_262920__(/*! ../../mixins/routable */ "./src/mixins/routable/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -67295,7 +67423,7 @@ __nested_webpack_require_267528__.r(__webpack_exports__);
 /* harmony import */ var _VIcon__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_267528__(/*! ../VIcon */ "./src/components/VIcon/index.ts");
 /* harmony import */ var _VInput__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_267528__(/*! ../VInput */ "./src/components/VInput/index.ts");
 /* harmony import */ var _mixins_selectable__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_267528__(/*! ../../mixins/selectable */ "./src/mixins/selectable/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -67311,7 +67439,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __rest =  false || function (s, e) {
+var __rest = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -67457,7 +67585,7 @@ __nested_webpack_require_273289__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_273289__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_273289__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_273289__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -67621,7 +67749,7 @@ __nested_webpack_require_279609__.r(__webpack_exports__);
 /* harmony import */ var _mixins_routable__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_279609__(/*! ../../mixins/routable */ "./src/mixins/routable/index.ts");
 /* harmony import */ var _mixins_sizeable__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_279609__(/*! ../../mixins/sizeable */ "./src/mixins/sizeable/index.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_279609__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -67637,7 +67765,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -67879,7 +68007,7 @@ __nested_webpack_require_288744__.r(__webpack_exports__);
 /* harmony import */ var _VSlideGroup_VSlideGroup__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_288744__(/*! ../VSlideGroup/VSlideGroup */ "./src/components/VSlideGroup/VSlideGroup.ts");
 /* harmony import */ var _mixins_colorable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_288744__(/*! ../../mixins/colorable */ "./src/mixins/colorable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_288744__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -67988,7 +68116,7 @@ __nested_webpack_require_292654__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_292654__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _mixins_elevatable__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_292654__(/*! ../../mixins/elevatable */ "./src/mixins/elevatable/index.ts");
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_292654__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -68387,7 +68515,7 @@ __nested_webpack_require_307050__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_307050__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nested_webpack_require_307050__.n(vue__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_307050__(/*! ./util */ "./src/components/VColorPicker/util/index.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -68591,7 +68719,7 @@ __nested_webpack_require_314067__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_314067__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_314067__.n(vue__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_314067__(/*! ./util */ "./src/components/VColorPicker/util/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -68866,7 +68994,7 @@ __nested_webpack_require_325666__.r(__webpack_exports__);
 /* harmony import */ var _util_colorUtils__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_325666__(/*! ../../../util/colorUtils */ "./src/util/colorUtils.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -68882,7 +69010,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __rest =  false || function (s, e) {
+var __rest = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -69062,7 +69190,7 @@ __nested_webpack_require_332524__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_332524__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -69412,7 +69540,7 @@ __nested_webpack_require_346631__.r(__webpack_exports__);
 /* harmony import */ var _VCounter_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_346631__.n(_VCounter_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_346631__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_346631__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -69492,7 +69620,7 @@ __nested_webpack_require_349631__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_349631__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_349631__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_349631__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -69508,7 +69636,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -69535,7 +69663,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -70212,7 +70340,7 @@ __nested_webpack_require_374424__.r(__webpack_exports__);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_374424__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_374424__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_374424__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -70228,7 +70356,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -70699,7 +70827,7 @@ __nested_webpack_require_392498__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_392498__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_392498__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_392498__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -70790,7 +70918,7 @@ __nested_webpack_require_395443__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_395443__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_395443__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_395443__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -70817,7 +70945,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -70895,7 +71023,7 @@ function needsTd(slot) {
 __nested_webpack_require_398739__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_398739__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_398739__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -70922,7 +71050,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -71019,7 +71147,7 @@ __nested_webpack_require_401718__.r(__webpack_exports__);
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_16__ = __nested_webpack_require_401718__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -71035,7 +71163,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -71760,7 +71888,7 @@ __nested_webpack_require_430575__.r(__webpack_exports__);
 /* harmony import */ var _util_rebuildFunctionalSlots__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_430575__(/*! ../../util/rebuildFunctionalSlots */ "./src/util/rebuildFunctionalSlots.ts");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_430575__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__nested_webpack_require_430575__.n(vue__WEBPACK_IMPORTED_MODULE_7__);
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -71829,7 +71957,7 @@ __nested_webpack_require_434092__.r(__webpack_exports__);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_434092__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _mixins_header__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_434092__(/*! ./mixins/header */ "./src/components/VDataTable/mixins/header.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_434092__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -71856,7 +71984,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -72003,7 +72131,7 @@ __nested_webpack_require_439645__.r(__webpack_exports__);
 /* harmony import */ var _VChip__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_439645__(/*! ../VChip */ "./src/components/VChip/index.ts");
 /* harmony import */ var _mixins_header__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_439645__(/*! ./mixins/header */ "./src/components/VDataTable/mixins/header.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_439645__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -72030,7 +72158,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -72338,7 +72466,7 @@ __nested_webpack_require_450389__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_450389__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_450389__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_450389__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -72618,7 +72746,7 @@ __nested_webpack_require_461734__.r(__webpack_exports__);
 /* harmony import */ var _VCheckbox_VSimpleCheckbox__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_461734__(/*! ../../VCheckbox/VSimpleCheckbox */ "./src/components/VCheckbox/VSimpleCheckbox.ts");
 /* harmony import */ var _directives_ripple__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_461734__(/*! ../../../directives/ripple */ "./src/directives/ripple/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_461734__(/*! ../../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -72738,7 +72866,7 @@ __nested_webpack_require_465084__.r(__webpack_exports__);
 /* harmony import */ var _VCalendar_util_timestamp__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_465084__(/*! ../VCalendar/util/timestamp */ "./src/components/VCalendar/util/timestamp.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_465084__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_465084__(/*! ./util */ "./src/components/VDatePicker/util/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -73469,7 +73597,7 @@ __nested_webpack_require_494553__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_494553__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_494553__(/*! ./util */ "./src/components/VDatePicker/util/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_494553__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -73485,7 +73613,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -74037,7 +74165,7 @@ __nested_webpack_require_516083__.r(__webpack_exports__);
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_516083__(/*! ../../../util/mergeData */ "./src/util/mergeData.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_516083__(/*! ../../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_516083__(/*! ../../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -74053,7 +74181,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -74080,7 +74208,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -74343,7 +74471,7 @@ var __spread =  false || function () {
 "use strict";
 __nested_webpack_require_527739__.r(__webpack_exports__);
 /* harmony import */ var _pad__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_527739__(/*! ./pad */ "./src/components/VDatePicker/util/pad.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -74500,7 +74628,7 @@ function isDateAllowed(date, min, max, allowedFn) {
 "use strict";
 __nested_webpack_require_534532__.r(__webpack_exports__);
 /* harmony import */ var _pad__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_534532__(/*! ./pad */ "./src/components/VDatePicker/util/pad.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -74596,7 +74724,7 @@ var padStart = function padStart(string, targetLength, padString) {
 "use strict";
 __nested_webpack_require_537140__.r(__webpack_exports__);
 /* harmony import */ var _pad__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_537140__(/*! ./pad */ "./src/components/VDatePicker/util/pad.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -74677,7 +74805,7 @@ __nested_webpack_require_539115__.r(__webpack_exports__);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_539115__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_539115__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_539115__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -74693,7 +74821,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -74720,7 +74848,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -75069,7 +75197,7 @@ __nested_webpack_require_553258__.r(__webpack_exports__);
 /* harmony import */ var _VDivider_sass__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_553258__(/*! ./VDivider.sass */ "./src/components/VDivider/VDivider.sass");
 /* harmony import */ var _VDivider_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_553258__.n(_VDivider_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_553258__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -75162,7 +75290,7 @@ __nested_webpack_require_556518__.r(__webpack_exports__);
 /* harmony import */ var _mixins_registrable__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_556518__(/*! ../../mixins/registrable */ "./src/mixins/registrable/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_556518__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_556518__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -75346,7 +75474,7 @@ __nested_webpack_require_563159__.r(__webpack_exports__);
 /* harmony import */ var _directives_ripple__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_563159__(/*! ../../directives/ripple */ "./src/directives/ripple/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_563159__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_563159__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -75482,7 +75610,7 @@ __nested_webpack_require_568097__.r(__webpack_exports__);
 /* harmony import */ var _VExpansionPanel_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_568097__.n(_VExpansionPanel_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _VItemGroup_VItemGroup__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_568097__(/*! ../VItemGroup/VItemGroup */ "./src/components/VItemGroup/VItemGroup.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_568097__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -75628,7 +75756,7 @@ __nested_webpack_require_574182__.r(__webpack_exports__);
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_574182__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -75644,7 +75772,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -75671,7 +75799,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -75990,7 +76118,7 @@ __nested_webpack_require_586953__.r(__webpack_exports__);
 /* harmony import */ var _mixins_ssr_bootable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_586953__(/*! ../../mixins/ssr-bootable */ "./src/mixins/ssr-bootable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_586953__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_586953__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -76117,7 +76245,7 @@ __nested_webpack_require_592409__.r(__webpack_exports__);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_592409__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _mixins_binds_attrs__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_592409__(/*! ../../mixins/binds-attrs */ "./src/mixins/binds-attrs/index.ts");
 /* harmony import */ var _mixins_registrable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_592409__(/*! ../../mixins/registrable */ "./src/mixins/registrable/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -76316,7 +76444,7 @@ __nested_webpack_require_598006__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_598006__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_598006__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_598006__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -76618,7 +76746,7 @@ __nested_webpack_require_608188__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_608188__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_608188__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_608188__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -76634,7 +76762,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -76661,7 +76789,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -77090,7 +77218,7 @@ __nested_webpack_require_623746__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_623746__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nested_webpack_require_623746__.n(vue__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_623746__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -77689,7 +77817,7 @@ __nested_webpack_require_644413__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_644413__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_644413__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_644413__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -78106,7 +78234,7 @@ __nested_webpack_require_659064__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_659064__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_659064__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_659064__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -78397,7 +78525,7 @@ __nested_webpack_require_669291__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_669291__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_669291__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_669291__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -78505,7 +78633,7 @@ __nested_webpack_require_673253__.r(__webpack_exports__);
 /* harmony import */ var _directives_intersect__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_673253__(/*! ../../directives/intersect */ "./src/directives/intersect/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_673253__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_673253__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -78635,7 +78763,7 @@ __nested_webpack_require_677672__.r(__webpack_exports__);
 /* harmony import */ var _VList_sass__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_677672__(/*! ./VList.sass */ "./src/components/VList/VList.sass");
 /* harmony import */ var _VList_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_677672__.n(_VList_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _VSheet_VSheet__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_677672__(/*! ../VSheet/VSheet */ "./src/components/VSheet/VSheet.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -78651,7 +78779,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __values =  false || function (o) {
+var __values = undefined && undefined.__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
       m = s && o[s],
       i = 0;
@@ -78802,7 +78930,7 @@ __nested_webpack_require_682054__.r(__webpack_exports__);
 /* harmony import */ var _transitions__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_682054__(/*! ../transitions */ "./src/components/transitions/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_682054__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_682054__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -79024,7 +79152,7 @@ __nested_webpack_require_690430__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_690430__(/*! ./../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_690430__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_690430__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -79238,7 +79366,7 @@ __nested_webpack_require_697309__.r(__webpack_exports__);
 "use strict";
 __nested_webpack_require_698628__.r(__webpack_exports__);
 /* harmony import */ var _VAvatar__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_698628__(/*! ../VAvatar */ "./src/components/VAvatar/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -79311,7 +79439,7 @@ __nested_webpack_require_700736__.r(__webpack_exports__);
 /* harmony import */ var _VItemGroup_VItemGroup__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_700736__(/*! ../VItemGroup/VItemGroup */ "./src/components/VItemGroup/VItemGroup.ts");
 /* harmony import */ var _mixins_colorable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_700736__(/*! ../../mixins/colorable */ "./src/mixins/colorable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_700736__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -79581,7 +79709,7 @@ __nested_webpack_require_712297__.r(__webpack_exports__);
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_13__ = __nested_webpack_require_712297__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_14__ = __nested_webpack_require_712297__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _services_goto__WEBPACK_IMPORTED_MODULE_15__ = __nested_webpack_require_712297__(/*! ../../services/goto */ "./src/services/goto/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -79597,7 +79725,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -79624,7 +79752,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -80247,7 +80375,7 @@ __nested_webpack_require_736989__.r(__webpack_exports__);
 /* harmony import */ var _directives_touch__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_736989__(/*! ../../directives/touch */ "./src/directives/touch/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_736989__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_13__ = __nested_webpack_require_736989__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -80682,7 +80810,7 @@ __nested_webpack_require_753983__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_753983__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_753983__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_753983__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -80698,7 +80826,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -80725,7 +80853,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -81123,7 +81251,7 @@ __nested_webpack_require_768136__.r(__webpack_exports__);
 /* harmony import */ var _VTextField_VTextField__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_768136__(/*! ../VTextField/VTextField */ "./src/components/VTextField/VTextField.ts");
 /* harmony import */ var _VBtn__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_768136__(/*! ../VBtn */ "./src/components/VBtn/index.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_768136__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -81279,7 +81407,7 @@ __nested_webpack_require_774553__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_774553__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _mixins_toggleable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_774553__(/*! ./../../mixins/toggleable */ "./src/mixins/toggleable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_774553__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -81421,7 +81549,7 @@ __nested_webpack_require_779289__.r(__webpack_exports__);
 /* harmony import */ var _mixins_intersectable__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_779289__(/*! ../../mixins/intersectable */ "./src/mixins/intersectable/index.ts");
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_779289__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_779289__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -81437,7 +81565,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -81464,7 +81592,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -81885,7 +82013,7 @@ __nested_webpack_require_793879__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_793879__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_793879__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_793879__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -82221,7 +82349,7 @@ __nested_webpack_require_806363__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_806363__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_806363__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_806363__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -82513,7 +82641,7 @@ __nested_webpack_require_817272__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_817272__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_817272__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_817272__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -82529,7 +82657,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __rest =  false || function (s, e) {
+var __rest = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -82724,7 +82852,7 @@ __nested_webpack_require_825873__.r(__webpack_exports__);
 /* harmony import */ var _VInput__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_825873__(/*! ../VInput */ "./src/components/VInput/index.ts");
 /* harmony import */ var _VItemGroup_VItemGroup__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_825873__(/*! ../VItemGroup/VItemGroup */ "./src/components/VItemGroup/VItemGroup.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_825873__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -82872,7 +83000,7 @@ __nested_webpack_require_831887__.r(__webpack_exports__);
 /* harmony import */ var _VRangeSlider_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_831887__.n(_VRangeSlider_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _VSlider__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_831887__(/*! ../VSlider */ "./src/components/VSlider/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_831887__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -82888,7 +83016,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -82915,7 +83043,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -83601,7 +83729,7 @@ __nested_webpack_require_856239__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_856239__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_13__ = __nested_webpack_require_856239__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_14__ = __nested_webpack_require_856239__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -83617,7 +83745,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __values =  false || function (o) {
+var __values = undefined && undefined.__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
       m = s && o[s],
       i = 0;
@@ -84489,7 +84617,7 @@ __nested_webpack_require_888104__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_888104__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_888104__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_888104__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -84805,7 +84933,7 @@ __nested_webpack_require_899443__.r(__webpack_exports__);
 /* harmony import */ var _mixins_roundable__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_899443__(/*! ../../mixins/roundable */ "./src/mixins/roundable/index.ts");
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_899443__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_899443__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -84913,7 +85041,7 @@ __nested_webpack_require_904109__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_904109__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_904109__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_904109__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -84929,7 +85057,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -85187,7 +85315,7 @@ __nested_webpack_require_913883__.r(__webpack_exports__);
 /* harmony import */ var _directives_touch__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_913883__(/*! ../../directives/touch */ "./src/directives/touch/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_913883__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_913883__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -85203,7 +85331,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __values =  false || function (o) {
+var __values = undefined && undefined.__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
       m = s && o[s],
       i = 0;
@@ -85760,7 +85888,7 @@ __nested_webpack_require_935015__.r(__webpack_exports__);
 /* harmony import */ var _directives_click_outside__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_935015__(/*! ../../directives/click-outside */ "./src/directives/click-outside/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_935015__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_935015__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -86562,7 +86690,7 @@ __nested_webpack_require_966163__.r(__webpack_exports__);
 /* harmony import */ var _helpers_path__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_966163__(/*! ./helpers/path */ "./src/components/VSparkline/helpers/path.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -86947,7 +87075,7 @@ var __assign =  false || function () {
 __nested_webpack_require_978710__.r(__webpack_exports__);
 /* harmony export (binding) */ __nested_webpack_require_978710__.d(__webpack_exports__, "genPoints", function() { return genPoints; });
 /* harmony export (binding) */ __nested_webpack_require_978710__.d(__webpack_exports__, "genBars", function() { return genBars; });
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -86974,7 +87102,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -87317,7 +87445,7 @@ __nested_webpack_require_991614__.r(__webpack_exports__);
 /* harmony import */ var _mixins_proxyable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_991614__(/*! ../../mixins/proxyable */ "./src/mixins/proxyable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_991614__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_991614__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -87802,7 +87930,7 @@ __nested_webpack_require_1008633__.r(__webpack_exports__);
 /* harmony import */ var _VSubheader_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1008633__.n(_VSubheader_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1008633__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1008633__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -87892,7 +88020,7 @@ __nested_webpack_require_1011717__.r(__webpack_exports__);
 /* harmony import */ var _transitions__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1011717__(/*! ../transitions */ "./src/components/transitions/index.ts");
 /* harmony import */ var _VProgressCircular_VProgressCircular__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_1011717__(/*! ../VProgressCircular/VProgressCircular */ "./src/components/VProgressCircular/VProgressCircular.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_1011717__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -87908,7 +88036,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __rest =  false || function (s, e) {
+var __rest = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -88076,7 +88204,7 @@ __nested_webpack_require_1019287__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1019287__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1019287__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1019287__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -88182,7 +88310,7 @@ __nested_webpack_require_1023621__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1023621__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1023621__(/*! ./../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1023621__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -88353,7 +88481,7 @@ __nested_webpack_require_1029011__.r(__webpack_exports__);
 /* harmony import */ var _directives_resize__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_1029011__(/*! ../../directives/resize */ "./src/directives/resize/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_1029011__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_1029011__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -88677,7 +88805,7 @@ __nested_webpack_require_1039575__.r(__webpack_exports__);
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1039575__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _mixins_ssr_bootable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1039575__(/*! ../../mixins/ssr-bootable */ "./src/mixins/ssr-bootable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1039575__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -88693,7 +88821,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __values =  false || function (o) {
+var __values = undefined && undefined.__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
       m = s && o[s],
       i = 0;
@@ -88810,7 +88938,7 @@ var __values =  false || function (o) {
 __nested_webpack_require_1044201__.r(__webpack_exports__);
 /* harmony import */ var _VWindow_VWindow__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1044201__(/*! ../VWindow/VWindow */ "./src/components/VWindow/VWindow.ts");
 /* harmony import */ var _VItemGroup_VItemGroup__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1044201__(/*! ./../VItemGroup/VItemGroup */ "./src/components/VItemGroup/VItemGroup.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -88963,7 +89091,7 @@ __nested_webpack_require_1049872__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_1049872__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_1049872__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_1049872__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -88979,7 +89107,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __rest =  false || function (s, e) {
+var __rest = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -88992,7 +89120,7 @@ var __rest =  false || function (s, e) {
   return t;
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -89019,7 +89147,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -89564,7 +89692,7 @@ __nested_webpack_require_1071166__.r(__webpack_exports__);
 /* harmony import */ var _VTextarea_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1071166__.n(_VTextarea_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _VTextField_VTextField__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1071166__(/*! ../VTextField/VTextField */ "./src/components/VTextField/VTextField.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1071166__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -89793,7 +89921,7 @@ __nested_webpack_require_1079243__.r(__webpack_exports__);
 /* harmony import */ var _SelectingTimes__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_1079243__(/*! ./SelectingTimes */ "./src/components/VTimePicker/SelectingTimes.ts");
 /* harmony reexport (safe) */ __nested_webpack_require_1079243__.d(__webpack_exports__, "SelectingTimes", function() { return _SelectingTimes__WEBPACK_IMPORTED_MODULE_7__["SelectingTimes"]; });
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -90198,7 +90326,7 @@ __nested_webpack_require_1095745__.r(__webpack_exports__);
 /* harmony import */ var _mixins_colorable__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1095745__(/*! ../../mixins/colorable */ "./src/mixins/colorable/index.ts");
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1095745__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1095745__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -90630,7 +90758,7 @@ __nested_webpack_require_1112059__.r(__webpack_exports__);
 /* harmony import */ var _VTimeline_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1112059__.n(_VTimeline_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1112059__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1112059__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -90697,7 +90825,7 @@ __nested_webpack_require_1114259__.r(__webpack_exports__);
 /* harmony import */ var _VIcon__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1114259__(/*! ../VIcon */ "./src/components/VIcon/index.ts");
 /* harmony import */ var _mixins_themeable__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1114259__(/*! ../../mixins/themeable */ "./src/mixins/themeable/index.ts");
 /* harmony import */ var _mixins_colorable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1114259__(/*! ../../mixins/colorable */ "./src/mixins/colorable/index.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -90860,7 +90988,7 @@ __nested_webpack_require_1119935__.r(__webpack_exports__);
 /* harmony import */ var _VImg_VImg__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1119935__(/*! ../VImg/VImg */ "./src/components/VImg/VImg.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1119935__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1119935__(/*! ../../util/console */ "./src/util/console.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -90876,7 +91004,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -91361,7 +91489,7 @@ __nested_webpack_require_1138592__.r(__webpack_exports__);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1138592__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_1138592__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util_filterTreeItems__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_1138592__(/*! ./util/filterTreeItems */ "./src/components/VTreeview/util/filterTreeItems.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -91377,7 +91505,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -91404,7 +91532,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -91412,7 +91540,7 @@ var __spread =  false || function () {
   return ar;
 };
 
-var __values =  false || function (o) {
+var __values = undefined && undefined.__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
       m = s && o[s],
       i = 0;
@@ -91957,7 +92085,7 @@ __nested_webpack_require_1158853__.r(__webpack_exports__);
 /* harmony import */ var _mixins_colorable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1158853__(/*! ../../mixins/colorable */ "./src/mixins/colorable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1158853__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1158853__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -91973,7 +92101,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -92000,7 +92128,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -92612,7 +92740,7 @@ __nested_webpack_require_1181053__.r(__webpack_exports__);
 /* harmony import */ var _VBtn__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1181053__(/*! ../VBtn */ "./src/components/VBtn/index.ts");
 /* harmony import */ var _VIcon__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1181053__(/*! ../VIcon */ "./src/components/VIcon/index.ts");
 /* harmony import */ var _VItemGroup_VItemGroup__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1181053__(/*! ../VItemGroup/VItemGroup */ "./src/components/VItemGroup/VItemGroup.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -93582,7 +93710,7 @@ __nested_webpack_require_1239144__.r(__webpack_exports__);
 /* harmony export (binding) */ __nested_webpack_require_1239144__.d(__webpack_exports__, "createSimpleTransition", function() { return createSimpleTransition; });
 /* harmony export (binding) */ __nested_webpack_require_1239144__.d(__webpack_exports__, "createJavascriptTransition", function() { return createJavascriptTransition; });
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1239144__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -93609,7 +93737,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -94174,7 +94302,7 @@ __nested_webpack_require_1265143__.r(__webpack_exports__);
 /* harmony export (binding) */ __nested_webpack_require_1265143__.d(__webpack_exports__, "Mutate", function() { return Mutate; });
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __rest =  false || function (s, e) {
+var __rest = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -94314,7 +94442,7 @@ __nested_webpack_require_1269716__.r(__webpack_exports__);
 /* harmony import */ var _VRipple_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1269716__.n(_VRipple_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1269716__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1269716__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -94341,7 +94469,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -94955,7 +95083,7 @@ __nested_webpack_require_1289492__.r(__webpack_exports__);
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1289492__(/*! ./components */ "./src/components/index.ts");
 /* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1289492__(/*! ./directives */ "./src/directives/index.ts");
 /* harmony import */ var _framework__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1289492__(/*! ./framework */ "./src/framework.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -98678,7 +98806,7 @@ __nested_webpack_require_1391948__.r(__webpack_exports__);
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1391948__(/*! ../../util/console */ "./src/util/console.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __values =  false || function (o) {
+var __values = undefined && undefined.__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
       m = s && o[s],
       i = 0;
@@ -99162,7 +99290,7 @@ __nested_webpack_require_1408006__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1408006__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1408006__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util_colorUtils__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1408006__(/*! ../../util/colorUtils */ "./src/util/colorUtils.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -99178,7 +99306,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -99394,7 +99522,7 @@ __nested_webpack_require_1413199__.r(__webpack_exports__);
 "use strict";
 __nested_webpack_require_1414888__.r(__webpack_exports__);
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1414888__(/*! ../../util/mixins */ "./src/util/mixins.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -99421,7 +99549,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -99977,7 +100105,7 @@ __nested_webpack_require_1434274__.r(__webpack_exports__);
 /* harmony import */ var _detachable__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1434274__(/*! ../detachable */ "./src/mixins/detachable/index.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_1434274__(/*! ../../util/mixins */ "./src/util/mixins.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1434274__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -101055,7 +101183,7 @@ __nested_webpack_require_1468645__.r(__webpack_exports__);
 __nested_webpack_require_1470169__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1470169__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1470169__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-var __values =  false || function (o) {
+var __values = undefined && undefined.__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
       m = s && o[s],
       i = 0;
@@ -101133,7 +101261,7 @@ __nested_webpack_require_1472529__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1472529__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _directives_ripple__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1472529__(/*! ../../directives/ripple */ "./src/directives/ripple/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1472529__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -101674,7 +101802,7 @@ __nested_webpack_require_1489087__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1489087__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1489087__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1489087__(/*! ../../util/helpers */ "./src/util/helpers.ts");
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -101701,7 +101829,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -101776,7 +101904,7 @@ __nested_webpack_require_1492452__.r(__webpack_exports__);
 /* harmony export (binding) */ __nested_webpack_require_1492452__.d(__webpack_exports__, "functionalThemeClasses", function() { return functionalThemeClasses; });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1492452__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1492452__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -102382,7 +102510,7 @@ var preset = {
 __nested_webpack_require_1511342__.r(__webpack_exports__);
 /* harmony export (binding) */ __nested_webpack_require_1511342__.d(__webpack_exports__, "Application", function() { return Application; });
 /* harmony import */ var _service__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1511342__(/*! ../service */ "./src/services/service/index.ts");
-var __extends =  false || function () {
+var __extends = undefined && undefined.__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
       __proto__: []
@@ -102476,7 +102604,7 @@ function (_super) {
 __nested_webpack_require_1513824__.r(__webpack_exports__);
 /* harmony export (binding) */ __nested_webpack_require_1513824__.d(__webpack_exports__, "Breakpoint", function() { return Breakpoint; });
 /* harmony import */ var _service__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1513824__(/*! ../service */ "./src/services/service/index.ts");
-var __extends =  false || function () {
+var __extends = undefined && undefined.__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
       __proto__: []
@@ -102754,7 +102882,7 @@ __nested_webpack_require_1523115__.r(__webpack_exports__);
 /* harmony import */ var _service__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1523115__(/*! ../service */ "./src/services/service/index.ts");
 /* harmony import */ var _easing_patterns__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1523115__(/*! ./easing-patterns */ "./src/services/goto/easing-patterns.ts");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1523115__(/*! ./util */ "./src/services/goto/util.ts");
-var __extends =  false || function () {
+var __extends = undefined && undefined.__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
       __proto__: []
@@ -102780,7 +102908,7 @@ var __extends =  false || function () {
   };
 }();
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -102956,7 +103084,7 @@ __nested_webpack_require_1529667__.r(__webpack_exports__);
 /* harmony import */ var _service__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1529667__(/*! ../service */ "./src/services/service/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1529667__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _presets__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1529667__(/*! ./presets */ "./src/services/icons/presets/index.ts");
-var __extends =  false || function () {
+var __extends = undefined && undefined.__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
       __proto__: []
@@ -103370,7 +103498,7 @@ __nested_webpack_require_1547397__.r(__webpack_exports__);
 /* harmony import */ var _service__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1547397__(/*! ../service */ "./src/services/service/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1547397__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1547397__(/*! ../../util/console */ "./src/util/console.ts");
-var __extends =  false || function () {
+var __extends = undefined && undefined.__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
       __proto__: []
@@ -103396,7 +103524,7 @@ var __extends =  false || function () {
   };
 }();
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -103423,7 +103551,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -103535,7 +103663,7 @@ __nested_webpack_require_1552002__.r(__webpack_exports__);
 /* harmony import */ var _util_console__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1552002__(/*! ../../util/console */ "./src/util/console.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1552002__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _service__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1552002__(/*! ../service */ "./src/services/service/index.ts");
-var __extends =  false || function () {
+var __extends = undefined && undefined.__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
       __proto__: []
@@ -103561,7 +103689,7 @@ var __extends =  false || function () {
   };
 }();
 
-var __rest =  false || function (s, e) {
+var __rest = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -103655,7 +103783,7 @@ __nested_webpack_require_1555900__.r(__webpack_exports__);
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1555900__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1555900__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nested_webpack_require_1555900__.n(vue__WEBPACK_IMPORTED_MODULE_3__);
-var __extends =  false || function () {
+var __extends = undefined && undefined.__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
       __proto__: []
@@ -104001,7 +104129,7 @@ __nested_webpack_require_1565644__.r(__webpack_exports__);
 /* harmony import */ var _util_color_transformCIELAB__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_1565644__(/*! ../../util/color/transformCIELAB */ "./src/util/color/transformCIELAB.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __rest =  false || function (s, e) {
+var __rest = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -104014,7 +104142,7 @@ var __rest =  false || function (s, e) {
   return t;
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -104333,7 +104461,7 @@ __nested_webpack_require_1578239__.r(__webpack_exports__);
 /* harmony import */ var _console__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1578239__(/*! ./console */ "./src/util/console.ts");
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1578239__(/*! ./helpers */ "./src/util/helpers.ts");
 /* harmony import */ var _color_transformSRGB__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1578239__(/*! ./color/transformSRGB */ "./src/util/color/transformSRGB.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -104349,7 +104477,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -105272,7 +105400,7 @@ __nested_webpack_require_1605126__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1605126__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -105288,7 +105416,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
@@ -105315,7 +105443,7 @@ var __read =  false || function (o, n) {
   return ar;
 };
 
-var __spread =  false || function () {
+var __spread = undefined && undefined.__spread || function () {
   for (var ar = [], i = 0; i < arguments.length; i++) {
     ar = ar.concat(__read(arguments[i]));
   }
@@ -105869,7 +105997,7 @@ __nested_webpack_require_1625422__.r(__webpack_exports__);
 /* harmony export (binding) */ __nested_webpack_require_1625422__.d(__webpack_exports__, "mergeClasses", function() { return mergeClasses; });
 /* harmony export (binding) */ __nested_webpack_require_1625422__.d(__webpack_exports__, "mergeListeners", function() { return mergeListeners; });
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1625422__(/*! ./helpers */ "./src/util/helpers.ts");
-var __assign =  false || function () {
+var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -105885,7 +106013,7 @@ var __assign =  false || function () {
   return __assign.apply(this, arguments);
 };
 
-var __values =  false || function (o) {
+var __values = undefined && undefined.__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
       m = s && o[s],
       i = 0;
@@ -105902,7 +106030,7 @@ var __values =  false || function (o) {
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 
-var __read =  false || function (o, n) {
+var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
   var i = m.call(o),
