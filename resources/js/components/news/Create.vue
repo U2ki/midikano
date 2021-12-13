@@ -58,6 +58,16 @@
                         </v-btn>
                         <vue-loading type="spiningDubbles" v-if="show" color="#333" :size="{ width: '50px', height: '50px' }"></vue-loading>
                     </v-form>
+                    <v-divider inset class="my-0 mx-auto"></v-divider>
+                    <div class="my-10 mx-16">
+                        <v-btn
+                            color="secondary"
+                            elevation="2"
+                            onClick="history.back(); return false;"
+                        >
+                            戻る
+                        </v-btn>
+                    </div>
                 </v-card>
             </v-row>
         </v-container>

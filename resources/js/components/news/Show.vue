@@ -28,7 +28,6 @@
                         </div>
                         <div class="my-10 mx-16 w-100 d-flex justify-content-end">
                             <v-btn
-                                href="/news/create"
                                 color="indigo lighten-1"
                                 elevation="2"
                                 class="text-white mx-14"
@@ -36,16 +35,27 @@
                                 編集
                             </v-btn>
                             <v-btn
-                                href="/news/create"
                                 color="red accent-4"
                                 elevation="2"
                                 class="text-white"
+                                @click="deleteConfirm(news.id)"
                             >
                                 削除
                             </v-btn>
                         </div>
                     </div>
                 </v-card>
+                <v-dialog v-model="deleteDialog" persistent max-width="290">
+                    <v-card>
+                        <v-card-title class="headline">削除確認</v-card-title>
+                        <v-card-text>本当に削除してもよろしいですか？</v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="green darken-1" text @click="deleteDialog = false">キャンセル</v-btn>
+                            <v-btn color="green darken-1" text @click="deleteItem(deleteID)">削除</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
             </v-row>
         </v-container>
     </v-main>
@@ -60,8 +70,31 @@
 			news: {},
 			userStatus: {},
 		},
+		data() {
+			return {
+				deleteDialog: false,
+			    deleteID: null,
+		    }
+		},
 		methods: {
-			formatDate: dateStr => dayjs(dateStr).format('YYYY/MM/DD')
+			formatDate: dateStr => dayjs(dateStr).format('YYYY/MM/DD'),
+
+			// 削除確認ダイアログ表示を追加
+			deleteConfirm(id) {
+				this.deleteDialog = true;
+				this.deleteID = id;
+			},
+			// 削除実行
+			deleteItem(id) {
+				axios.delete('/news/' + id)
+					.then( (res) => {
+						window.location.href = '/news';
+					})
+					.catch( (error) => {
+						console.log(error);
+					})
+				this.deleteDialog = false;	// 最後に削除確認ダイアログは閉じます。
+			},
 		},
 	}
 </script>
