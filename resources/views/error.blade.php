@@ -2,6 +2,8 @@
 
 @section('content')
     <vc-error
-        :error="{{$error_num}}"
+        @if (isset($error_num))
+          :error="{{$error_num}}"
+        @endif
     ></vc-error>
 @endsection
