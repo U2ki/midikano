@@ -193,6 +193,7 @@
 						$('.alert').fadeIn("slow", function () {
 							$(this).delay(3000).fadeOut("slow");
 						});
+						location.reload();
 					})
 					.catch(error => {
 						console.log(error)

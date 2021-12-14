@@ -3699,6 +3699,7 @@ __webpack_require__.r(__webpack_exports__);
         $('.alert').fadeIn("slow", function () {
           $(this).delay(3000).fadeOut("slow");
         });
+        location.reload();
       })["catch"](function (error) {
         console.log(error);
       }).then(function () {
