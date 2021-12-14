@@ -44,6 +44,7 @@ Vue.use(VModal);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('vc-navbar', require('./components/Navbar.vue').default);
 Vue.component('vc-footer', require('./components/Footer.vue').default);
+Vue.component('vc-error', require('./components/Error').default);
 Vue.component('vc-lacquerware', require('./components/Lacquerware').default);
 Vue.component('vc-news', require('./components/news/News').default);
 Vue.component('vc-news-create', require('./components/news/Create').default);

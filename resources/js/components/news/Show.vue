@@ -20,7 +20,7 @@
                 <v-card class="w-100 my-5">
                     <div class="my-10 mx-8">
                         <h2 class="text-center">{{ news.title }}</h2>
-                        <p class="text-right">{{ formatDate(news.updated_at) }}</p>
+                        <p class="text-right">{{ formatDate(news.created_at) }}</p>
                         <div class="type-line py-1 mt-1 mb-5 ms-10">
                             <p v-if="news.type === 0">ニュース</p>
                             <p v-if="news.type === 1">イベント</p>
@@ -33,7 +33,7 @@
                             <v-btn
                                 color="secondary"
                                 elevation="2"
-                                onClick="history.back(); return false;"
+                                href="/news/"
                             >
                                 戻る
                             </v-btn>
@@ -41,6 +41,7 @@
                         <div class="my-10 mx-16 w-100 d-flex justify-content-end">
                             <v-btn
                                 color="indigo lighten-1"
+                                v-show="user > 0"
                                 elevation="2"
                                 class="text-white mx-14"
                                 @click="show"
@@ -49,6 +50,7 @@
                             </v-btn>
                             <v-btn
                                 color="red accent-4"
+                                v-show="user > 0"
                                 elevation="2"
                                 class="text-white"
                                 @click="deleteConfirm(news.id)"
@@ -107,7 +109,7 @@
                                     :disabled='!isComplete'
                                     @click="onSubmit()"
                                 >
-                                    作成
+                                    編集
                                 </v-btn>
                             </div>
                             <vue-loading type="spiningDubbles" v-if="loadShow" color="#333" :size="{ width: '50px', height: '50px' }"></vue-loading>
@@ -139,7 +141,7 @@
 		name: "Show",
 		props: {
 			news: {},
-			userStatus: {},
+			user: {},
 		},
 		computed: {
 			isComplete () {

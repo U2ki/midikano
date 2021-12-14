@@ -9,6 +9,7 @@
                     <div class="my-10 mx-16 d-flex justify-content-end">
                         <v-btn
                             href="/news/create"
+                            v-show="user > 0"
                             color="primary"
                             elevation="2"
                             class="ms-auto"
@@ -33,7 +34,7 @@
                                 </td>
                                 <td v-if="news.type === 0">ニュース</td>
                                 <td v-if="news.type === 1">イベント</td>
-                                <td>{{ formatDate(news.updated_at) }}</td>
+                                <td>{{ formatDate(news.created_at) }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -50,7 +51,7 @@
 		name: "News",
 		props: {
 			newsalls: {},
-			userStatus: {},
+			user: {},
 		},
 		methods: {
 			formatDate: dateStr => dayjs(dateStr).format('YYYY/MM/DD')

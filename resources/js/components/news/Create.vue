@@ -63,7 +63,7 @@
                         <v-btn
                             color="secondary"
                             elevation="2"
-                            onClick="history.back(); return false;"
+                            href="/news/"
                         >
                             戻る
                         </v-btn>

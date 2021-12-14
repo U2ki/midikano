@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller {
 
     public function returnUser() {
-        $user_id  = auth()->id();
+        $user_id = auth()->id();
         if ( $user_id ) {
-            $user        = \DB::table( 'users' )->where( 'id', $user_id )->first();
-            $user_status = $user->status;
+            $user = \DB::table( 'users' )->where( 'id', $user_id )->first();
+            $user = $user->status;
         } else {
-            $user_status = 0;
+            $user = 0;
         }
-        return $user_status;
+
+        return $user;
     }
 
     /**
@@ -26,9 +28,9 @@ class NewsController extends Controller {
      */
     public function index() {
         $newsalls = News::get();
-        $user_status = $this->returnUser();
+        $user     = $this->returnUser();
 
-        return view( 'news.news', compact( 'newsalls', 'user_status' ) );
+        return view( 'news.news', compact( 'newsalls', 'user' ) );
     }
 
     /**
@@ -37,6 +39,12 @@ class NewsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
+        if ( ! Auth::user() ) {
+            $error_num = 1;
+
+            return view( 'error', compact( 'error_num' ) );
+        }
+
         return view( 'news.create' );
     }
 
@@ -70,9 +78,9 @@ class NewsController extends Controller {
      */
     public function show( $id ) {
         $news = News::find( $id );
-        $user_status = $this->returnUser();
+        $user = $this->returnUser();
 
-        return view( 'news.show', compact( 'news', 'user_status' ) );
+        return view( 'news.show', compact( 'news', 'user' ) );
     }
 
     /**
@@ -84,10 +92,10 @@ class NewsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update( Request $request, $id ) {
-        $news = News::find($id);
+        $news = News::find( $id );
         if ( $request->select == 'ニュース' ) {
             $news->type = 0;
-        } elseif ( $request->select == 'イベント' )  {
+        } elseif ( $request->select == 'イベント' ) {
             $news->type = 1;
         }
         $news->title   = $request->title;
@@ -96,8 +104,9 @@ class NewsController extends Controller {
 
         $news->save();
 
-        $user_status = $this->returnUser();
-        return view( 'news.show', compact( 'news', 'user_status' ) );
+        $user = $this->returnUser();
+
+        return view( 'news.show', compact( 'news', 'user' ) );
     }
 
     /**
@@ -108,12 +117,12 @@ class NewsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy( $id ) {
-        $news = News::find($id);
+        $news = News::find( $id );
         $news->delete();
 
         $newsalls = News::get();
-        $user_status = $this->returnUser();
+        $user = $this->returnUser();
 
-        return view( 'news.news', compact( 'newsalls', 'user_status' ) );
+        return view( 'news.news', compact( 'newsalls', 'user' ) );
     }
 }

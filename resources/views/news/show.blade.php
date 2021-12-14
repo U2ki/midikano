@@ -3,6 +3,6 @@
 @section('content')
     <vc-news-show
         :news="{{$news}}"
-        :userStatus="{{$user_status}}"
+        :user="{{$user}}"
     ></vc-news-show>
 @endsection
