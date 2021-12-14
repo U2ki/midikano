@@ -5508,6 +5508,11 @@
   "resolved" "https://registry.npmjs.org/vue/-/vue-2.6.14.tgz"
   "version" "2.6.14"
 
+"vuejs-paginate@^2.1.0":
+  "integrity" "sha512-gnwyXlmCiDOu9MLWxN5UJ4PGijKGNOMpHG8ujsrynCzTJljn/rp7Jq0WiDGDAMi5/u0AHuYIHhced+tUW4jblA=="
+  "resolved" "https://registry.npmjs.org/vuejs-paginate/-/vuejs-paginate-2.1.0.tgz"
+  "version" "2.1.0"
+
 "vuetify@^2.6.1":
   "integrity" "sha512-WtqarqEIJlhiwl1TShtkq58xtfbHpn4BjkuQtsL7mAs2eHCo7QjA3tUm7Dx/NmDc4wa2ghUUth36jTdG+CCWRg=="
   "resolved" "https://registry.npmjs.org/vuetify/-/vuetify-2.6.1.tgz"

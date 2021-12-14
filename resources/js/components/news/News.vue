@@ -26,7 +26,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="news in newsalls">
+                        <tr v-for="news in getItems">
                                 <td>
                                     <a :href="'/news/' + news.id" class="title-url d-block w-100 h-100">
                                       {{ news.title }}
@@ -38,6 +38,22 @@
                         </tr>
                         </tbody>
                     </table>
+                    <vuejs-paginate
+                        :page-count="getPaginateCount"
+                        :prev-text="'<'"
+                        :next-text="'>'"
+                        :click-handler="paginateClickCallback"
+                        :container-class="'pagination justify-content-center'"
+                        :page-class="'page-item'"
+                        :page-link-class="'page-link'"
+                        :prev-class="'page-item'"
+                        :prev-link-class="'page-link'"
+                        :next-class="'page-item'"
+                        :next-link-class="'page-link'"
+                        :first-last-button="true"
+                        :first-button-text="'<<'"
+                        :last-button-text="'>>'"
+                    ></vuejs-paginate>
                 </v-card>
             </v-row>
         </v-container>
@@ -46,6 +62,7 @@
 
 <script>
 	import dayjs from 'dayjs'
+	import VueJsPaginate from "vuejs-paginate";
 
 	export default {
 		name: "News",
@@ -53,9 +70,34 @@
 			newsalls: {},
 			user: {},
 		},
-		methods: {
-			formatDate: dateStr => dayjs(dateStr).format('YYYY/MM/DD')
+		components: {
+			"vuejs-paginate": VueJsPaginate,
 		},
+		data: function () {
+			return {
+				currentPage: 1,
+				perPage: 10,
+			};
+		},
+		computed: {
+			getItems: function () {
+				let start = (this.currentPage - 1) * this.perPage;
+				let end = this.currentPage * this.perPage;
+				return this.newsalls.slice(start, end);
+			},
+			getPaginateCount: function () {
+				return Math.ceil(this.newsalls.length / this.perPage);
+			},
+		},
+		methods: {
+			formatDate: dateStr => dayjs(dateStr).format('YYYY/MM/DD'),
+			paginateClickCallback: function (pageNum) {
+				this.currentPage = Number(pageNum);
+			},
+		},
+		mounted() {
+			console.log(this.newsalls.length)
+        },
 	}
 </script>
 
