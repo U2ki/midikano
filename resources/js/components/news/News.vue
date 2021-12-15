@@ -95,9 +95,6 @@
 				this.currentPage = Number(pageNum);
 			},
 		},
-		mounted() {
-			console.log(this.newsalls.length)
-        },
 	}
 </script>
 
