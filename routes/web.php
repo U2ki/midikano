@@ -20,10 +20,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/mypage', 'HomeController@index')->name('mypage');
-Route::get('/gallery', 'PostController@index')->name('home');
+Route::get('/gallery', 'PostController@index')->name('gallery');
+Route::get('/gallery/create','PostController@create')->name('gallery.create');
+Route::post('/gallery/create','PostController@store')->name('gallery.store');
+Route::get('/gallery/{id}', 'PostController@show')->name('gallery.show');
+Route::put('/gallery/{id}','PostController@update')->name('gallery.update');
+Route::delete('/gallery/{id}','PostController@destroy')->name('gallery.destroy');
+
 Route::get('/about-lacquerware', function () {
     return view('lacquerware');
 });
+
 Route::get('/news', 'NewsController@index')->name('news');
 Route::get('/news/create','NewsController@create')->name('news.create');
 Route::post('/news/create','NewsController@store')->name('news.store');

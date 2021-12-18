@@ -1,5 +1,5 @@
 @extends('layouts.v-app')
 
 @section('content')
-    ギャラリー
+    <vc-gallery-show></vc-gallery-show>
 @endsection
