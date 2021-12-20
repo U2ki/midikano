@@ -10,13 +10,29 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller {
+
+    public function returnUser() {
+        $user_id = auth()->id();
+        if ( $user_id ) {
+            $user = \DB::table( 'users' )->where( 'id', $user_id )->first();
+            $user = $user->status;
+        } else {
+            $user = 0;
+        }
+
+        return $user;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view( 'gallery.gallery' );
+        $images = Image::get();
+        $user     = $this->returnUser();
+
+        return view( 'gallery.gallery', compact( 'images', 'user' ) );
     }
 
     /**
@@ -55,10 +71,12 @@ class PostController extends Controller {
         $nextId = DB::table('posts')->max('id') + 1;
 
         foreach ( $files as $index => $image ) {
-            $path      = Storage::disk( "public" )->putFile( 'file', $image );
-            $imagePath = "/storage/$path";
+            $imageName = time() . $image->getClientOriginalName();
+            $imagePath = public_path('uploads/');
+            $image->move($imagePath, $imageName);
+
             $img       = new Image;
-            $img->src = $imagePath;
+            $img->src = $imageName;
             $img->post_id = $post->id;
             $img->save();
         }

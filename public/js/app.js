@@ -3541,12 +3541,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "gallery",
   props: {
-    newsalls: {},
+    images: {},
     user: {}
+  },
+  mounted: function mounted() {
+    console.log(this.images);
   },
   components: {
     "vuejs-paginate": (vuejs_paginate__WEBPACK_IMPORTED_MODULE_0___default())
@@ -3561,10 +3593,10 @@ __webpack_require__.r(__webpack_exports__);
     getItems: function getItems() {
       var start = (this.currentPage - 1) * this.perPage;
       var end = this.currentPage * this.perPage;
-      return this.newsalls.slice(start, end);
+      return this.images.slice(start, end);
     },
     getPaginateCount: function getPaginateCount() {
-      return Math.ceil(this.newsalls.length / this.perPage);
+      return Math.ceil(this.images.length / this.perPage);
     }
   },
   methods: {
@@ -3573,6 +3605,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     paginateClickCallback: function paginateClickCallback(pageNum) {
       this.currentPage = Number(pageNum);
+    },
+    getImgUrl: function getImgUrl(img) {
+      // すでに存在している写真を表示させる
+      var path = ["../../../..", img.src];
+      var path_link = path.join("");
+      return path_link;
     }
   }
 });
@@ -45607,7 +45645,7 @@ var render = function() {
                               return !!v || "内容を記入してください"
                             }
                           ],
-                          label: "内容",
+                          label: "コメント",
                           height: "300",
                           required: ""
                         },
@@ -45736,31 +45774,66 @@ var render = function() {
                 [_vm._v("\n                    ギャラリー\n                ")]
               ),
               _vm._v(" "),
-              _c("v-card", { staticClass: "w-100 my-5" }, [
-                _c(
-                  "div",
-                  { staticClass: "my-10 mx-16 d-flex justify-content-end" },
-                  [
-                    _c(
-                      "v-btn",
-                      {
-                        staticClass: "ms-auto",
-                        attrs: {
-                          href: "/gallery/create",
-                          color: "primary",
-                          elevation: "2"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            新規作成\n                        "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ])
+              _c(
+                "v-card",
+                { staticClass: "w-100 my-5" },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "my-10 mx-16" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "ms-auto",
+                          attrs: {
+                            href: "/gallery/create",
+                            color: "primary",
+                            elevation: "2"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            新規作成\n                        "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.getItems, function(item) {
+                    return _c("div", { staticClass: "photo" }, [
+                      _c("figure", { staticClass: "photo__wrapper" }, [
+                        _c("img", {
+                          staticClass: "photo__image",
+                          attrs: { src: _vm.getImgUrl(item) }
+                        })
+                      ])
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("vuejs-paginate", {
+                    attrs: {
+                      "page-count": _vm.getPaginateCount,
+                      "prev-text": "<",
+                      "next-text": ">",
+                      "click-handler": _vm.paginateClickCallback,
+                      "container-class": "pagination justify-content-center",
+                      "page-class": "page-item",
+                      "page-link-class": "page-link",
+                      "prev-class": "page-item",
+                      "prev-link-class": "page-link",
+                      "next-class": "page-item",
+                      "next-link-class": "page-link",
+                      "first-last-button": true,
+                      "first-button-text": "<<",
+                      "last-button-text": ">>"
+                    }
+                  })
+                ],
+                2
+              )
             ],
             1
           )

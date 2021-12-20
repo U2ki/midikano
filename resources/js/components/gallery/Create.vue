@@ -35,7 +35,7 @@
                             v-model="body"
                             outlined
                             :rules="[v => !!v || '内容を記入してください']"
-                            label="内容"
+                            label="コメント"
                             class="mt-6"
                             height="300"
                             required
