@@ -54,7 +54,7 @@
                                 v-show="user > 0"
                                 elevation="2"
                                 class="text-white"
-                                @click="deleteConfirm(news.id)"
+                                @click="deleteConfirm(post.id)"
                             >
                                 削除
                             </v-btn>
@@ -177,7 +177,7 @@
 				var params = {
 					body: this.body
 				};
-				axios.put('/news/' + this.news.id, params)
+				axios.put('/gallery/' + this.post.id, params)
 					.then(response => {
 						this.$refs.form.reset()
 						this.alert = true;
@@ -201,9 +201,9 @@
 			},
 			// 削除実行
 			deleteItem(id) {
-				axios.delete('/news/' + id)
+				axios.delete('/gallery/' + id)
 					.then( (res) => {
-						window.location.href = '/news';
+						window.location.href = '/gallery';
 					})
 					.catch( (error) => {
 						console.log(error);

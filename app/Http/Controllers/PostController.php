@@ -118,6 +118,14 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy( $id ) {
-        //
+        $post = Post::find( $id );
+        $post->delete();
+
+        Image::where('post_id', $id)->delete();
+
+        $images = Image::get();
+        $user     = $this->returnUser();
+
+        return view( 'gallery.gallery', compact( 'images', 'user' ) );
     }
 }

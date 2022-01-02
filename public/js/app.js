@@ -3808,7 +3808,7 @@ __webpack_require__.r(__webpack_exports__);
       var params = {
         body: this.body
       };
-      axios.put('/news/' + this.news.id, params).then(function (response) {
+      axios.put('/gallery/' + this.post.id, params).then(function (response) {
         _this.$refs.form.reset();
 
         _this.alert = true;
@@ -3829,8 +3829,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     // 削除実行
     deleteItem: function deleteItem(id) {
-      axios["delete"]('/news/' + id).then(function (res) {
-        window.location.href = '/news';
+      axios["delete"]('/gallery/' + id).then(function (res) {
+        window.location.href = '/gallery';
       })["catch"](function (error) {
         console.log(error);
       });
@@ -47959,7 +47959,7 @@ var render = function() {
                             attrs: { color: "red accent-4", elevation: "2" },
                             on: {
                               click: function($event) {
-                                return _vm.deleteConfirm(_vm.news.id)
+                                return _vm.deleteConfirm(_vm.post.id)
                               }
                             }
                           },
