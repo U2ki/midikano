@@ -15,17 +15,18 @@
                     作成できました。
                 </v-alert>
                 <h1 class="font-weight-bold text-h4 basil--text my-10 page-title">
-                    ニュース | 詳細
+                    ギャラリー | 詳細
                 </h1>
                 <v-card class="w-100 my-5">
                     <div class="my-10 mx-8">
-                        <h2 class="text-center">{{ news.title }}</h2>
-                        <p class="text-right">{{ formatDate(news.created_at) }}</p>
-                        <div class="type-line py-1 mt-1 mb-5 ms-10">
-                            <p v-if="news.type === 0">ニュース</p>
-                            <p v-if="news.type === 1">イベント</p>
+                        <p class="text-right">{{ formatDate(post.created_at) }}</p>
+                        <div class="ma-10 text-center">
+                            <img
+                                class="photo__image mw-100 h-auto"
+                                :src="getImgUrl(image)"
+                            >
                         </div>
-                        <pre class="ma-16 body-1">{{ news.content }}</pre>
+                        <pre class="ma-16 body-1">{{ post.content }}</pre>
                     </div>
                     <v-divider inset class="my-0 mx-auto"></v-divider>
                     <div class="d-flex">
@@ -33,7 +34,7 @@
                             <v-btn
                                 color="secondary"
                                 elevation="2"
-                                href="/news/"
+                                href="/gallery/"
                             >
                                 戻る
                             </v-btn>
@@ -81,19 +82,6 @@
                             lazy-validation
                             class="px-sm-7 px-md-5 w-75 mx-auto my-2"
                         >
-                            <v-text-field
-                                v-model="title"
-                                :rules="titleRules"
-                                label="タイトル"
-                                required
-                                outlined
-                            ></v-text-field>
-                            <v-select
-                                v-model="select"
-                                :items="items"
-                                :rules="[v => !!v || '種類を選択してください']"
-                                label="種類"
-                            ></v-select>
                             <v-textarea
                                 v-model="body"
                                 outlined
@@ -140,14 +128,18 @@
 	export default {
 		name: "Show",
 		props: {
-			news: {},
+			post: {},
+			image: {},
 			user: {},
 		},
 		computed: {
 			isComplete () {
-				return this.title && this.body;
+				return this.body;
 			}
 		},
+		// mounted: function () {
+		// 	console.log(this.image)
+		// },
 		data() {
 			return {
 				loadShow: false,
@@ -155,20 +147,19 @@
 			    deleteID: null,
 				alert: false,
 				valid: true,
-				title: this.news.title,
-				titleRules: [
-					v => !!v || '必須です',
-				],
-				items: [
-					'ニュース',
-					'イベント',
-				],
-				select: '',
-				body: this.news.content,
+				// show: false,
+				files: [],
+				body: this.post.content
 		    }
 		},
 		methods: {
 			formatDate: dateStr => dayjs(dateStr).format('YYYY/MM/DD'),
+
+			getImgUrl(img) {
+				let path = ["/uploads/", img[0].src];
+				let path_link = path.join("");
+				return path_link
+			},
 
             // modal
 			show : function() {
@@ -184,8 +175,6 @@
 				this.show = true;
 
 				var params = {
-					title: this.title,
-					select: this.select,
 					body: this.body
 				};
 				axios.put('/news/' + this.news.id, params)

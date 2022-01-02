@@ -38,6 +38,14 @@ Vue.use(VueMq, {
 import VModal from 'vue-js-modal'
 Vue.use(VModal);
 
+import VueLazyload from 'vue-lazyload';
+Vue.use(VueLazyload, {
+    preLoad: 1.3, // 事前ロードする高さの割合指定
+    error: '../assets/noimage.png', // エラー時に表示する画像指定
+    loading: '../assets/loading.gif', // ロード中に表示する画像指定
+    attempt: 1 // ロード失敗した時のリトライの上限指定
+});
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 

@@ -16,34 +16,27 @@
                             新規作成
                         </v-btn>
                     </div>
-                    <div
-                        class="photo"
-                        v-for="item in getItems"
-                    >
-                        <figure class="photo__wrapper">
-                            <img
-                                class="photo__image"
-                                :src="getImgUrl(item)"
-                            >
-                            <!--    上に    :alt="`Photo by ${item.owner.name}`"-->
-
-                        </figure>
-<!--                        <RouterLink-->
-<!--                            class="photo__overlay"-->
-<!--                            :to="`/gallery/${item.id}`"-->
-<!--                        >-->
-<!--                            <div class="photo__controls">-->
-<!--                                <button-->
-<!--                                    class="photo__action photo__action&#45;&#45;like"-->
-<!--                                    title="Like photo"-->
-<!--                                >-->
-<!--                                    <i class="icon ion-md-heart"></i>-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                            <div class="photo__username">-->
-<!--                         &lt;!&ndash;       {{ // item.owner.name }}  &ndash;&gt;-->
-<!--                            </div>-->
-<!--                        </RouterLink>-->
+                    <v-divider inset class="my-0 mx-auto"></v-divider>
+                    <div class="thumbnails mx-2">
+                        <div
+                            class="photo my-5 col-sm-6 col-md-4 hover-ef"
+                            v-for="item in getItems"
+                            v-on:mouseover="mouseOverAction(item)"
+                            v-on:mouseleave="mouseLeaveAction(item)"
+                        >
+                            <a :href="'/gallery/' + item.post_id">
+                                <img
+                                    class="photo__image mw-100 h-auto"
+                                    :src="getImgUrl(item)"
+                                >
+                                <div class="mask">
+    <!--                                <p class="caption" v-show="hoverFlag && item === hoverIndex ">あああ</p>-->
+                                    <v-list-item-icon class="caption" v-show="hoverFlag && item === hoverIndex ">
+                                        <v-icon class="good-btn">mdi-heart-outline</v-icon>
+                                    </v-list-item-icon>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                     <vuejs-paginate
                         :page-count="getPaginateCount"
@@ -76,16 +69,15 @@
 			images: {},
 			user: {},
 		},
-        mounted : function(){
-			console.log(this.images)
-		},
 		components: {
 			"vuejs-paginate": VueJsPaginate,
 		},
 		data: function () {
 			return {
 				currentPage: 1,
-				perPage: 10,
+				perPage: 15,
+				hoverFlag: false,
+				hoverIndex: null,
 			};
 		},
 		computed: {
@@ -105,14 +97,57 @@
 			},
 			getImgUrl(img) {
 				// すでに存在している写真を表示させる
-				let path = ["../../../..", img.src];
+				let path = ["/uploads/", img.src];
 				let path_link = path.join("");
 				return path_link
+			},
+			mouseOverAction(index) {
+				this.hoverFlag = true
+				this.hoverIndex = index
+			},
+			mouseLeaveAction() {
+				this.hoverFlag = false
 			},
 		},
 	}
 </script>
 
 <style scoped>
+    .thumbnails {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 
+    .hover-ef {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .hover-ef .caption {
+        text-align: right;
+        padding: 1rem;
+        display: table-cell;
+        vertical-align: bottom;
+    }
+
+    .hover-ef .mask {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        background-color: rgba(0, 0, 0, 0.728);
+        display: table;
+    }
+
+    .hover-ef:hover .mask {
+        opacity: 0.6;
+    }
+
+    .good-btn {
+        color: red;
+        font-size: 2.5rem;
+    }
 </style>

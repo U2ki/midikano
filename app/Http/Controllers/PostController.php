@@ -91,7 +91,11 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show( $id ) {
-        return view( 'gallery.show' );
+        $post = Post::find( $id );
+        $img = Image::where('post_id', $id)->get();
+        $user = $this->returnUser();
+
+        return view( 'gallery.show', compact( 'post', 'img' , 'user' ) );
     }
 
     /**
