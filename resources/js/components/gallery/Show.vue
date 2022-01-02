@@ -82,16 +82,17 @@
                             lazy-validation
                             class="px-sm-7 px-md-5 w-75 mx-auto my-2"
                         >
+                            <p class="my-10">画像の編集( ※ 機能未定なため未実装 )</p>
                             <v-textarea
                                 v-model="body"
                                 outlined
                                 :rules="[v => !!v || '内容を記入してください']"
                                 label="内容"
-                                class="mt-6"
+                                class="mt-10"
                                 height="200"
                                 required
                             ></v-textarea>
-                            <div class="text-center mt-2">
+                            <div class="text-center mt-7">
                                 <v-btn
                                     color="primary"
                                     :disabled='!isComplete'
@@ -137,9 +138,6 @@
 				return this.body;
 			}
 		},
-		// mounted: function () {
-		// 	console.log(this.image)
-		// },
 		data() {
 			return {
 				loadShow: false,
@@ -147,7 +145,6 @@
 			    deleteID: null,
 				alert: false,
 				valid: true,
-				// show: false,
 				files: [],
 				body: this.post.content
 		    }

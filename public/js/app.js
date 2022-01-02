@@ -3754,6 +3754,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3768,9 +3769,6 @@ __webpack_require__.r(__webpack_exports__);
       return this.body;
     }
   },
-  // mounted: function () {
-  // 	console.log(this.image)
-  // },
   data: function data() {
     return {
       loadShow: false,
@@ -3778,7 +3776,6 @@ __webpack_require__.r(__webpack_exports__);
       deleteID: null,
       alert: false,
       valid: true,
-      // show: false,
       files: [],
       body: this.post.content
     };
@@ -48031,8 +48028,12 @@ var render = function() {
                           }
                         },
                         [
+                          _c("p", { staticClass: "my-10" }, [
+                            _vm._v("画像の編集( ※ 機能未定なため未実装 )")
+                          ]),
+                          _vm._v(" "),
                           _c("v-textarea", {
-                            staticClass: "mt-6",
+                            staticClass: "mt-10",
                             attrs: {
                               outlined: "",
                               rules: [
@@ -48055,7 +48056,7 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "text-center mt-2" },
+                            { staticClass: "text-center mt-7" },
                             [
                               _c(
                                 "v-btn",

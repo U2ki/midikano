@@ -107,7 +107,16 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update( Request $request, $id ) {
-        //
+        $post = Post::find( $id );
+        $post->content = $request->body;
+        $post->user_id = auth()->id();
+
+        $post->save();
+
+        $img = Image::where('post_id', $id)->get();
+        $user = $this->returnUser();
+
+        return view( 'gallery.show', compact( 'post', 'img' , 'user' ) );
     }
 
     /**
