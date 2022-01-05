@@ -40,4 +40,3 @@ Route::delete('/news/{id}','NewsController@destroy')->name('news.destroy');
 
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::post('/contact', 'ContactController@send')->name('send-contact');
-Route::get('/theme{any}', 'SpaController@app')->where('any', '(/?$|/.*)');
