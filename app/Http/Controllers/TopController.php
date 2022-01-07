@@ -14,7 +14,7 @@ class TopController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $images = Image::orderBy('id', 'DESC')->take(10)->get();
+        $images = Image::orderBy('id', 'DESC')->take(9)->get();
         $news = News::orderBy('id', 'DESC')->take(6)->get();
 
         return view( 'top', compact( 'images', 'news') );

@@ -3,32 +3,62 @@
         <v-container>
             <v-row>
                 <div class="box ma-5"></div>
-
-
-<!--                    <div class="thumbnails mx-2">-->
-<!--                        <div-->
-<!--                            class="photo my-5 col-sm-6 col-md-4 hover-ef"-->
-<!--                            v-for="item in getItems"-->
-<!--                            v-on:mouseover="mouseOverAction(item)"-->
-<!--                            v-on:mouseleave="mouseLeaveAction(item)"-->
-<!--                        >-->
-<!--                            <a :href="'/gallery/' + item.post_id">-->
-<!--                                <img-->
-<!--                                    class="photo__image mw-100 h-auto"-->
-<!--                                    :src="getImgUrl(item)"-->
-<!--                                >-->
-<!--                                <div class="mask">-->
-<!--                                    &lt;!&ndash;                                <p class="caption" v-show="hoverFlag && item === hoverIndex ">あああ</p>&ndash;&gt;-->
-<!--                                    <v-list-item-icon class="caption" v-show="hoverFlag && item === hoverIndex ">-->
-<!--                                        <v-icon class="good-btn">mdi-heart-outline</v-icon>-->
-<!--                                    </v-list-item-icon>-->
-<!--                                </div>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-                <div class="my-10">
-                    <h4>News/Event</h4>
+                <div class="ma-15">
+                    <h4 class="font-weight-bolder">新着の投稿</h4>
+                    <carousel
+                        ref="carousel"
+                        :per-page="3"
+                        :navigation-enabled="true"
+                        navigation-prev-label="〈"
+                        navigation-next-label="〉"
+                        @pageChange="onPageChange"
+                        class="mt-8"
+                    >
+                        <slide
+                            v-for="item in images"
+                            v-bind:key="item.id"
+                        >
+                            <a :href="'/gallery/' + item.post_id">
+                                <img
+                                    class="photo__image mw-100 slide"
+                                    :src="getImgUrl(item)"
+                                >
+                            </a>
+                        </slide>
+                    </carousel>
+                    <div class="text-right mt-n5">
+                        <a href="/gallery" class="text-body more-hvr">> もっと見る</a>
+                    </div>
+                </div>
+                <div class="mx-15">
+                    <h4 class="font-weight-bolder">いいねの多い投稿</h4>
+                    <carousel
+                        ref="carousel"
+                        :per-page="3"
+                        :navigation-enabled="true"
+                        navigation-prev-label="〈"
+                        navigation-next-label="〉"
+                        @pageChange="onPageChange"
+                        class="mt-8"
+                    >
+                        <slide
+                            v-for="item in images"
+                            v-bind:key="item.id"
+                        >
+                            <a :href="'/gallery/' + item.post_id">
+                                <img
+                                    class="photo__image mw-100 slide"
+                                    :src="getImgUrl(item)"
+                                >
+                            </a>
+                        </slide>
+                    </carousel>
+                    <div class="text-right mt-n5">
+                        <a href="/gallery" class="text-body more-hvr">> もっと見る</a>
+                    </div>
+                </div>
+                <div class="ma-15">
+                    <h4 class="font-weight-bolder">News/Event</h4>
                     <v-card class="w-100 my-1 pa-5">
                         <table class="table table-hover mx-auto">
                             <thead>
@@ -63,27 +93,40 @@
 
 <script>
 	import dayjs from 'dayjs'
+	import { Carousel, Slide } from 'vue-carousel';
 	export default {
 		name: "Top",
 		props: {
 			images: {},
 			news: {},
 		},
+		components: {
+			Carousel,
+			Slide
+		},
+		data() {
+			return {
+				preIndex: 0
+			};
+        },
 		methods: {
 			formatDate: dateStr => dayjs(dateStr).format('YYYY/MM/DD'),
-		// 	getImgUrl(img) {
-		// 		// すでに存在している写真を表示させる
-		// 		let path = ["/uploads/", img.src];
-		// 		let path_link = path.join("");
-		// 		return path_link
-		// 	},
-		// 	mouseOverAction(index) {
-		// 		this.hoverFlag = true
-		// 		this.hoverIndex = index
-		// 	},
-		// 	mouseLeaveAction() {
-		// 		this.hoverFlag = false
-		// 	},
+			onPageChange: function(index) {
+				this.preIndex = index;
+			},
+			getImgUrl(img) {
+				// すでに存在している写真を表示させる
+				let path = ["/uploads/", img.src];
+				let path_link = path.join("");
+				return path_link
+			},
+			mouseOverAction(index) {
+				this.hoverFlag = true
+				this.hoverIndex = index
+			},
+			mouseLeaveAction() {
+				this.hoverFlag = false
+			},
 		},
 	}
 </script>
@@ -96,5 +139,23 @@
     }
     .more-hvr:hover {
         text-decoration: underline!important;
+    }
+    .slide {
+        position: relative;
+        height: 150px;
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    /deep/ .VueCarousel-slide {
+        text-align: center;
+    }
+
+    /deep/ .VueCarousel-navigation-next {
+        top: 75px;
+    }
+
+    /deep/ .VueCarousel-navigation-prev {
+        top: 75px;
     }
 </style>
