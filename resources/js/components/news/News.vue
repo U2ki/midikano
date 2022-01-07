@@ -26,16 +26,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="news in getItems">
-                                <td>
-                                    <a :href="'/news/' + news.id" class="title-url d-block w-100 h-100">
-                                      {{ news.title }}
-                                    </a>
-                                </td>
-                                <td v-if="news.type === 0">ニュース</td>
-                                <td v-if="news.type === 1">イベント</td>
-                                <td>{{ formatDate(news.created_at) }}</td>
-                        </tr>
+                            <tr v-for="news in getItems">
+                                    <td>
+                                        <a :href="'/news/' + news.id" class="title-url d-block w-100 h-100">
+                                          {{ news.title }}
+                                        </a>
+                                    </td>
+                                    <td v-if="news.type === 0">ニュース</td>
+                                    <td v-if="news.type === 1">イベント</td>
+                                    <td>{{ formatDate(news.created_at) }}</td>
+                            </tr>
                         </tbody>
                     </table>
                     <vuejs-paginate

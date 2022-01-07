@@ -50,8 +50,9 @@ Vue.use(VueLazyload, {
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('vc-navbar', require('./components/Navbar.vue').default);
-Vue.component('vc-footer', require('./components/Footer.vue').default);
+Vue.component('vc-navbar', require('./components/Navbar').default);
+Vue.component('vc-footer', require('./components/Footer').default);
+Vue.component('vc-top', require('./components/Top').default);
 Vue.component('vc-error', require('./components/Error').default);
 Vue.component('vc-gallery', require('./components/gallery/Gallery').default);
 Vue.component('vc-gallery-create', require('./components/gallery/Create').default);

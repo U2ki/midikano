@@ -13,12 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('error');
-});
-
 Auth::routes();
 
+Route::get('/', 'TopController@index')->name('top');
 Route::get('/mypage', 'HomeController@index')->name('mypage');
 Route::get('/gallery', 'PostController@index')->name('gallery');
 Route::get('/gallery/create','PostController@create')->name('gallery.create');
