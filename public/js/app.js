@@ -2764,7 +2764,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getImgUrl: function getImgUrl(img) {
       // すでに存在している写真を表示させる
-      var path = ["/uploads/", img.src];
+      var path = ["/thumbnail/", img.src];
       var path_link = path.join("");
       return path_link;
     },
@@ -3585,6 +3585,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "create",
@@ -3602,7 +3620,8 @@ __webpack_require__.r(__webpack_exports__);
       valid: true,
       body: '',
       alert: false,
-      files: []
+      files: [],
+      thumbnail: []
     };
   },
   methods: {
@@ -3613,6 +3632,7 @@ __webpack_require__.r(__webpack_exports__);
       this.show = true;
       var formData = new FormData();
       formData.append('body', this.body);
+      formData.append('thumbnail', this.thumbnail);
       var requestFiles = this.files.filter(function (file) {
         return file;
       }); // ファイルがあるものだけを取得
@@ -3750,7 +3770,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getImgUrl: function getImgUrl(img) {
       // すでに存在している写真を表示させる
-      var path = ["/uploads/", img.src];
+      var path = ["/thumbnail/", img.src];
       var path_link = path.join("");
       return path_link;
     },
@@ -48030,21 +48050,84 @@ var render = function() {
                       }
                     },
                     [
-                      _c("v-file-input", {
-                        attrs: {
-                          counter: "",
-                          required: "",
-                          multiple: "",
-                          "truncate-length": "50"
-                        },
-                        model: {
-                          value: _vm.files,
-                          callback: function($$v) {
-                            _vm.files = $$v
-                          },
-                          expression: "files"
-                        }
-                      }),
+                      _c("div", [
+                        _c(
+                          "h6",
+                          { staticClass: "subtitle-1 font-weight-light mb-n2" },
+                          [_vm._v("《 画像をまとめて選択 》")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "mx-5" },
+                          [
+                            _c("v-file-input", {
+                              attrs: {
+                                counter: "",
+                                required: "",
+                                multiple: "",
+                                "truncate-length": "50"
+                              },
+                              model: {
+                                value: _vm.files,
+                                callback: function($$v) {
+                                  _vm.files = $$v
+                                },
+                                expression: "files"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "fw-lighter text-danger caption mb-10 ms-8 mt-n3"
+                              },
+                              [_vm._v("※ 10MB以上の画像は選択できません。")]
+                            )
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "h6",
+                          { staticClass: "subtitle-1 font-weight-light mb-n2" },
+                          [_vm._v("《 サムネイル画像選択 》")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "mx-5" },
+                          [
+                            _c("v-file-input", {
+                              attrs: {
+                                counter: "",
+                                required: "",
+                                "truncate-length": "50"
+                              },
+                              model: {
+                                value: _vm.thumbnail,
+                                callback: function($$v) {
+                                  _vm.thumbnail = $$v
+                                },
+                                expression: "thumbnail"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "fw-lighter text-danger caption mb-10 ms-8 mt-n3"
+                              },
+                              [_vm._v("※ 10MB以上の画像は選択できません。")]
+                            )
+                          ],
+                          1
+                        )
+                      ]),
                       _vm._v(" "),
                       _c("v-textarea", {
                         staticClass: "mt-6",

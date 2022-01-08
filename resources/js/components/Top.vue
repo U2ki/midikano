@@ -116,7 +116,7 @@
 			},
 			getImgUrl(img) {
 				// すでに存在している写真を表示させる
-				let path = ["/uploads/", img.src];
+				let path = ["/thumbnail/", img.src];
 				let path_link = path.join("");
 				return path_link
 			},

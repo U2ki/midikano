@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Image;
 use App\Models\News;
+use App\Models\ThumbnailImage;
 use Illuminate\Http\Request;
 
 class TopController extends Controller
@@ -14,7 +14,7 @@ class TopController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $images = Image::orderBy('id', 'DESC')->take(9)->get();
+        $images = ThumbnailImage::orderBy('id', 'DESC')->take(9)->get();
         $news = News::orderBy('id', 'DESC')->take(6)->get();
 
         return view( 'top', compact( 'images', 'news') );

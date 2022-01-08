@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\ThumbnailImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,7 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $images = Image::get();
+        $images = ThumbnailImage::orderBy('id', 'DESC')->get();
         $user     = $this->returnUser();
 
         return view( 'gallery.gallery', compact( 'images', 'user' ) );
@@ -70,16 +71,26 @@ class PostController extends Controller {
         $files = request()->file( 'files' );
         $nextId = DB::table('posts')->max('id') + 1;
 
+        $i = 0;
         foreach ( $files as $index => $image ) {
-            $imageName = time() . $image->getClientOriginalName();
+            $imageName = time() . 'IMG_' . $i . '.' . $image->getClientOriginalExtension();
             $imagePath = public_path('uploads/');
             $image->move($imagePath, $imageName);
-
             $img       = new Image;
             $img->src = $imageName;
             $img->post_id = $post->id;
             $img->save();
+            $i++;
         }
+
+        $thumbnail = request()->file( 'thumbnail' );
+        $thumbnailName = time() . $thumbnail->getClientOriginalName();
+        $thumbnailPath = public_path('thumbnail/');
+        $thumbnail->move($thumbnailPath, $thumbnailName);
+        $thumbnail       = new ThumbnailImage;
+        $thumbnail->src = $thumbnailName;
+        $thumbnail->post_id = $post->id;
+        $thumbnail->save();
 
     }
 

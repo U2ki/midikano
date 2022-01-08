@@ -17,7 +17,6 @@ class Post extends Model {
      */
     protected $fillable = [
         'content',
-        'photo',
     ];
 
     public function users() {

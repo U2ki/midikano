@@ -24,13 +24,31 @@
                         lazy-validation
                         class="px-sm-7 py-16 px-md-16 w-75 mx-auto"
                     >
-                        <v-file-input
-                            v-model="files"
-                            counter
-                            required
-                            multiple
-                            truncate-length="50"
-                        ></v-file-input>
+                        <div>
+                            <h6 class="subtitle-1 font-weight-light mb-n2">《 画像をまとめて選択 》</h6>
+                            <div class="mx-5">
+                                <v-file-input
+                                    v-model="files"
+                                    counter
+                                    required
+                                    multiple
+                                    truncate-length="50"
+                                ></v-file-input>
+                                <p class="fw-lighter text-danger caption mb-10 ms-8 mt-n3">※ 10MB以上の画像は選択できません。</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="subtitle-1 font-weight-light mb-n2">《 サムネイル画像選択 》</h6>
+                            <div class="mx-5">
+                                <v-file-input
+                                    v-model="thumbnail"
+                                    counter
+                                    required
+                                    truncate-length="50"
+                                ></v-file-input>
+                                <p class="fw-lighter text-danger caption mb-10 ms-8 mt-n3">※ 10MB以上の画像は選択できません。</p>
+                            </div>
+                        </div>
                         <v-textarea
                             v-model="body"
                             outlined
@@ -83,6 +101,7 @@
 			body: '',
             alert: false,
 			files: [],
+			thumbnail: [],
 		}),
 
 		methods: {
@@ -92,6 +111,7 @@
 
 				let formData = new FormData();
 				formData.append('body', this.body);
+				formData.append('thumbnail',this.thumbnail);
 				let requestFiles = this.files.filter((file) => file) // ファイルがあるものだけを取得
 				requestFiles.forEach((file, index) => {
 					formData.append('files[' + index + ']', file) // formDataに追加していく
