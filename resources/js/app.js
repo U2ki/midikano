@@ -46,6 +46,10 @@ Vue.use(VueLazyload, {
     attempt: 1 // ロード失敗した時のリトライの上限指定
 });
 
+import VueThreeSixty from 'vue-360'
+import 'vue-360/dist/css/style.css'
+Vue.use(VueThreeSixty)
+
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 

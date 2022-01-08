@@ -21,10 +21,18 @@
                     <div class="my-10 mx-8">
                         <p class="text-right">{{ formatDate(post.created_at) }}</p>
                         <div class="ma-10 text-center">
-                            <img
-                                class="photo__image mw-100 h-auto"
-                                :src="getImgUrl(image)"
-                            >
+                            <div class="col-12 mb-4 card p-0">
+                                <vue-three-sixty
+                                    :amount=image.length
+                                    imagePath="/uploads"
+                                    :fileName="getImgName(image)"
+                                    spinReverse
+                                    autoplay
+                                    buttonClass="light"
+                                    scrollImage
+                                >
+                                </vue-three-sixty>
+                            </div>
                         </div>
                         <pre class="ma-16 body-1">{{ post.content }}</pre>
                     </div>
@@ -156,6 +164,11 @@
 				let path = ["/uploads/", img[0].src];
 				let path_link = path.join("");
 				return path_link
+			},
+
+			getImgName(img) {
+				let file_name = img[0].src.split('_')[0] + '_{index}.' + img[0].src.split('.')[1]
+				return file_name
 			},
 
             // modal

@@ -71,9 +71,10 @@ class PostController extends Controller {
         $files = request()->file( 'files' );
         $nextId = DB::table('posts')->max('id') + 1;
 
-        $i = 0;
+        $i = 1;
+        $time = time();
         foreach ( $files as $index => $image ) {
-            $imageName = time() . 'IMG_' . $i . '.' . $image->getClientOriginalExtension();
+            $imageName = $time . 'IMG_' . $i . '.' . $image->getClientOriginalExtension();
             $imagePath = public_path('uploads/');
             $image->move($imagePath, $imageName);
             $img       = new Image;
