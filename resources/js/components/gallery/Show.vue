@@ -21,15 +21,16 @@
                     <div class="my-10 mx-8">
                         <p class="text-right">{{ formatDate(post.created_at) }}</p>
                         <div class="ma-10 text-center">
-                            <div class="col-12 mb-4 card p-0">
+                            <div class="col-12 mb-4 p-0">
                                 <vue-three-sixty
                                     :amount=image.length
                                     imagePath="/uploads"
                                     :fileName="getImgName(image)"
                                     spinReverse
                                     autoplay
-                                    buttonClass="light"
+                                    buttonClass="dark"
                                     scrollImage
+                                    class="image-360"
                                 >
                                 </vue-three-sixty>
                             </div>
@@ -237,5 +238,9 @@
         font-weight: bold;
         text-align: center;
         margin: 0;
+    }
+    .image-360 {
+        max-width: 500px;
+        margin: 0 auto;
     }
 </style>

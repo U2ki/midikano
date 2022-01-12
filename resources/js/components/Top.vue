@@ -3,57 +3,107 @@
         <v-container>
             <v-row>
                 <div class="box ma-5"></div>
-                <div class="ma-15">
+                <div class="w-100 ma-15">
                     <h4 class="font-weight-bolder">新着の投稿</h4>
-                    <carousel
-                        ref="carousel"
-                        :per-page="3"
-                        :navigation-enabled="true"
-                        navigation-prev-label="〈"
-                        navigation-next-label="〉"
-                        @pageChange="onPageChange"
-                        class="mt-8"
-                    >
-                        <slide
-                            v-for="item in images"
-                            v-bind:key="item.id"
+                    <div v-show="$mq === 'xs' || $mq === 'sm'">
+                        <carousel
+                            ref="carousel"
+                            :per-page="1"
+                            :navigation-enabled="true"
+                            navigation-prev-label="〈"
+                            navigation-next-label="〉"
+                            @pageChange="onPageChange"
+                            class="mt-8 carsel"
                         >
-                            <a :href="'/gallery/' + item.post_id">
-                                <img
-                                    class="photo__image mw-100 slide"
-                                    :src="getImgUrl(item)"
-                                >
-                            </a>
-                        </slide>
-                    </carousel>
-                    <div class="text-right mt-n5">
+                            <slide
+                                v-for="item in images"
+                                v-bind:key="item.id"
+                            >
+                                <a :href="'/gallery/' + item.post_id">
+                                    <img
+                                        class="photo__image mw-100 slide"
+                                        :src="getImgUrl(item)"
+                                    >
+                                </a>
+                            </slide>
+                        </carousel>
+                    </div>
+                    <div v-show="$mq === 'md' || $mq === 'lg' || $mq === 'xl'">
+                        <carousel
+                            ref="carousel"
+                            :per-page="3"
+                            :navigation-enabled="true"
+                            navigation-prev-label="〈"
+                            navigation-next-label="〉"
+                            @pageChange="onPageChange"
+                            class="mt-8 carsel"
+                        >
+                            <slide
+                                v-for="item in images"
+                                v-bind:key="item.id"
+                            >
+                                <a :href="'/gallery/' + item.post_id">
+                                    <img
+                                        class="photo__image mw-100 slide"
+                                        :src="getImgUrl(item)"
+                                    >
+                                </a>
+                            </slide>
+                        </carousel>
+                    </div>
+                    <div class="text-right">
                         <a href="/gallery" class="text-body more-hvr">> もっと見る</a>
                     </div>
                 </div>
                 <div class="mx-15">
                     <h4 class="font-weight-bolder">いいねの多い投稿</h4>
-                    <carousel
-                        ref="carousel"
-                        :per-page="3"
-                        :navigation-enabled="true"
-                        navigation-prev-label="〈"
-                        navigation-next-label="〉"
-                        @pageChange="onPageChange"
-                        class="mt-8"
-                    >
-                        <slide
-                            v-for="item in images"
-                            v-bind:key="item.id"
+                    <div v-show="$mq === 'xs' || $mq === 'sm'">
+                        <carousel
+                            ref="carousel"
+                            :per-page="1"
+                            :navigation-enabled="true"
+                            navigation-prev-label="〈"
+                            navigation-next-label="〉"
+                            @pageChange="onPageChange"
+                            class="mt-8 carsel"
                         >
-                            <a :href="'/gallery/' + item.post_id">
-                                <img
-                                    class="photo__image mw-100 slide"
-                                    :src="getImgUrl(item)"
-                                >
-                            </a>
-                        </slide>
-                    </carousel>
-                    <div class="text-right mt-n5">
+                            <slide
+                                v-for="item in images"
+                                v-bind:key="item.id"
+                            >
+                                <a :href="'/gallery/' + item.post_id">
+                                    <img
+                                        class="photo__image mw-100 slide"
+                                        :src="getImgUrl(item)"
+                                    >
+                                </a>
+                            </slide>
+                        </carousel>
+                    </div>
+                    <div v-show="$mq === 'md' || $mq === 'lg' || $mq === 'xl'">
+                        <carousel
+                            ref="carousel"
+                            :per-page="3"
+                            :navigation-enabled="true"
+                            navigation-prev-label="〈"
+                            navigation-next-label="〉"
+                            @pageChange="onPageChange"
+                            class="mt-8 carsel"
+                        >
+                            <slide
+                                v-for="item in images"
+                                v-bind:key="item.id"
+                            >
+                                <a :href="'/gallery/' + item.post_id">
+                                    <img
+                                        class="photo__image mw-100 slide"
+                                        :src="getImgUrl(item)"
+                                    >
+                                </a>
+                            </slide>
+                        </carousel>
+                    </div>
+                    <div class="text-right">
                         <a href="/gallery" class="text-body more-hvr">> もっと見る</a>
                     </div>
                 </div>
@@ -142,20 +192,20 @@
     }
     .slide {
         position: relative;
-        height: 150px;
-        width: 200px;
+        height: auto;
+        width: 300px;
         margin: 0 auto;
+        padding: 0.5rem;
     }
 
     /deep/ .VueCarousel-slide {
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    /deep/ .VueCarousel-navigation-next {
-        top: 75px;
-    }
-
-    /deep/ .VueCarousel-navigation-prev {
-        top: 75px;
+    /deep/ .VueCarousel-dot-container {
+        margin-top: 0!important;
     }
 </style>

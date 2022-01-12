@@ -2738,6 +2738,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3801,6 +3851,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_loading_template__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loading-template */ "./node_modules/vue-loading-template/dist/vueLoading.common.js");
 /* harmony import */ var vue_loading_template__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_loading_template__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -10975,7 +11026,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.box[data-v-5c6cb28c]{\n    width: 100%;\n    height: 350px;\n    background-color: #336699;\n}\n.more-hvr[data-v-5c6cb28c]:hover {\n    text-decoration: underline!important;\n}\n.slide[data-v-5c6cb28c] {\n    position: relative;\n    height: 150px;\n    width: 200px;\n    margin: 0 auto;\n}\n[data-v-5c6cb28c] .VueCarousel-slide {\n    text-align: center;\n}\n[data-v-5c6cb28c] .VueCarousel-navigation-next {\n    top: 75px;\n}\n[data-v-5c6cb28c] .VueCarousel-navigation-prev {\n    top: 75px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.box[data-v-5c6cb28c]{\n    width: 100%;\n    height: 350px;\n    background-color: #336699;\n}\n.more-hvr[data-v-5c6cb28c]:hover {\n    text-decoration: underline!important;\n}\n.slide[data-v-5c6cb28c] {\n    position: relative;\n    height: auto;\n    width: 300px;\n    margin: 0 auto;\n    padding: 0.5rem;\n}\n[data-v-5c6cb28c] .VueCarousel-slide {\n    text-align: center;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n[data-v-5c6cb28c] .VueCarousel-dot-container {\n    margin-top: 0!important;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11071,7 +11122,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-498fae85] {\n    width: 85%;\n}\n.type-line[data-v-498fae85] {\n    background-color: #0d47a1;\n    width: 9%;\n}\n.type-line p[data-v-498fae85] {\n    color: white;\n    font-weight: bold;\n    text-align: center;\n    margin: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntable[data-v-498fae85] {\n    width: 85%;\n}\n.type-line[data-v-498fae85] {\n    background-color: #0d47a1;\n    width: 9%;\n}\n.type-line p[data-v-498fae85] {\n    color: white;\n    font-weight: bold;\n    text-align: center;\n    margin: 0;\n}\n.image-360[data-v-498fae85] {\n    max-width: 500px;\n    margin: 0 auto;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -53230,101 +53281,229 @@ var render = function() {
           _c("v-row", [
             _c("div", { staticClass: "box ma-5" }),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "ma-15" },
-              [
-                _c("h4", { staticClass: "font-weight-bolder" }, [
-                  _vm._v("新着の投稿")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "carousel",
-                  {
-                    ref: "carousel",
-                    staticClass: "mt-8",
-                    attrs: {
-                      "per-page": 3,
-                      "navigation-enabled": true,
-                      "navigation-prev-label": "〈",
-                      "navigation-next-label": "〉"
-                    },
-                    on: { pageChange: _vm.onPageChange }
-                  },
-                  _vm._l(_vm.images, function(item) {
-                    return _c("slide", { key: item.id }, [
-                      _c("a", { attrs: { href: "/gallery/" + item.post_id } }, [
-                        _c("img", {
-                          staticClass: "photo__image mw-100 slide",
-                          attrs: { src: _vm.getImgUrl(item) }
-                        })
-                      ])
-                    ])
-                  }),
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "text-right mt-n5" }, [
-                  _c(
-                    "a",
+            _c("div", { staticClass: "w-100 ma-15" }, [
+              _c("h4", { staticClass: "font-weight-bolder" }, [
+                _vm._v("新着の投稿")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
                     {
-                      staticClass: "text-body more-hvr",
-                      attrs: { href: "/gallery" }
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.$mq === "xs" || _vm.$mq === "sm",
+                      expression: "$mq === 'xs' || $mq === 'sm'"
+                    }
+                  ]
+                },
+                [
+                  _c(
+                    "carousel",
+                    {
+                      ref: "carousel",
+                      staticClass: "mt-8 carsel",
+                      attrs: {
+                        "per-page": 1,
+                        "navigation-enabled": true,
+                        "navigation-prev-label": "〈",
+                        "navigation-next-label": "〉"
+                      },
+                      on: { pageChange: _vm.onPageChange }
                     },
-                    [_vm._v("> もっと見る")]
+                    _vm._l(_vm.images, function(item) {
+                      return _c("slide", { key: item.id }, [
+                        _c(
+                          "a",
+                          { attrs: { href: "/gallery/" + item.post_id } },
+                          [
+                            _c("img", {
+                              staticClass: "photo__image mw-100 slide",
+                              attrs: { src: _vm.getImgUrl(item) }
+                            })
+                          ]
+                        )
+                      ])
+                    }),
+                    1
                   )
-                ])
-              ],
-              1
-            ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value:
+                        _vm.$mq === "md" ||
+                        _vm.$mq === "lg" ||
+                        _vm.$mq === "xl",
+                      expression: "$mq === 'md' || $mq === 'lg' || $mq === 'xl'"
+                    }
+                  ]
+                },
+                [
+                  _c(
+                    "carousel",
+                    {
+                      ref: "carousel",
+                      staticClass: "mt-8 carsel",
+                      attrs: {
+                        "per-page": 3,
+                        "navigation-enabled": true,
+                        "navigation-prev-label": "〈",
+                        "navigation-next-label": "〉"
+                      },
+                      on: { pageChange: _vm.onPageChange }
+                    },
+                    _vm._l(_vm.images, function(item) {
+                      return _c("slide", { key: item.id }, [
+                        _c(
+                          "a",
+                          { attrs: { href: "/gallery/" + item.post_id } },
+                          [
+                            _c("img", {
+                              staticClass: "photo__image mw-100 slide",
+                              attrs: { src: _vm.getImgUrl(item) }
+                            })
+                          ]
+                        )
+                      ])
+                    }),
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-right" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "text-body more-hvr",
+                    attrs: { href: "/gallery" }
+                  },
+                  [_vm._v("> もっと見る")]
+                )
+              ])
+            ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "mx-15" },
-              [
-                _c("h4", { staticClass: "font-weight-bolder" }, [
-                  _vm._v("いいねの多い投稿")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "carousel",
-                  {
-                    ref: "carousel",
-                    staticClass: "mt-8",
-                    attrs: {
-                      "per-page": 3,
-                      "navigation-enabled": true,
-                      "navigation-prev-label": "〈",
-                      "navigation-next-label": "〉"
-                    },
-                    on: { pageChange: _vm.onPageChange }
-                  },
-                  _vm._l(_vm.images, function(item) {
-                    return _c("slide", { key: item.id }, [
-                      _c("a", { attrs: { href: "/gallery/" + item.post_id } }, [
-                        _c("img", {
-                          staticClass: "photo__image mw-100 slide",
-                          attrs: { src: _vm.getImgUrl(item) }
-                        })
-                      ])
-                    ])
-                  }),
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "text-right mt-n5" }, [
-                  _c(
-                    "a",
+            _c("div", { staticClass: "mx-15" }, [
+              _c("h4", { staticClass: "font-weight-bolder" }, [
+                _vm._v("いいねの多い投稿")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
                     {
-                      staticClass: "text-body more-hvr",
-                      attrs: { href: "/gallery" }
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.$mq === "xs" || _vm.$mq === "sm",
+                      expression: "$mq === 'xs' || $mq === 'sm'"
+                    }
+                  ]
+                },
+                [
+                  _c(
+                    "carousel",
+                    {
+                      ref: "carousel",
+                      staticClass: "mt-8 carsel",
+                      attrs: {
+                        "per-page": 1,
+                        "navigation-enabled": true,
+                        "navigation-prev-label": "〈",
+                        "navigation-next-label": "〉"
+                      },
+                      on: { pageChange: _vm.onPageChange }
                     },
-                    [_vm._v("> もっと見る")]
+                    _vm._l(_vm.images, function(item) {
+                      return _c("slide", { key: item.id }, [
+                        _c(
+                          "a",
+                          { attrs: { href: "/gallery/" + item.post_id } },
+                          [
+                            _c("img", {
+                              staticClass: "photo__image mw-100 slide",
+                              attrs: { src: _vm.getImgUrl(item) }
+                            })
+                          ]
+                        )
+                      ])
+                    }),
+                    1
                   )
-                ])
-              ],
-              1
-            ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value:
+                        _vm.$mq === "md" ||
+                        _vm.$mq === "lg" ||
+                        _vm.$mq === "xl",
+                      expression: "$mq === 'md' || $mq === 'lg' || $mq === 'xl'"
+                    }
+                  ]
+                },
+                [
+                  _c(
+                    "carousel",
+                    {
+                      ref: "carousel",
+                      staticClass: "mt-8 carsel",
+                      attrs: {
+                        "per-page": 3,
+                        "navigation-enabled": true,
+                        "navigation-prev-label": "〈",
+                        "navigation-next-label": "〉"
+                      },
+                      on: { pageChange: _vm.onPageChange }
+                    },
+                    _vm._l(_vm.images, function(item) {
+                      return _c("slide", { key: item.id }, [
+                        _c(
+                          "a",
+                          { attrs: { href: "/gallery/" + item.post_id } },
+                          [
+                            _c("img", {
+                              staticClass: "photo__image mw-100 slide",
+                              attrs: { src: _vm.getImgUrl(item) }
+                            })
+                          ]
+                        )
+                      ])
+                    }),
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-right" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "text-body more-hvr",
+                    attrs: { href: "/gallery" }
+                  },
+                  [_vm._v("> もっと見る")]
+                )
+              ])
+            ]),
             _vm._v(" "),
             _c(
               "div",
@@ -54461,16 +54640,17 @@ var render = function() {
                     _c("div", { staticClass: "ma-10 text-center" }, [
                       _c(
                         "div",
-                        { staticClass: "col-12 mb-4 card p-0" },
+                        { staticClass: "col-12 mb-4 p-0" },
                         [
                           _c("vue-three-sixty", {
+                            staticClass: "image-360",
                             attrs: {
                               amount: _vm.image.length,
                               imagePath: "/uploads",
                               fileName: _vm.getImgName(_vm.image),
                               spinReverse: "",
                               autoplay: "",
-                              buttonClass: "light",
+                              buttonClass: "dark",
                               scrollImage: ""
                             }
                           })
