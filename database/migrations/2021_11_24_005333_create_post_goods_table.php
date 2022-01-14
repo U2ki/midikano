@@ -13,6 +13,7 @@ class CreatePostGoodsTable extends Migration {
     public function up() {
         Schema::create( 'post_goods', function ( Blueprint $table ) {
             $table->id();
+            $table->integer('like')->comment( 'LIKE' )->default(0);
             $table->foreignId( 'user_id' )->comment( 'ユーザ' )->constrained( 'users' )->onUpdate( 'cascade' )->onDelete( 'cascade' );
             $table->foreignId( 'post_id' )->comment( '投稿' )->constrained( 'posts' )->onUpdate( 'cascade' )->onDelete( 'cascade' );
             $table->timestamps();

@@ -13,7 +13,7 @@ class CreatePostCommentsTable extends Migration {
     public function up() {
         Schema::create( 'post_comments', function ( Blueprint $table ) {
             $table->id();
-            $table->foreignId( 'user_id' )->comment( 'ユーザ' )->constrained( 'users' )->onUpdate( 'cascade' )->onDelete( 'cascade' );
+            $table->integer( 'user_id' )->comment( 'ユーザ' )->nullable();
             $table->foreignId( 'post_id' )->comment( '投稿' )->constrained( 'posts' )->onUpdate( 'cascade' )->onDelete( 'cascade' );
             $table->string( 'content' )->comment( '内容' );
             $table->timestamps();

@@ -19,9 +19,31 @@
                 </h1>
                 <v-card class="w-100 my-5">
                     <div class="my-10 mx-8">
-                        <p class="text-right">{{ formatDate(post.created_at) }}</p>
+                        <p class="text-right ma-0">{{ formatDate(post.created_at) }}</p>
+                        <div class="float-right my-sm-10 mx-5">
+                            <button
+                                v-if="status == false"
+                                type="button"
+                                @click.prevent="like_check"
+                                v-on:click="userError"
+                                class="icon-waku"
+                            >
+                                <v-icon class="icon">mdi-heart</v-icon>
+                            </button>
+                            <p v-if="status == false" class="text-center">{{count}}</p>
+
+                            <button
+                                v-else type="button"
+                                @click.prevent="like_check"
+                                v-on:click="userError"
+                                class="icon-waku"
+                            >
+                                <v-icon class="icon" color="#CC3333">mdi-heart</v-icon>
+                            </button>
+                            <p v-if="status == true" class="text-center">{{count}}</p>
+                        </div>
                         <div class="ma-10 text-center">
-                            <div class="col-12 mb-4 p-0">
+                            <div class="position-static col-12 mb-4 p-0">
                                 <vue-three-sixty
                                     :amount=image.length
                                     imagePath="/uploads"
@@ -35,7 +57,63 @@
                                 </vue-three-sixty>
                             </div>
                         </div>
-                        <pre class="ma-16 body-1">{{ post.content }}</pre>
+                        <pre class="mx-auto my-15 w-75 body-1">{{ post.content }}</pre>
+                        <div class="my-16">
+                            <div class="ma-2">
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#writeComment" aria-expanded="false" aria-controls="writeComment">
+                                    コメントを書く
+                                </button>
+                            </div>
+                            <div class="collapse ma-2" id="writeComment">
+                                <div class="card card-body">
+                                    <v-form
+                                        ref="form"
+                                        v-model="valid"
+                                        lazy-validation
+                                        class="w-100 mx-auto"
+                                    >
+                                        <v-textarea
+                                            v-model="comment"
+                                            outlined
+                                            :rules="[v => !!v || '内容を記入してください']"
+                                            label="コメント"
+                                            class=""
+                                            height="100"
+                                            required
+                                        ></v-textarea>
+                                        <div class="text-center">
+                                            <v-btn
+                                                color="primary"
+                                                :disabled='!isComplete'
+                                                @click="commentSubmit()"
+                                            >
+                                                この内容でコメントする
+                                            </v-btn>
+                                        </div>
+                                        <vue-loading type="spiningDubbles" v-if="loadShow" color="#333" :size="{ width: '50px', height: '50px' }"></vue-loading>
+                                    </v-form>
+                                </div>
+                            </div>
+                            <div class="ma-2 mt-7">
+                                <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#showComment" aria-expanded="false" aria-controls="showComment">
+                                    コメントを表示する <span>{{comments.length}}</span>件
+                                </button>
+                            </div>
+                            <div class="collapse ma-2" id="showComment">
+                                <div class="card card-body pt-0">
+                                    <div v-for="item in comments">
+                                        <div class="d-flex mt-8">
+                                            <p class="mb-2">{{ formatDate(item.created_at) }}</p>
+                                            <p class="mx-4 mb-2">-</p>
+                                            <p class="mb-2">[ {{ returnCommentUser(item.user_id) }} ]</p>
+                                        </div>
+                                        <div class="mx-5 ">
+                                            <p>{{ item.content }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <v-divider inset class="my-0 mx-auto"></v-divider>
                     <div class="d-flex">
@@ -141,6 +219,9 @@
 			post: {},
 			image: {},
 			user: {},
+			comments: {},
+			comment_user: {},
+			login_info: {},
 		},
 		computed: {
 			isComplete () {
@@ -155,8 +236,14 @@
 				alert: false,
 				valid: true,
 				files: [],
-				body: this.post.content
+				body: this.post.content,
+				comment: '',
+				status: false,
+                count: 0,
 		    }
+		},
+		created() {
+			this.first_check()
 		},
 		methods: {
 			formatDate: dateStr => dayjs(dateStr).format('YYYY/MM/DD'),
@@ -170,6 +257,76 @@
 			getImgName(img) {
 				let file_name = img[0].src.split('_')[0] + '_{index}.' + img[0].src.split('.')[1]
 				return file_name
+			},
+
+			first_check() {
+                axios.get('/gallery/likefirst/' + this.post.id)
+                    .then(res => {
+                        if(res.data[0] == 1) {
+                            this.status = true
+                            this.count = res.data[1]
+                        } else {
+                            this.status = false
+                            this.count = res.data[1]
+                        }
+                    }).catch(function(err) {
+                    console.log(err)
+                })
+			},
+
+			like_check() {
+                axios.get('/gallery/like/' + this.post.id)
+                    .then(res => {
+                        if (res.data[0] == 1) {
+                            this.status = true
+                            this.count = res.data[1]
+                        } else {
+                            this.status = false
+                            this.count = res.data[1]
+                        }
+                    }).catch(function (err) {
+                    console.log(err)
+                })
+			},
+
+			userError: function (event) {
+				if ( this.login_info === 0 ) {
+					alert('いいねするには、ログインしてください。');
+				}
+			},
+
+
+			// コメントのユーザー名
+            returnCommentUser(user) {
+                if (user !== null) {
+					return this.comment_user.find((u) => u.id === user).name
+                } else  {
+                    return '名無し'
+                }
+            },
+
+			// コメント投稿
+			commentSubmit: function() {
+				var self = this;
+				this.show = true;
+
+				var params = {
+					comment: this.comment
+				};
+				axios.put('/gallery/comment/' + this.post.id, params)
+					.then(response => {
+						this.$refs.form.reset()
+						this.alert = true;
+						$('.alert').fadeIn("slow", function () {
+							$(this).delay(3000).fadeOut("slow");
+						});
+					})
+					.catch(error => {
+						console.log(error)
+					})
+					.then(function(){
+						self.show = false;
+					});
 			},
 
             // modal
@@ -226,12 +383,23 @@
 </script>
 
 <style scoped>
+    pre {
+        white-space: pre-wrap!important;
+    }
     table {
         width: 85%;
     }
     .type-line {
         background-color: #0d47a1;
         width: 9%;
+    }
+    .icon-waku {
+        border-radius: 50%;
+        border: solid 1px #757575;
+        padding: 5px 5px 3px 5px;
+    }
+    .icon {
+        font-size: 45px!important;
     }
     .type-line p {
         color: white;

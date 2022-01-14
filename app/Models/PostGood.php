@@ -10,6 +10,10 @@ class PostGood extends Model {
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'post_id','user_id','like'
+    ];
+
     public function users() {
         return $this->belongsTo( 'App\User' );
     }

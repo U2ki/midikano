@@ -55,7 +55,7 @@
                         <a href="/gallery" class="text-body more-hvr">> もっと見る</a>
                     </div>
                 </div>
-                <div class="mx-15">
+                <div class="w-100 ma-15">
                     <h4 class="font-weight-bolder">いいねの多い投稿</h4>
                     <div v-show="$mq === 'xs' || $mq === 'sm'">
                         <carousel

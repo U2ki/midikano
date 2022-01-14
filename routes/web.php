@@ -22,7 +22,11 @@ Route::get('/gallery/create','PostController@create')->name('gallery.create');
 Route::post('/gallery/create','PostController@store')->name('gallery.store');
 Route::get('/gallery/{id}', 'PostController@show')->name('gallery.show');
 Route::put('/gallery/{id}','PostController@update')->name('gallery.update');
+Route::put('/gallery/comment/{id}','PostController@comment')->name('gallery.comment');
 Route::delete('/gallery/{id}','PostController@destroy')->name('gallery.destroy');
+
+Route::get('/gallery/likefirst/{id}','LikeController@firstcheck')->name('like.firstcheck');
+Route::get('/gallery/like/{id}','LikeController@check')->name('like.check');
 
 Route::get('/about-lacquerware', function () {
     return view('lacquerware');
