@@ -6,6 +6,7 @@
                     <div class="ma-16 message">
                         <h3 v-show="error === 0">エラーが発生しました。<br>ログインをして再度実行して下さい。</h3>
                         <h3 v-show="error === 1">権限がありません。</h3>
+                        <h3 v-show="error === 2">該当するページがありません。</h3>
                     </div>
                     <div class="my-10 mx-16">
                         <div class="text-center">
@@ -57,7 +58,7 @@
 	export default {
 		name: "Error",
 		props: {
-			error: { type: String, required: false, default: 0 },
+			error: { type: Number, required: false, default: 0 },
 		},
 	}
 </script>

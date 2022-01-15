@@ -2281,11 +2281,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Error",
   props: {
     error: {
-      type: String,
+      type: Number,
       required: false,
       "default": 0
     }
@@ -52529,6 +52530,21 @@ var render = function() {
                       ]
                     },
                     [_vm._v("権限がありません。")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "h3",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.error === 2,
+                          expression: "error === 2"
+                        }
+                      ]
+                    },
+                    [_vm._v("該当するページがありません。")]
                   )
                 ]),
                 _vm._v(" "),

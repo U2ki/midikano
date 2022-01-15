@@ -78,9 +78,15 @@ class NewsController extends Controller {
      */
     public function show( $id ) {
         $news = News::find( $id );
-        $user = $this->returnUser();
 
-        return view( 'news.show', compact( 'news', 'user' ) );
+        if (!$news) {
+            $error_num = 2;
+            return view( 'error', compact( 'error_num' ) );
+        } else {
+            $user = $this->returnUser();
+
+            return view( 'news.show', compact( 'news', 'user' ) );
+        }
     }
 
     /**

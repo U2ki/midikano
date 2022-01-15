@@ -114,14 +114,20 @@ class PostController extends Controller {
      */
     public function show( $id ) {
         $post = Post::find( $id );
-        $img  = Image::where( 'post_id', $id )->get();
-        $comments = PostComment::where('post_id', $id )->get();
-        $comment_user = User::select('users.*')->join('post_comments', 'users.id', '=', 'post_comments.user_id')
-                              ->where('post_comments.post_id', '=', $id)->get();
-        $user = $this->returnUser();
-        $login_info = $this->loginUser();
 
-        return view( 'gallery.show', compact( 'post', 'img', 'user', 'comments', 'comment_user', 'login_info' ) );
+        if (!$post) {
+            $error_num = 2;
+            return view( 'error', compact( 'error_num' ) );
+        } else {
+            $img          = Image::where( 'post_id', $id )->get();
+            $comments     = PostComment::where( 'post_id', $id )->get();
+            $comment_user = User::select( 'users.*' )->join( 'post_comments', 'users.id', '=', 'post_comments.user_id' )
+                                ->where( 'post_comments.post_id', '=', $id )->get();
+            $user         = $this->returnUser();
+            $login_info   = $this->loginUser();
+
+            return view( 'gallery.show', compact( 'post', 'img', 'user', 'comments', 'comment_user', 'login_info' ) );
+        }
     }
 
     /**
