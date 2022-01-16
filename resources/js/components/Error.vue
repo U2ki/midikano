@@ -29,7 +29,7 @@
                                 ログイン
                             </v-btn>
                             <v-btn
-                                href="/"
+                                href="/mypage"
                                 v-show="error === 1"
                                 color="orange darken-3"
                                 elevation="2"

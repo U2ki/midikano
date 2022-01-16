@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\StatusMail;
 use App\Models\News;
 use App\Models\ThumbnailImage;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller {
     /**
@@ -14,6 +17,18 @@ class HomeController extends Controller {
      */
     public function __construct() {
         $this->middleware( 'auth' );
+    }
+
+    public function returnUser() {
+        $user_id = auth()->id();
+        if ( $user_id ) {
+            $user = \DB::table( 'users' )->where( 'id', $user_id )->first();
+            $user = $user->status;
+        } else {
+            $user = 0;
+        }
+
+        return $user;
     }
 
     /**
@@ -41,5 +56,38 @@ class HomeController extends Controller {
         return view( 'auth/mypage', compact( 'img', 'news', 'good', 'comment' ) );
     }
 
+    public function send( Request $request ) {
+        $user = Auth::user();
 
+        if ( $request->select === '管理者' ) {
+            $status_id = 2;
+        } elseif ( $request->select === '関係者' ) {
+            $status_id = 1;
+        } else {
+            $status_id = 0;
+        }
+
+        $params = [
+            'select'    => $request->select,
+            'user'      => $user,
+            'status_id' => $status_id
+        ];
+
+        \Mail::to( 'urulabo.test@gmail.com' )->send( new StatusMail( $params ) );
+        $request->session()->regenerateToken();
+    }
+
+    public function status( Request $request ) {
+        if ( $this->returnUser() < 2 ) {
+            $error_num = 1;
+
+            return view( 'error', compact( 'error_num' ) );
+        } else {
+            $user         = User::find( $request->user_id );
+            $user->status = $request->status_id;
+            $user->save();
+
+            return view( 'auth.status' );
+        }
+    }
 }

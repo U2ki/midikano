@@ -167,8 +167,6 @@ class PostController extends Controller {
         $comment->post_id = $id;
         $comment->save();
 
-        var_dump($comment);
-
         $post = Post::find( $id );
         $img  = Image::where( 'post_id', $id )->get();
         $user = $this->returnUser();

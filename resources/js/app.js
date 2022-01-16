@@ -67,6 +67,7 @@ Vue.component('vc-news-create', require('./components/news/Create').default);
 Vue.component('vc-news-show', require('./components/news/Show').default);
 Vue.component('vc-contact', require('./components/Contact').default);
 Vue.component('vc-home', require('./components/Home').default);
+Vue.component('vc-status', require('./components/Status').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
