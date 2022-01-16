@@ -130,6 +130,10 @@
     .photo {
         max-height: 350px;
         max-width: 300px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .hover-ef {
         overflow: hidden;

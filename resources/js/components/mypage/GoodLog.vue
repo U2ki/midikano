@@ -126,6 +126,10 @@
     .photo {
         max-height: 300px;
         max-width: 300px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     img:hover {
         opacity: 0.6;
