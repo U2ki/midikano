@@ -27,7 +27,7 @@ class NewsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $newsalls = News::get();
+        $newsalls = News::orderBy( 'id', 'DESC' )->get();
         $user     = $this->returnUser();
 
         return view( 'news.news', compact( 'newsalls', 'user' ) );

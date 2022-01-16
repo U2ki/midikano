@@ -40,7 +40,7 @@
                                         </v-btn>
                                     </template>
                                     <v-list>
-                                        <v-list-item href="mypage">
+                                        <v-list-item href="/mypage">
                                             <v-list-item-icon>
                                                 <v-icon class="login-icon">mdi-account</v-icon>
                                             </v-list-item-icon>

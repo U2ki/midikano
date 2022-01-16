@@ -29,12 +29,12 @@
                                     class="photo__image mw-100 h-auto"
                                     :src="getImgUrl(item)"
                                 >
-                                <div class="mask">
-    <!--                                <p class="caption" v-show="hoverFlag && item === hoverIndex ">あああ</p>-->
-                                    <v-list-item-icon class="caption" v-show="hoverFlag && item === hoverIndex ">
-                                        <v-icon class="good-btn">mdi-heart-outline</v-icon>
-                                    </v-list-item-icon>
-                                </div>
+<!--                                <div class="mask">-->
+<!--                                    <p class="caption" v-show="hoverFlag && item === hoverIndex ">あああ</p>-->
+<!--                                    <v-list-item-icon class="caption" v-show="hoverFlag && item === hoverIndex ">-->
+<!--                                        <v-icon class="good-btn">mdi-heart-outline</v-icon>-->
+<!--                                    </v-list-item-icon>-->
+<!--                                </div>-->
                             </a>
                         </div>
                     </div>
@@ -115,37 +115,45 @@
 <style scoped>
     .thumbnails {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         flex-wrap: wrap;
     }
-
+    .thumbnails:after {
+        content: "";
+        display: block;
+        width: 32%;
+        height: 0;
+    }
+    img:hover {
+        opacity: 0.6;
+    }
+    .photo {
+        max-height: 350px;
+        max-width: 300px;
+    }
     .hover-ef {
         overflow: hidden;
         position: relative;
     }
-
     .hover-ef .caption {
         text-align: right;
         padding: 1rem;
         display: table-cell;
         vertical-align: bottom;
     }
-
-    .hover-ef .mask {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        background-color: rgba(0, 0, 0, 0.728);
-        display: table;
-    }
-
-    .hover-ef:hover .mask {
-        opacity: 0.6;
-    }
-
+    /*.hover-ef .mask {*/
+    /*    width: 100%;*/
+    /*    height: 100%;*/
+    /*    position: absolute;*/
+    /*    top: 0;*/
+    /*    left: 0;*/
+    /*    opacity: 0;*/
+    /*    background-color: rgba(0, 0, 0, 0.728);*/
+    /*    display: table;*/
+    /*}*/
+    /*.hover-ef:hover .mask {*/
+    /*    opacity: 0.6;*/
+    /*}*/
     .good-btn {
         color: red;
         font-size: 2.5rem;

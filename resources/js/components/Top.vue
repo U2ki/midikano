@@ -197,12 +197,21 @@
         margin: 0 auto;
         padding: 0.5rem;
     }
-
+    img:hover {
+        opacity: 0.6;
+    }
+    /deep/ .VueCarousel-inner {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
     /deep/ .VueCarousel-slide {
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
+        max-height: 330px;
+        max-width: 300px;
     }
 
     /deep/ .VueCarousel-dot-container {

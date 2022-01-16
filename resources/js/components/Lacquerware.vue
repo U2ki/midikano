@@ -63,7 +63,7 @@
 	import AizuTechnique from './about-lacquerware/AizuTechnique';
 
 	export default {
-		name: "lacquerware",
+		name: "Lacquerware",
 		components: {
 			AboutKinds,
 			AizuColor,
