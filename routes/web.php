@@ -19,6 +19,7 @@ Route::get('/', 'TopController@index')->name('top');
 Route::get('/mypage', 'HomeController@index')->name('mypage');
 Route::post('/mypage', 'HomeController@send')->name('send-status-mail');
 Route::get('/mypage/{status}', 'HomeController@status')->name('send-status');
+Route::get('/user/{id}', 'UserController@index')->name('user');
 Route::get('/gallery', 'PostController@index')->name('gallery');
 Route::get('/gallery/create','PostController@create')->name('gallery.create');
 Route::post('/gallery/create','PostController@store')->name('gallery.store');
