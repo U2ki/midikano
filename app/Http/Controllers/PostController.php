@@ -114,7 +114,9 @@ class PostController extends Controller {
      */
     public function show( $id ) {
         $post = Post::find( $id );
-
+        $user_info = \DB::table( 'users' )->where( 'id', $post->user_id )->first();
+        $name = $user_info->name;
+        $userid = $user_info->id;
         if (!$post) {
             $error_num = 2;
             return view( 'error', compact( 'error_num' ) );
@@ -126,7 +128,7 @@ class PostController extends Controller {
             $user         = $this->returnUser();
             $login_info   = $this->loginUser();
 
-            return view( 'gallery.show', compact( 'post', 'img', 'user', 'comments', 'comment_user', 'login_info' ) );
+            return view( 'gallery.show', compact( 'post', 'name', 'userid', 'img', 'user', 'comments', 'comment_user', 'login_info' ) );
         }
     }
 

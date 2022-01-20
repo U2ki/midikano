@@ -58,6 +58,7 @@
                             </div>
                         </div>
                         <pre class="mx-auto my-15 w-75 body-1">{{ post.content }}</pre>
+                        <p class="my-5 me-5 text-right"><a :href="'/user/'+userid">( 投稿者: {{name}} )</a></p>
                         <div class="my-16">
                             <div class="ma-2">
                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#writeComment" aria-expanded="false" aria-controls="writeComment">
@@ -217,6 +218,8 @@
 		name: "Show",
 		props: {
 			post: {},
+			name: {},
+			userid: {},
 			image: {},
 			user: {},
 			comments: {},
@@ -383,6 +386,9 @@
 </script>
 
 <style scoped>
+    a {
+        color: black!important;
+    }
     pre {
         white-space: pre-wrap!important;
     }
