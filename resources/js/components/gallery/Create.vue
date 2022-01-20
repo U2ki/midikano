@@ -25,6 +25,9 @@
                         class="px-sm-7 py-16 px-md-16 w-75 mx-auto"
                     >
                         <div>
+                            <div>
+                                <p class="fw-lighter text-danger caption mb-10 ms-8 mt-n3">※ 画像はJPG, PNGファイル以外ですとうまく表示されない場合があります。</p>
+                            </div>
                             <h6 class="subtitle-1 font-weight-light mb-n2">《 画像をまとめて選択 》</h6>
                             <div class="mx-5">
                                 <v-file-input
@@ -34,7 +37,6 @@
                                     multiple
                                     truncate-length="50"
                                 ></v-file-input>
-                                <p class="fw-lighter text-danger caption mb-10 ms-8 mt-n3">※ 10MB以上の画像は選択できません。</p>
                             </div>
                         </div>
                         <div>
@@ -46,7 +48,6 @@
                                     required
                                     truncate-length="50"
                                 ></v-file-input>
-                                <p class="fw-lighter text-danger caption mb-10 ms-8 mt-n3">※ 10MB以上の画像は選択できません。</p>
                             </div>
                         </div>
                         <v-textarea
