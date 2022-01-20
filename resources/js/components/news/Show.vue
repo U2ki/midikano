@@ -26,6 +26,7 @@
                             <p v-if="news.type === 1">イベント</p>
                         </div>
                         <pre class="ma-16 body-1">{{ news.content }}</pre>
+                        <p class="ms-8 mb-0">( 投稿者: {{name}} )</p>
                     </div>
                     <v-divider inset class="my-0 mx-auto"></v-divider>
                     <div class="d-flex">
@@ -141,6 +142,7 @@
 		name: "Show",
 		props: {
 			news: {},
+			name: {},
 			user: {},
 		},
 		computed: {
