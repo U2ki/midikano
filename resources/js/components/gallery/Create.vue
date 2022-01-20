@@ -26,7 +26,8 @@
                     >
                         <div>
                             <div>
-                                <p class="fw-lighter text-danger caption mb-10 ms-8 mt-n3">※ 画像はJPG, PNGファイル以外ですとうまく表示されない場合があります。</p>
+                                <p class="fw-lighter text-danger caption ms-8">※ 画像はJPG, JPEG, PNGファイルのみ可能です。</p>
+                                <p class="fw-lighter text-danger caption mb-10 ms-8 mt-n3">※ 複数の画像を選択する場合は、1ファイルあたり1MB以下を基準にサイズを小さくする必要があります。</p>
                             </div>
                             <h6 class="subtitle-1 font-weight-light mb-n2">《 画像をまとめて選択 》</h6>
                             <div class="mx-5">
@@ -36,6 +37,8 @@
                                     required
                                     multiple
                                     truncate-length="50"
+                                    accept="image/jpeg, image/jpg, image/png"
+                                    class="mb-10"
                                 ></v-file-input>
                             </div>
                         </div>
@@ -47,6 +50,8 @@
                                     counter
                                     required
                                     truncate-length="50"
+                                    accept="image/jpeg, image/jpg, image/png"
+                                    class="mb-10"
                                 ></v-file-input>
                             </div>
                         </div>
