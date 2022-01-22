@@ -187,7 +187,9 @@ class PostController extends Controller {
         $post = Post::find( $id );
         $post->delete();
 
+        Post::where( 'id', $id )->delete();
         Image::where( 'post_id', $id )->delete();
+        ThumbnailImage::where( 'post_id', $id )->delete();
 
         $images = Image::get();
         $user   = $this->returnUser();
