@@ -90,6 +90,7 @@
 		},
 		data () {
 			return {
+				loadShow: false,
 				returnStatus: '',
 				show: false,
 				valid: true,
