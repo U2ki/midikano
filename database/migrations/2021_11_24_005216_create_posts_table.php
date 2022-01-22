@@ -14,6 +14,7 @@ class CreatePostsTable extends Migration {
         Schema::create( 'posts', function ( Blueprint $table ) {
             $table->id();
             $table->string( 'content' )->comment( '内容' )->nullable();
+            $table->integer( 'goods' )->comment( 'いいね数' )->default(0);
             $table->foreignId( 'user_id' )->comment( 'ユーザ' )->constrained( 'users' )->onUpdate( 'cascade' )->onDelete( 'cascade' );
             $table->timestamps();
             $table->softDeletes();

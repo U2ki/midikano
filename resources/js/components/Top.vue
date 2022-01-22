@@ -91,7 +91,7 @@
                             class="mt-8 carsel"
                         >
                             <slide
-                                v-for="item in images"
+                                v-for="item in goodimages"
                                 v-bind:key="item.id"
                             >
                                 <a :href="'/gallery/' + item.post_id">
@@ -148,6 +148,7 @@
 		name: "Top",
 		props: {
 			images: {},
+			goodimages: {},
 			news: {},
 		},
 		components: {

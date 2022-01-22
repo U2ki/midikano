@@ -15,8 +15,11 @@ class TopController extends Controller
      */
     public function index() {
         $images = ThumbnailImage::orderBy('id', 'DESC')->take(9)->get();
+        $goodimages = ThumbnailImage::select( 'thumbnail_images.*' )->join( 'posts', 'thumbnail_images.post_id', '=', 'posts.id' )
+                                     ->orderBy('posts.goods', 'DESC')->get();
+
         $news = News::orderBy('id', 'DESC')->take(6)->get();
 
-        return view( 'top', compact( 'images', 'news') );
+        return view( 'top', compact( 'images', 'goodimages', 'news') );
     }
 }
