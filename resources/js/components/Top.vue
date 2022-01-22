@@ -200,11 +200,7 @@
     img:hover {
         opacity: 0.6;
     }
-    /deep/ .VueCarousel-inner {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
+
     /deep/ .VueCarousel-slide {
         text-align: center;
         display: flex;
