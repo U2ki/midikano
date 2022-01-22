@@ -173,7 +173,16 @@ class PostController extends Controller {
         $img  = Image::where( 'post_id', $id )->get();
         $user = $this->returnUser();
 
-        return view( 'gallery.show', compact( 'post', 'img', 'user' ) );
+        $user_info = \DB::table( 'users' )->where( 'id', $post->user_id )->first();
+        $name = $user_info->name;
+        $userid = $user_info->id;
+
+        $comments     = PostComment::where( 'post_id', $id )->get();
+        $comment_user = User::select( 'users.*' )->join( 'post_comments', 'users.id', '=', 'post_comments.user_id' )
+                            ->where( 'post_comments.post_id', '=', $id )->get();
+        $login_info   = $this->loginUser();
+
+        return view( 'gallery.show', compact( 'post', 'name', 'userid', 'img', 'user', 'comments', 'comment_user', 'login_info' ) );
     }
 
     /**
