@@ -21,8 +21,8 @@
                         <thead>
                             <tr>
                                 <th scope="col" width="1000">タイトル</th>
-                                <th scope="col" width="300">種類</th>
-                                <th scope="col">投稿日</th>
+                                <th scope="col" width="250">種類</th>
+                                <th scope="col" width="100">投稿日</th>
                             </tr>
                         </thead>
                         <tbody>
