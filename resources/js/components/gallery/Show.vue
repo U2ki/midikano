@@ -130,7 +130,7 @@
                         <div class="my-10 mx-16 w-100 d-flex justify-content-end">
                             <v-btn
                                 color="indigo lighten-1"
-                                v-show="user > 0"
+                                v-show="user > 0 && right === 1"
                                 elevation="2"
                                 class="text-white mx-14"
                                 @click="show"
@@ -139,7 +139,7 @@
                             </v-btn>
                             <v-btn
                                 color="red accent-4"
-                                v-show="user > 0"
+                                v-show="user > 0 && right === 1"
                                 elevation="2"
                                 class="text-white"
                                 @click="deleteConfirm(post.id)"
@@ -225,6 +225,7 @@
 			comments: {},
 			comment_user: {},
 			login_info: {},
+			right: {},
 		},
 		computed: {
 			isComplete () {

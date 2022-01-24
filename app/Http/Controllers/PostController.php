@@ -117,6 +117,8 @@ class PostController extends Controller {
         $user_info = \DB::table( 'users' )->where( 'id', $post->user_id )->first();
         $name = $user_info->name;
         $userid = $user_info->id;
+        $user_id = auth()->id();
+        $right = 0;
         if (!$post) {
             $error_num = 2;
             return view( 'error', compact( 'error_num' ) );
@@ -127,8 +129,11 @@ class PostController extends Controller {
                                 ->where( 'post_comments.post_id', '=', $id )->get();
             $user         = $this->returnUser();
             $login_info   = $this->loginUser();
+            if ($user_id === $post->user_id || $user === 2) {
+                $right = 1;
+            }
 
-            return view( 'gallery.show', compact( 'post', 'name', 'userid', 'img', 'user', 'comments', 'comment_user', 'login_info' ) );
+            return view( 'gallery.show', compact( 'post', 'name', 'userid', 'img', 'user', 'comments', 'comment_user', 'login_info', 'right' ) );
         }
     }
 

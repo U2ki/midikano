@@ -10,5 +10,6 @@
         :comments="{{$comments}}"
         :comment_user="{{$comment_user}}"
         :login_info="{{$login_info}}"
+        :right="{{$right}}"
     ></vc-gallery-show>
 @endsection
