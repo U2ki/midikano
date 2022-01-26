@@ -67,7 +67,7 @@
         </v-app-bar>
         <v-navigation-drawer
             v-model="drawer"
-            absolute
+            fixed
             temporary
         >
             <v-list-item class="py-5">
@@ -127,8 +127,8 @@
                     </v-btn>
                     <v-btn block class="drawer-btn" v-bind:href="href.logout"
                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();" v-else >
-                            ログアウト
+                            document.getElementById('logout-form').submit();" v-else>
+                        ログアウト
                         <form id="logout-form" v-bind:action="href.logout" method="POST" class="d-none">
                             <input type="hidden" name="_token" v-bind:value="csrf">
                         </form>
@@ -163,7 +163,7 @@
 
 <style lang="scss" scoped>
     #header {
-        z-index: 9999;
+        z-index: 3;
         position: fixed;
         top: 0px;
         left: 0px;
@@ -188,6 +188,10 @@
 
     .item {
         padding: 0px 42px 0px 18px !important;
+    }
+
+    .v-navigation-drawer {
+        top: 0!important;
     }
 
     .drawer-btn {
