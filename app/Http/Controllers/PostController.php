@@ -181,13 +181,18 @@ class PostController extends Controller {
         $user_info = \DB::table( 'users' )->where( 'id', $post->user_id )->first();
         $name = $user_info->name;
         $userid = $user_info->id;
+        $user_id = auth()->id();
+        $right = 0;
 
         $comments     = PostComment::where( 'post_id', $id )->get();
         $comment_user = User::select( 'users.*' )->join( 'post_comments', 'users.id', '=', 'post_comments.user_id' )
                             ->where( 'post_comments.post_id', '=', $id )->get();
         $login_info   = $this->loginUser();
+        if ($user_id === $post->user_id || $user === 2) {
+            $right = 1;
+        }
 
-        return view( 'gallery.show', compact( 'post', 'name', 'userid', 'img', 'user', 'comments', 'comment_user', 'login_info' ) );
+        return view( 'gallery.show', compact( 'post', 'name', 'userid', 'img', 'user', 'comments', 'comment_user', 'login_info', 'right' ) );
     }
 
     /**
