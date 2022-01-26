@@ -7,7 +7,7 @@
     >
         <div class="text-center">
 
-            <div>Copyright &copy; 2021&nbsp;<strong>Urulabo</strong></div>
+            <div>Copyright &copy; 2022&nbsp;<strong>MiDIKAno</strong></div>
 
         </div>
     </v-footer>

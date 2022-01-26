@@ -12,7 +12,7 @@
                 <v-row>
                     <div class="d-flex align-center">
                         <v-toolbar-title class="primary--text headline font-italic">
-                            <a href="/" class="font-weight-bold">urulab</a>
+                            <a href="/" class="font-weight-bold">MiDIKAno</a>
                         </v-toolbar-title>
                     </div>
                     <nav v-if="$mq === 'md' ||$mq === 'lg' ">
@@ -73,7 +73,7 @@
             <v-list-item class="py-5">
                 <v-list-item-content>
                     <v-list-item-title class="text-h6">
-                        Urulab
+                        MiDIKAno
                     </v-list-item-title>
                     <v-list-item-subtitle class="p-1 text-caption">
                         大津山研究室
