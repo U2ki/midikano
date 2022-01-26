@@ -15,9 +15,9 @@ class HomeController extends Controller {
      *
      * @return void
      */
-//    public function __construct() {
-//        $this->middleware( 'auth' );
-//    }
+    public function __construct() {
+        $this->middleware( 'auth' );
+    }
 
     public function returnUser() {
         $user_id = auth()->id();
@@ -51,7 +51,6 @@ class HomeController extends Controller {
                                  ->join( 'post_comments', 'thumbnail_images.post_id', '=', 'post_comments.post_id' )
                                  ->where( 'post_comments.user_id', '=', $user_id )
                                  ->orderBy( 'id', 'DESC' )
-                                 ->groupBy('id')
                                  ->get();
 
         return view( 'auth/mypage', compact( 'img', 'news', 'good', 'comment' ) );
