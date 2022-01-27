@@ -12,7 +12,7 @@
                 <v-row>
                     <div class="d-flex align-center">
                         <v-toolbar-title class="primary--text headline font-italic">
-                            <a href="/" class="font-weight-bold">MiDIKAno</a>
+                            <a href="/" class="font-weight-bold nav-img"><img :src="'/assets/nav.png'"></a>
                         </v-toolbar-title>
                     </div>
                     <nav v-if="$mq === 'md' ||$mq === 'lg' ">
@@ -167,6 +167,10 @@
         position: fixed;
         top: 0px;
         left: 0px;
+    }
+
+    .nav-img img {
+        height: 48px;
     }
 
     .login-icon {

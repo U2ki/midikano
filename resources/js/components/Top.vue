@@ -2,7 +2,18 @@
     <v-main class="py-5">
         <v-container>
             <v-row>
-                <div class="box ma-5"></div>
+                <div class="box">
+                    <p>
+                        MIDIKAno(みじかの)は、漆器を身近に感じていただくためのアプリです。<br><br>
+                        【MIDIKAnoの使い方】<br>
+                        <span class="border-bottom">ギャラリー</span>: 物の周囲を写真で撮り投稿することで 360°漆器を堪能できます。<br>
+                        <span class="border-bottom">漆器について</span>: 漆についての紹介をしています。<br>
+                        <span class="border-bottom">ニュース</span>: 関係者の方(権限を持ってる方)が投稿したニュースやイベント情報を見ることができます。<br>
+                        <span class="border-bottom">マイページ</span>: 自身が投稿した内容を表示します。<br><br>
+                        なにかありましたら、お問い合わせ下さい。<br>
+                        漆器の良さを感じていただけると幸いです。
+                    </p>
+                </div>
                 <div class="w-100 ma-15">
                     <h4 class="font-weight-bolder">新着の投稿</h4>
                     <div v-show="$mq === 'xs' || $mq === 'sm'">
@@ -112,11 +123,11 @@
                     <v-card class="w-100 my-1 pa-5">
                         <table class="table table-hover mx-auto">
                             <thead>
-                                <tr>
-                                    <th scope="col" width="200">投稿日</th>
-                                    <th scope="col" width="250">種類</th>
-                                    <th scope="col" width="1000">タイトル</th>
-                                </tr>
+                            <tr>
+                                <th scope="col" width="200">投稿日</th>
+                                <th scope="col" width="250">種類</th>
+                                <th scope="col" width="1000">タイトル</th>
+                            </tr>
                             </thead>
                             <tbody>
                             <tr v-for="item in news">
@@ -143,7 +154,8 @@
 
 <script>
 	import dayjs from 'dayjs'
-	import { Carousel, Slide } from 'vue-carousel';
+	import {Carousel, Slide} from 'vue-carousel';
+
 	export default {
 		name: "Top",
 		props: {
@@ -159,10 +171,10 @@
 			return {
 				preIndex: 0
 			};
-        },
+		},
 		methods: {
 			formatDate: dateStr => dayjs(dateStr).format('YYYY/MM/DD'),
-			onPageChange: function(index) {
+			onPageChange: function (index) {
 				this.preIndex = index;
 			},
 			getImgUrl(img) {
@@ -183,14 +195,23 @@
 </script>
 
 <style scoped>
-    .box{
-        width: 100%;
-        height: 350px;
-        background-color: #336699;
+    .box {
+        width: 80%;
+        /*height: 350px;*/
+        background-color: #F8F8FF;
+        border: dashed 5px #5b8bd0;
+        margin: 30px auto;
     }
+
+    .box p {
+        margin: 0;
+        padding: 24px;
+    }
+
     .more-hvr:hover {
-        text-decoration: underline!important;
+        text-decoration: underline !important;
     }
+
     .slide {
         position: relative;
         height: auto;
@@ -198,6 +219,7 @@
         margin: 0 auto;
         padding: 0.5rem;
     }
+
     img:hover {
         opacity: 0.6;
     }
@@ -212,6 +234,6 @@
     }
 
     /deep/ .VueCarousel-dot-container {
-        margin-top: 0!important;
+        margin-top: 0 !important;
     }
 </style>
