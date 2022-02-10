@@ -26,7 +26,7 @@ class UserTableSeeder extends Seeder
                 [
                     'name' => 'test(関係者)',
                     'email' => 'hoge@hoge.com',
-                    'password' => bcrypt('hogehoge'),
+                    'password' => bcrypt('manamana'),
                     'status' => 1,
                 ],
                 [
